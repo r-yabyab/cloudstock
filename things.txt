@@ -1,0 +1,29 @@
+implement button to cycle through symbol, maybe even rand
+
+
+
+sandbox ////////////////////
+
+useEffect (() => {
+    
+}, [reducerValue])
+
+const [url, setUrl] = [
+    {id:1,
+    link: 'fetch ("iex.cloud/AAPL")'},
+    {id:2,
+    link: 'fetch("iex.cloud/AMZN")'},
+]
+
+    const addSymbol = () => {
+        let num = Url.length + 1
+        let newEntry = {id: num, symbol: symbolName}
+        setList([...list, newEntry])
+    }
+
+
+Promise.all([
+    (...fetch)
+]).then(allResponses => {
+    
+})
