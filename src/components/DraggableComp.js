@@ -45,6 +45,6 @@ return (
                 <p className=" select-none">{pressed ? "dragging..." : "press to drag"}</p>
             </div>
             </div>
-            <button onclick={() => setPosition({x: 0, y: 0})} className="absolute bg-blue-400">Reset position</button>
+            <button onClick={() => setPosition({x: 0, y: 0})} className="absolute bg-blue-400">Reset position</button>
     </>
 )}

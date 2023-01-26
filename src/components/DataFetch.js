@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { DraggableComp } from "./DraggableComp";
+import Stats from "./Stats";
 // import { Client } from "iexjs"
 
 export function DataFetch () {
@@ -178,32 +179,32 @@ export function DataFetch () {
         )
     })
 
-//fetch single stock's information
-  useEffect(() => {
-    const fetchStock = async () => {
-        const response = await fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)
-        const json = await response.json()
+    //fetch single stock's information
+    useEffect(() => {
+        const fetchStock = async () => {
+            const response = await fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)
+            const json = await response.json()
 
-        if (response.ok) {
-            setStock(json)
+            if (response.ok) {
+                setStock(json)
+            }
         }
-    }
-    fetchStock()
-  }, [symbolName])
+        fetchStock()
+    }, [symbolName])
 
-  const stockDescription = stock && stock.map((stock, indexDescription) => {
-    return (
-        <div key={indexDescription} className=
-        {stock.change > 0 ? "relative bg-green-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300" : "bg-red-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300" }
-        >
-            <div>Ticker: <span className="font-bold">{stock.symbol}</span></div>
-            <div>Open: {stock.open}</div>
-            <div>Close: {stock.close}</div>
-            <div>Change: {stock.change}</div>
+    const stockDescription = stock && stock.map((stock, indexDescription) => {
+        return (
+            <div key={indexDescription} className=
+                {stock.change > 0 ? "relative bg-green-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300" : "bg-red-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300"}
+            >
+                <div>Ticker: <span className="font-bold">{stock.symbol}</span></div>
+                <div>Open: {stock.open}</div>
+                <div>Close: {stock.close}</div>
+                <div>Change: {stock.change}</div>
 
-        </div>
-    )
-  } )
+            </div>
+        )
+    })
 
 
 
@@ -215,12 +216,12 @@ export function DataFetch () {
     console.log(reducerValue)
   }
 
-  const clickHandler2 = () => {{
+  const clickHandler2 = () => {
     setSymbolName('AMZN')
     forceUpdate()
-   
+    console.log(`symbolName state: ${symbolName}`)
   }
-  console.log(`symbolName state: ${symbolName}`)}
+  
 
 
   const selectHandler = (e) => {
@@ -269,6 +270,8 @@ export function DataFetch () {
 </div>
 
 
+
+<Stats symbolName={symbolName} setSymbolName={setSymbolName} />
 
 {/* <DraggableComp /> */}
         </>

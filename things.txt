@@ -1,5 +1,6 @@
 implement button to cycle through symbol, maybe even rand
 
+stockpop
 
 
 sandbox ////////////////////
@@ -27,3 +28,27 @@ Promise.all([
 ]).then(allResponses => {
     
 })
+
+
+///////////////
+///////////////
+///////////////
+///////////////
+///////////////
+
+
+
+curl --header 'Accept: text/event-stream' 'https://cloud-sse.iexapis.com/v1/stocksUS5Second?token=YOUR_TOKEN&symbols=spy'
+https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e&symbols=spy
+
+'https://cloud-sse.iexapis.com/v1/stocksUS5Second?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e&symbols=spy'
+
+https://cloud-sse.iexapis.com/v1/stocksUS?symbols=spy,msft&token=sk_4b6ebe9d84b44fe48cbf602d2c70884e'
+
+
+works
+https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+needs paid subscription to work
+https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/nq?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
