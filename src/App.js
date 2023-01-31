@@ -1,8 +1,8 @@
 import './App.css';
-import { DataFetch } from './components/DataFetch';
 import RefPage from './components/RefPage'
 import TopNav from './components/TopNav';
 import { Route, Routes } from "react-router-dom"
+import HomePage from './components/HomePage';
 
 function App() {
   return (
@@ -11,12 +11,10 @@ function App() {
       <TopNav />
 
       <Routes>
-        <Route path='/' element={<DataFetch />} />
+        <Route path='/' element={<HomePage />} />
         <Route path='/refpage' element={<RefPage />} />
       </Routes>
-      penis penis penis
 
-      Limited to 50 symbols
       </div>
     </>
   );

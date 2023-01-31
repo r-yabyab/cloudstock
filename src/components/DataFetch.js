@@ -11,102 +11,6 @@ export function DataFetch () {
     const [stock, setStock] = useState(null)
     //force updates Components
     const [reducerValue, forceUpdate] = useReducer(x => x+1, 0)
-   
-   
-//
-//testing
-//testing
-//testing
-//testing
-//
-//vvvvvvvvvvvvvvvvvvvvvvv
-//
-//
-// //
-//     const [newFetch, setNewFetch] = useState('')
-//     const [fetchLink, setFetchLink] = useState (
-//         {
-//             id:1,
-//             symbol:'AAPL',
-//             link: 'fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/AAPL?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)',
-//         },
-//         {
-//             id:2,
-//             symbol:'AMZN',
-//             link: 'fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/AMZN?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)',
-//         }
-//     )
-
-
-    // useEffect (() => {
-    //     console.log('todo')
-    // }, [])
-
-
-    // const addLink = () => {
-    // if (newFetch) {
-    //     let num = fetchLink.length + 1
-    //     let newEntry = {id: num, symbol:{symbolName}, link: 'fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)'}
-    //     setFetchLink(...fetchLink, newEntry)
-    //     setNewFetch('')
-    // }
-    // }
-
-    // const fetchArrList = fetchLink && fetchLink.map((x, index) => {
-    //     return (
-    //         <div key={x.id}>
-    //         {x.open}
-    //         </div>
-    //     )
-    // })
-
-    // // // group method
-    // const urls = [
-    //     'https://ryabyab.iex.cloud/v1/data/core/quote/AMZN?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e',
-    //     'https://ryabyab.iex.cloud/v1/data/core/quote/AAPL?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e',
-    //     'https://ryabyab.iex.cloud/v1/data/core/quote/PCG?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e',
-    // ]
-
-    // Promise.all(urls.map(x => 
-    //     fetch(x)
-    //         .then(JSON.parse)
-    //         .catch(error => console.log('there was a problem', error))
-    //     ))
-    //         .then(x => {
-    //             console.log(x.open)
-    //         })
-
-
-
-    // Promise.all([
-    //     fetch("https://ryabyab.iex.cloud/v1/data/core/quote/AMZN?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e"),
-    //     fetch("https://ryabyab.iex.cloud/v1/data/core/quote/AAPL?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e"),
-    //     fetch("https://ryabyab.iex.cloud/v1/data/core/quote/PCG?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e")
-    //   ]).then(allResponses => {
-    //     console.log(allResponses)  
-    //   })
-
-
-
-
-
-
-//
-//
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//
-//
-//testing
-//testing
-//testing
-//testing
-//testing
-//testing
-//
-//
-//
-//
-
 
 
     const [list, setList] = useState([
@@ -134,28 +38,6 @@ export function DataFetch () {
     const removeSymbol = (id) => {
         console.log("to do")
     }
-    
-
-
-    // const client = new Client({api_token: "TOKEN", version: "VERSION"});
-    // client.quote({symbol: "AAPL"}).then((res) => {
-    //     console.log(res)
-    // })
-
-
-//     // fetch from db, static numbers
-//   useEffect (() => {
-//     const fetchStock = async () => {
-//         const response = await fetch('https://ryabyab.iex.cloud/v1/data/ryabyab/DATASET_2BRSXSLCA?last=1&token=sk_4b6ebe9d84b44fe48cbf602d2c70884e')
-//         const json = await response.json()
-
-//         if (response.ok) {
-//             setDbStock(json)
-//         }
-//     }
-//     fetchStock()
-//   }, [])
-
 
     // fetch all stock symbols a to z
     useEffect(() => {
@@ -192,7 +74,7 @@ export function DataFetch () {
         fetchStock()
     }, [symbolName])
 
-    const stockDescription = stock && stock.map((stock, indexDescription) => {
+    const stockPreview = stock && stock.map((stock, indexDescription) => {
         return (
             <div key={indexDescription} className=
                 {stock.change > 0 ? "relative bg-green-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300" : "bg-red-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300"}
@@ -231,7 +113,7 @@ export function DataFetch () {
     return (
         <>
             <div className="relative m-auto">
-                <button onClick={clickHandler}>penios</button>
+                {/* <button onClick={clickHandler}>penios</button> */}
                 <div className="p-4">
                     Select Symbol:
                     {/* Click from dropdownlist --> setsSymbol */}
@@ -251,12 +133,12 @@ export function DataFetch () {
             </div>
 
             <div>
-                {stockDescription}
-                {stock && <button onClick={addSymbol} className="absolute float-right bg-slate-400 hover:bg-green-300">++</button>}
-                {stock && <button onClick={removeSymbol} className="absolute float-right translate-y-6 bg-slate-400 hover:bg-red-300">--</button>}
+                {stockPreview}
+                {/* {stock && <button onClick={addSymbol} className="absolute float-right bg-slate-400 hover:bg-green-300">++</button>}
+                {stock && <button onClick={removeSymbol} className="absolute float-right translate-y-6 bg-slate-400 hover:bg-red-300">--</button>} */}
             </div>
 
-<div>
+{/* <div>
     {list && list.map((x,index) => {
         return(
             <div key={x.id}>
@@ -267,13 +149,13 @@ export function DataFetch () {
     })}
     <input placeholder="symbol" className="border-2" value={newTask} onChange={(e) => setNewTask(e.target.value)} />
     <button onClick={addTask} className="bg-blue-200 rounded-lg p-2 m-2">Add Symbol</button>
-</div>
+</div> */}
 
 
 
 <Stats symbolName={symbolName} setSymbolName={setSymbolName} />
 
-{/* <DraggableComp /> */}
+<DraggableComp />
         </>
     )
 }

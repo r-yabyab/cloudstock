@@ -1,0 +1,23 @@
+Real time stock updates to supplement stock trading. 
+Resizeable and moveable stock components so you can put it next to your trading
+platform.
+
+Aims:
+To pull real time stock updates. When it's globex hours, users can still view
+the session's updates.
+Need to include futures updates when I get paid futures subscriptions.
+
+
+Structure:
+App.js displays the initial HomePage route, options for other routes
+HomePage.js is the main parent of all components
+DataFetch.js used to select and update symbols on the list
+    Provides states for Stat.js that makes Promise to fetch all symbols at once
+
+
+
+Todo:
+- make header and title hideable
+- make symbol select hideable
+- option to sign up for more frequent API calls
+    - anonymous users (IP based) max 10 stocks

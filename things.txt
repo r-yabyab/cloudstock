@@ -1,7 +1,16 @@
 implement button to cycle through symbol, maybe even rand
 
-stockpop
+Names
+    stockpop
+    equity sky
+    stock storm
 
+ChatGPT Names
+    stock-flex $10
+    stockmorph.net $10 (.com taken by sus chinese site)
+    stockshapes.net
+    Tradeshape
+    stocksquares
 
 sandbox ////////////////////
 
@@ -52,3 +61,154 @@ https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/?token=sk_4b6ebe9d84b44fe4
 
 needs paid subscription to work
 https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/nq?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
+OUTDATED
+
+DataFetch.js 
+   
+//
+//testing
+//testing
+//testing
+//testing
+//
+//vvvvvvvvvvvvvvvvvvvvvvv
+//
+//
+// //
+//     const [newFetch, setNewFetch] = useState('')
+//     const [fetchLink, setFetchLink] = useState (
+//         {
+//             id:1,
+//             symbol:'AAPL',
+//             link: 'fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/AAPL?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)',
+//         },
+//         {
+//             id:2,
+//             symbol:'AMZN',
+//             link: 'fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/AMZN?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)',
+//         }
+//     )
+
+
+    // useEffect (() => {
+    //     console.log('todo')
+    // }, [])
+
+
+    // const addLink = () => {
+    // if (newFetch) {
+    //     let num = fetchLink.length + 1
+    //     let newEntry = {id: num, symbol:{symbolName}, link: 'fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)'}
+    //     setFetchLink(...fetchLink, newEntry)
+    //     setNewFetch('')
+    // }
+    // }
+
+    // const fetchArrList = fetchLink && fetchLink.map((x, index) => {
+    //     return (
+    //         <div key={x.id}>
+    //         {x.open}
+    //         </div>
+    //     )
+    // })
+
+    // // // group method
+    // const urls = [
+    //     'https://ryabyab.iex.cloud/v1/data/core/quote/AMZN?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e',
+    //     'https://ryabyab.iex.cloud/v1/data/core/quote/AAPL?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e',
+    //     'https://ryabyab.iex.cloud/v1/data/core/quote/PCG?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e',
+    // ]
+
+    // Promise.all(urls.map(x => 
+    //     fetch(x)
+    //         .then(JSON.parse)
+    //         .catch(error => console.log('there was a problem', error))
+    //     ))
+    //         .then(x => {
+    //             console.log(x.open)
+    //         })
+
+
+
+    // Promise.all([
+    //     fetch("https://ryabyab.iex.cloud/v1/data/core/quote/AMZN?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e"),
+    //     fetch("https://ryabyab.iex.cloud/v1/data/core/quote/AAPL?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e"),
+    //     fetch("https://ryabyab.iex.cloud/v1/data/core/quote/PCG?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e")
+    //   ]).then(allResponses => {
+    //     console.log(allResponses)  
+    //   })
+
+
+
+
+
+
+//
+//
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//
+//
+//testing
+//testing
+//testing
+//testing
+//testing
+//testing
+//
+//
+//
+//
+
+
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
+
+    // const client = new Client({api_token: "TOKEN", version: "VERSION"});
+    // client.quote({symbol: "AAPL"}).then((res) => {
+    //     console.log(res)
+    // })
+
+
+//     // fetch from db, static numbers
+//   useEffect (() => {
+//     const fetchStock = async () => {
+//         const response = await fetch('https://ryabyab.iex.cloud/v1/data/ryabyab/DATASET_2BRSXSLCA?last=1&token=sk_4b6ebe9d84b44fe48cbf602d2c70884e')
+//         const json = await response.json()
+
+//         if (response.ok) {
+//             setDbStock(json)
+//         }
+//     }
+//     fetchStock()
+//   }, [])
+
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++

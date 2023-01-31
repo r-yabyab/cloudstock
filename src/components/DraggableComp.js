@@ -21,16 +21,6 @@ if (pressed) {
 }
 }
 
-const quickAndDirtyStyle = {
-width: "200px",
-height: "200px",
-background: "#FF9900",
-color: "#FFFFFF",
-display: "flex",
-justifyContent: "center",
-alignItems: "center"
-}
-
 return (
     <>
     <div className="absolute bg-slate-200 w-full h-full"
@@ -38,9 +28,18 @@ return (
                     onMouseDown={() => setPressed(true)}
                     onMouseUp={() => setPressed(false)}
     >
-                <div ref={ref}
-                style={quickAndDirtyStyle}
-                className="select-none pointer-events-none"
+                <div 
+                                    // onMouseMove={onMouseMove}
+                                    // onMouseDown={() => setPressed(true)}
+                                    // onMouseUp={() => setPressed(false)}
+                                    ref={ref}
+                className="
+                w-[200px]
+                h-[200px]
+                bg-yellow-300
+                flex resize overflow-hidden
+                justify-center
+                "
             >
                 <p className=" select-none">{pressed ? "dragging..." : "press to drag"}</p>
             </div>

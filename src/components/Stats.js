@@ -73,7 +73,6 @@ function Stats ({symbolName, setSymbolName}) {
 
     return (
         <>
-            penis
 
                 {stockData.map((stock) => (
                     <div key={stock.symbol}>

@@ -3,7 +3,9 @@ import React from "react";
 function StatsRow (props) {
     return (
         <>
-            <div className="[&>div]:m-4 text-white [&>div]:shadow-md [&>div]:shadow-amber-300">
+            <div className=" text-white select-none
+            [&>div]:shadow-md [&>div]:shadow-amber-300 [&>div]:m-4 [&>div]:min-w-[300px] [&>div]:min-h-[30px] [&>div]:resize [&>div]:overflow-hidden
+            ">
                 <div className={props.change > 0 ? "relative bg-green-400 m-auto flex [&>div]:border-x-[1px] [&>div]:text-center [&>div]:border-slate-300" : "bg-red-400 m-auto flex [&>div]:border-x-[1px] [&>div]:text-center [&>div]:border-slate-300"} draggable="false">
                     <div className="bg-slate-700 text-white  p-4 min-w-[120px]">
                         <div className="font-semibold text-2xl tracking-wider">{props.symbol}</div>
@@ -15,6 +17,7 @@ function StatsRow (props) {
                     {/* <div>{"close " + props.iexClose}</div> */}
                 </div>
             </div>
+
         </>
     )
 }
