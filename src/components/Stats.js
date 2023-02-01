@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import StatsRow from './StatsRow'
+import Draggable from 'react-draggable'
+
 
 // ex url 'https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e'
 
@@ -75,7 +77,9 @@ function Stats ({symbolName, setSymbolName}) {
         <>
 
                 {stockData.map((stock) => (
-                    <div key={stock.symbol}>
+                    <Draggable key={stock.symbol}>
+                    <div>
+                        
                         <StatsRow
                         symbol={stock.symbol}
                         open={stock[0].iexOpen}
@@ -86,8 +90,10 @@ function Stats ({symbolName, setSymbolName}) {
                         latestPrice={stock[0].latestPrice}
                         companyName={stock[0].companyName}
                     />
+                    
                     {/* {"close " + stock[0].iexClose} */}
                     </div>
+                    </Draggable>
                 ))}
 
 
