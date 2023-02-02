@@ -1,9 +1,39 @@
 import React, { useState, useRef, useEffect} from "react";
-import Draggable from 'react-draggable'
+// import Draggable from 'react-draggable'
 
 function StatsRow (props) {
 
+    const [pressed, setPressed] = useState(false)
+    const [position, setPosition] = useState({x: 0, y: 0})
+    const ref = useRef()
+    
+    useEffect(() => {
+    if (ref.current) {
+        ref.current.style.transform= `translate(${position.x}px, ${position.y}.px)`
+    }
+    }, [position])
+    
+    const onMouseMove = (e) => {
+    if (pressed) {
+        setPosition({
+            x: position.x + e.movementX,
+            y: position.y + e.movementY
+        })
+    }
+    }
 
+    // const styles = {
+    //     draggable: {
+    //       position: 'absolute',
+    //       zIndex: 10,
+    //     },
+    //     selected: {
+    //       position: 'absolute',
+    //       zIndex: 20,
+    //     },
+    //   };
+
+    //   const style = selected ? styles.selected : styles.draggable
 
     const ExitClick = () => {
         console.log('clicked on ExitClick via refExit useRef()')
@@ -12,14 +42,19 @@ function StatsRow (props) {
     return (
         <>
             <div 
-                        
+                                        onMouseMove={onMouseMove}
+                                        onMouseDown={() => setPressed(true)}
+                                        onMouseUp={() => setPressed(false)}
+                                        ref={ref} 
+                                        
+                                          
             className=" text-white select-none
             [&>div]:shadow-xl [&>div]:m-4 [&>div]:min-w-[300px] [&>div]:min-h-[30px] [&>div]:resize [&>div]:overflow-hidden
             ">
                 
-                <div 
+                <div
                 className={props.change > 0 ? "relative bg-green-400 m-auto flex [&>div]:border-x-[1px] [&>div]:text-center [&>div]:border-slate-300" : "bg-red-400 m-auto flex [&>div]:border-x-[1px] [&>div]:text-center [&>div]:border-slate-300"} draggable="false">
-                    <div className="bg-slate-700 text-white  p-4 min-w-[120px]">
+                    <div className="bg-slate-700 text-white p-4 min-w-[120px]">
                         <div className="font-semibold text-2xl tracking-wider">{props.symbol}</div>
                         {/* <div className="max-w-[120px]">{props.companyName}</div> */}
                     </div>

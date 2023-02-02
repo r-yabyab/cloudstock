@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import StatsRow from './StatsRow'
-import Draggable from 'react-draggable'
+// import Draggable from 'react-draggable'
 
 
 // ex url 'https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e'
@@ -73,13 +73,21 @@ function Stats ({symbolName, setSymbolName}) {
 
     }, [yourStocks])
 
+
+
+    // const [selectedQuote, setSelectedQuote] = useState(null)
+
+    // const handleSelect = (stock) => {
+    //     selectedQuote(stock)
+    // }
+
+
+
     return (
         <>
 
                 {stockData.map((stock) => (
-                    <Draggable key={stock.symbol}>
-                    <div>
-                        
+                    <div key={stock.symbol}>
                         <StatsRow
                         symbol={stock.symbol}
                         open={stock[0].iexOpen}
@@ -93,7 +101,6 @@ function Stats ({symbolName, setSymbolName}) {
                     
                     {/* {"close " + stock[0].iexClose} */}
                     </div>
-                    </Draggable>
                 ))}
 
 

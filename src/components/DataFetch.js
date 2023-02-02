@@ -1,4 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
+import StockApp from "./chatGPT";
+import StockQuotes from "./chatGPT";
 import { DraggableComp } from "./DraggableComp";
 import Stats from "./Stats";
 // import { Client } from "iexjs"
@@ -155,7 +157,9 @@ export function DataFetch () {
 
 <Stats symbolName={symbolName} setSymbolName={setSymbolName} />
 
-<DraggableComp />
+<StockApp />
+
+{/* <DraggableComp /> */}
         </>
     )
 }
