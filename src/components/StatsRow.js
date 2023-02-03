@@ -1,7 +1,7 @@
 import React from "react";
 import Draggable from 'react-draggable'
 
-function StatsRow (props) {
+function StatsRow (props, {reducerValue, forceUpdate}) {
     // const [pressed, setPressed] = useState(false)
     // const [position, setPosition] = useState({x: 0, y: 0})
     // const ref = useRef()
@@ -48,9 +48,9 @@ function StatsRow (props) {
                             {/* <div className="max-w-[120px]">{props.companyName}</div> */}
                         </div>
                         <div className="bg-zinc-700 ratingAnimationYellow w-[100px] p-4">${props.latestPrice}</div>
-                        <div>{"change " + props.change}</div>
-                        <div>{"open " + props.open}</div>
-                        <div onClick={ExitClick} className=" border-none hover:cursor-pointer absolute right-0 top-0 -mt-3 text-2xl"> x </div>
+                        <div>{"C " + props.change}</div>
+                        <div>{"O " + props.open}</div>
+                        <div onClick={ExitClick} className=" border-none text-slate-500 hover:text-white hover:cursor-pointer absolute right-0 top-0 -mt-3 text-2xl"> x </div>
                         {/* <div className="border-none hover:cursor-pointer absolute right-0 bottom-0 text-2xl bg-green-200">/</div> */}
                         <div className="absolute h-full opacity-0 w-[94%] handle hover:cursor-move bg-black top-0 "> click to drag</div>
                         {/* <div>{"close " + props.iexClose}</div> */}

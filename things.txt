@@ -61,6 +61,12 @@ https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b4
 https://cloud-sse.iexapis.com/v1/stocksUS?symbols=spy,msft&token=sk_4b6ebe9d84b44fe48cbf602d2c70884e'
 
 
+NO UPT (doesn't required paid plan)
+https://cloud-sse.iexapis.com/stable/stocksUSNoUTP\?symbols\=spy\&token\=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+  Works, but needs paid account
+  https://cloud-sse.iexapis.com/stable/stocksUSNoUTP?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e&symbols=spy
+
 works
 https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
 

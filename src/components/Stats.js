@@ -10,7 +10,7 @@ import StatsRow from './StatsRow'
 const BASE_URL='https://ryabyab.iex.cloud/v1/data/core/quote/'
 const TOKEN='?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e'
 
-function Stats ({symbolName, setSymbolName}) {
+function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
 
     const [stockData, setStockData] = useState([])
     // const [symbolName, setSymbolName] = useState('')
@@ -85,10 +85,17 @@ function Stats ({symbolName, setSymbolName}) {
             console.log(tempStockData)
         })
 
-    }, [yourStocks])
+    }, [yourStocks, reducerValue])
 
 
+    const update1 = () => {
+        forceUpdate()
+    }
 
+    useEffect (() => {
+        
+    }, [])
+ 
     // const [selectedQuote, setSelectedQuote] = useState(null)
 
     // const handleSelect = (stock) => {
@@ -111,6 +118,8 @@ function Stats ({symbolName, setSymbolName}) {
                         iexClose={stock[0].iexClose}
                         latestPrice={stock[0].latestPrice}
                         companyName={stock[0].companyName}
+                            reducerValue={reducerValue} 
+                            forceUpdate={forceUpdate}
                     />
                     
                     {/* {"close " + stock[0].iexClose} */}
@@ -130,6 +139,8 @@ function Stats ({symbolName, setSymbolName}) {
 
     {/* </button> */}
 </div>
+
+<div onClick={update1} className='absolute left-0 top-0 bg-yellow-400 p-4 m-4 hover:bg-green-300'>Refresh</div>
 
         </>
     )
