@@ -15,31 +15,31 @@ export function DataFetch () {
     const [reducerValue, forceUpdate] = useReducer(x => x+1, 0)
 
 
-    const [list, setList] = useState([
-        {id: 0,  symbol: 'AAPL'},
-        {id: 1,  symbol: 'AMZN'},
-        {id: 2,  symbol: 'PCG'}
-    ])
-    const [newTask, setNewTask] = useState('')
+    // const [list, setList] = useState([
+    //     {id: 0,  symbol: 'AAPL'},
+    //     {id: 1,  symbol: 'AMZN'},
+    //     {id: 2,  symbol: 'PCG'}
+    // ])
+    // const [newTask, setNewTask] = useState('')
 
-    const addTask = () => {
-        if (newTask) {
-            let num = list.length + 1
-            let newEntry = {id: num, symbol: newTask}
-            setList([...list, newEntry])
-            setNewTask('')
-        }
-    }
+    // const addTask = () => {
+    //     if (newTask) {
+    //         let num = list.length + 1
+    //         let newEntry = {id: num, symbol: newTask}
+    //         setList([...list, newEntry])
+    //         setNewTask('')
+    //     }
+    // }
 
-    const addSymbol = () => {
-        let num = list.length + 1
-        let newEntry = {id: num, symbol: symbolName}
-        setList([...list, newEntry])
-    }
+    // const addSymbol = () => {
+    //     let num = list.length + 1
+    //     let newEntry = {id: num, symbol: symbolName}
+    //     setList([...list, newEntry])
+    // }
 
-    const removeSymbol = (id) => {
-        console.log("to do")
-    }
+    // const removeSymbol = (id) => {
+    //     console.log("to do")
+    // }
 
     // fetch all stock symbols a to z
     useEffect(() => {
@@ -79,7 +79,7 @@ export function DataFetch () {
     const stockPreview = stock && stock.map((stock, indexDescription) => {
         return (
             <div key={indexDescription} className=
-                {stock.change > 0 ? "relative bg-green-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300" : "bg-red-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300"}
+                {stock.change > 0 ? "absolute bg-green-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300 left-[50%] -translate-x-1/2" : "absolute bg-red-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300 left-[50%] -translate-x-1/2"}
             >
                 <div>Ticker: <span className="font-bold">{stock.symbol}</span></div>
                 <div>Open: {stock.open}</div>
@@ -100,11 +100,11 @@ export function DataFetch () {
     console.log(reducerValue)
   }
 
-  const clickHandler2 = () => {
-    setSymbolName('AMZN')
-    forceUpdate()
-    console.log(`symbolName state: ${symbolName}`)
-  }
+//   const clickHandler2 = () => {
+//     setSymbolName('AMZN')
+//     forceUpdate()
+//     console.log(`symbolName state: ${symbolName}`)
+//   }
   
 
 
@@ -126,10 +126,10 @@ export function DataFetch () {
                     <div>
                         <button
                             onClick={clickHandler}
-                            className="border-2 border-black bg-green-400">Update</button>
+                            className="border-2 border-black bg-green-400 hover:cursor-pointer hover:bg-green-100">Update Quotes</button>
 
-                        <button onClick={clickHandler2} className="border-2 border-black bg-blue-400">Set to AMZN
-                        </button>
+                        {/* <button onClick={clickHandler2} className="border-2 border-black bg-blue-400">Set to AMZN
+                        </button> */}
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@ export function DataFetch () {
 
 <Stats symbolName={symbolName} setSymbolName={setSymbolName} />
 
-<StockApp />
+{/* <StockApp /> */}
 
 {/* <DraggableComp /> */}
         </>

@@ -21,3 +21,8 @@ Todo:
 - make symbol select hideable
 - option to sign up for more frequent API calls
     - anonymous users (IP based) max 10 stocks
+
+
+REFS:
+https://www.quantower.com/media/1487/symbols-selection.gif
+google images search: futures dom gif

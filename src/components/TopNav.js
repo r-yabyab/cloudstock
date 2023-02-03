@@ -8,6 +8,7 @@ function TopNav () {
         <Link to='/' className="hover:bg-blue-300"><div>Home</div></Link>
         <div>Sign up</div>
         <Link to='/refpage' className="hover:bg-blue-300"><div>Ref Pics</div></Link>
+        <Link to='/about' className="hover:bg-blue-300"><div>About</div></Link>
         </div>
         </>
     )

@@ -13,11 +13,11 @@ const StockApp = () => {
     //   { name: 'MSFT', top: 150, left: 150, zIndex: 2 },
     //   { name: 'FB', top: 200, left: 200, zIndex: 1 },
     ]);
-    const [isDragging, setDragging] = useState(false);
+    const [pressed, setPressed] = useState(false);
     const [selectedQuote, setSelectedQuote] = useState(null);
   
     const handleMouseDown = (index) => {
-      setDragging(true);
+      setPressed(true);
       setSelectedQuote(index);
     //   quotes[index].zIndex = 6;
     //   setQuotes([...quotes]);
@@ -26,7 +26,7 @@ const StockApp = () => {
     };
   
     const handleMouseUp = () => {
-      setDragging(false);
+      setPressed(false);
     //   quotes[selectedQuote].zIndex = 5;
     //   setQuotes([...quotes]);
       window.removeEventListener('mouseup', handleMouseUp);

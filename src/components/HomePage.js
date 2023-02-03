@@ -11,7 +11,6 @@ function HomePage () {
     <p className="italic">Resize your stocks!</p>
 </div>
 
-<div className="resize overflow-auto text-center ml-4 bg-blue-400 w-[300px]">penis</div>
 
 
         </div>

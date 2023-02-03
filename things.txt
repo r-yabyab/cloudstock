@@ -415,3 +415,41 @@ export default StockApp;
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
+
+/////  WORKS 
+/////  WORKS 
+/////  WORKS 
+/////  WORKS
+
+For return () of Stat.js
+                {stockData.map((stock) => (
+                    <div key={stock.symbol}>
+                        <StatsRow
+                        symbol={stock.symbol}
+                        open={stock[0].iexOpen}
+                        volume={stock[0].volume}
+                        price={stock[0].price}
+                        change={stock[0].change}
+                        iexClose={stock[0].iexClose}
+                        latestPrice={stock[0].latestPrice}
+                        companyName={stock[0].companyName}
+                    />
+                    
+                    {/* {"close " + stock[0].iexClose} */}
+                    </div>
+                ))}
+
+
+/////  WORKS 
+/////  WORKS 
+/////  WORKS 
+/////  WORKS
+
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
