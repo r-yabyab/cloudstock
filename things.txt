@@ -67,8 +67,36 @@ https://cloud-sse.iexapis.com/stable/stocksUSNoUTP\?symbols\=spy\&token\=sk_4b6e
   Works, but needs paid account
   https://cloud-sse.iexapis.com/stable/stocksUSNoUTP?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e&symbols=spy
 
+Futures
+/ref-data/futures/symbols/ng
+
 works
 https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+Works, futures symbol list
+https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/ng?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+    Fetches all symbols from futures
+    https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+
+==    {
+        "underlying": "MNQ",
+        "exchange": "CME",
+        "exchangeName": "CHICAGO MERCANTILE EXCHANGE"
+    },
+        {
+        "underlying": "NQ",
+        "exchange": "CME",
+        "exchangeName": "CHICAGO MERCANTILE EXCHANGE"
+    },
+        {
+        "underlying": "MES",
+        "exchange": "CME",
+        "exchangeName": "CHICAGO MERCANTILE EXCHANGE"
+    },
+
+
 
 needs paid subscription to work
 https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/nq?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
