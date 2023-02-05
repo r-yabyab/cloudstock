@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import StatsRow from './StatsRow'
+import Draggable from 'react-draggable'
+
 
 // import Draggable from 'react-draggable'
 
@@ -15,8 +17,8 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
     const [stockData, setStockData] = useState([])
     // const [symbolName, setSymbolName] = useState('')
     const [yourStocks, setYourStocks] = useState([
-        {id: 1,  stock: 'NDAQ'},
-        {id: 2,  stock: 'VXX'},
+        {id:0,  stock: 'NDAQ'},
+        {id:1,  stock: 'TSLA'},
         // {id: 3,  stock: 'PCG'}
     ])
 
@@ -40,6 +42,12 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         // } else {
         //     console.log('please input symbol')
         // }
+        }
+
+        const removeSymbol = (e) => {
+            let x = e.target.getAttribute("selectnums")
+            setYourStocks(yourStocks.filter(items=>items.id!=x))
+            console.log('removed')
         }
 
         // let newEntry = {id: num, symbol: newTask}
@@ -92,9 +100,54 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         forceUpdate()
     }
 
-    useEffect (() => {
-        
-    }, [])
+    // get localStorage
+    useEffect(() => {
+        const data = window.localStorage.getItem('_STOCK_list')
+        if (data !== null) setYourStocks(JSON.parse(data))
+    },[])
+
+
+    // stores user's stock list
+    useEffect(() => {
+        window.localStorage.setItem('_STOCK_list', JSON.stringify(yourStocks))
+    },[yourStocks])
+
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST    vvvvvvvvvv
+
+    // const [positions, setPositions] = useState({})
+    // const [hasLoaded, setHasLoaded] = useState(false)
+
+    // const handleStop = (e, data) => {
+    //     console.log('works')
+    //     console.log(positions)
+    //     const dummyPositions = {...positions}
+    //     const stockId=e.target.id
+    //     dummyPositions[stockId] = {}
+    //     dummyPositions[stockId]["x"] = data.x
+    //     dummyPositions[stockId]["y"] = data.y
+    //     setPositions(dummyPositions)
+    // }
+
+    // useEffect(() => {
+    //     const existingDivPositions = window.localStorage.getItem('positions_div')
+    //     setPositions(JSON.parse(existingDivPositions))
+    //     setHasLoaded(true)
+    // }, [])
+
+    // useEffect(() => {
+    //     window.localStorage.setItem('positions_div', JSON.stringify(positions))
+    // }, [positions])
+
+
+
+
+// // // // // // // // // // // TEST  ^^^^^
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST
+
  
     // const [selectedQuote, setSelectedQuote] = useState(null)
 
@@ -102,13 +155,35 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
     //     selectedQuote(stock)
     // }
 
+    const [defaultPosition, setDefaultPosition] = useState ({x:0, y:0})
+
+    const onStopHandler = (e, data) => {
+        setDefaultPosition({defaultPosition: {x:data.x, y:data.y}})
+        console.log(defaultPosition)
+    }
 
 
     return (
         <>
+
 <div className=''>
                 {stockData.map((stock) => (
-                    <div key={stock.id}>
+                 <Draggable 
+                 handle=".handle"
+                 key={stock.id}
+                 defaultPosition={defaultPosition}
+                 onStop={onStopHandler}
+                //                  defaultPosition={
+                //     positions ===null ?
+                //     {x:0, y:0}
+                //     : !positions[stock.id] ?
+                //     {x:0, y:0} :
+                //     {x: positions[stock[0].id].x, y: positions[stock[0].id].y}
+                // }
+                // onStop={handleStop}
+            > 
+                    <div 
+                    >
                         <StatsRow
                         symbol={stock.symbol}
                         open={stock[0].iexOpen}
@@ -120,10 +195,16 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                         companyName={stock[0].companyName}
                             reducerValue={reducerValue} 
                             forceUpdate={forceUpdate}
+                            yourStocks={yourStocks}
+                            removeSymbol={removeSymbol}
+                        
                     />
+                    <div className='' selectnums={stock.id} onClick={removeSymbol}>x</div>
                     
                     {/* {"close " + stock[0].iexClose} */}
                     </div>
+</Draggable>
+
                 ))}
 </div>
 
