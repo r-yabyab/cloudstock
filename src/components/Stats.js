@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import StatsRow from './StatsRow'
 import Draggable from 'react-draggable'
@@ -17,8 +17,8 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
     const [stockData, setStockData] = useState([])
     // const [symbolName, setSymbolName] = useState('')
     const [yourStocks, setYourStocks] = useState([
-        {id:0,  stock: 'NDAQ'},
-        {id:1,  stock: 'TSLA'},
+        // {id:0,  stock: 'NDAQ'},
+        // {id:1,  stock: 'TSLA'},
         // {id: 3,  stock: 'PCG'}
     ])
 
@@ -32,16 +32,38 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         // "PCG", 
         // "AMZN"
 
-        const addSymbol = () => {
-            // if (symbolName = String) {
-            let num = yourStocks.length + 1
-            let newEntry = {id: num, stock: symbolName}
-            setYourStocks([...yourStocks, newEntry])
-            // setYourStocks([...yourStocks, symbolName])
-            setSymbolName('')
-        // } else {
-        //     console.log('please input symbol')
+        // const addSymbol = () => {
+        //     // if (symbolName = String) {
+        //         if (symbolName !== '') {
+        //         let maxId = yourStocks.length > 0 ? Math.max(...yourStocks.map(item => item.id)) : -1;
+ 
+
+        // // Made by me, not chatGPT
+        //     let newEntry = {id: maxId + 1, stock: symbolName}
+        //     setYourStocks([...yourStocks, newEntry])
+        //     // setYourStocks([...yourStocks, symbolName])
+        //     setSymbolName('')
+        // // } else {
+        // //     console.log('please input symbol')
+        // // }
+        //     }
         // }
+
+        const addSymbol = () => {
+            if (symbolName !== '') {
+                const alreadyAdded = yourStocks.some(stock => stock.stock === symbolName)
+        
+                if (!alreadyAdded) {
+                    let maxId = yourStocks.length > 0 ? Math.max(...yourStocks.map(item => item.id)) : -1;
+         
+                    let newEntry = {id: maxId + 1, stock: symbolName}
+                    setYourStocks([...yourStocks, newEntry])
+        
+                    setSymbolName('')
+                } else {
+                    alert(`${symbolName} is already on your list.`)
+                }
+            }
         }
 
         const removeSymbol = (e) => {
@@ -112,6 +134,26 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         window.localStorage.setItem('_STOCK_list', JSON.stringify(yourStocks))
     },[yourStocks])
 
+
+    // from chatGPT
+    const [positions, setPositions] = useState(() => {
+        const savedPositions = localStorage.getItem('_STOCK_positions');
+        if (savedPositions) {
+          return JSON.parse(savedPositions);
+        }
+    
+        return yourStocks.reduce((acc, { id }) => ({ ...acc, [id]: { x: 0, y: 0 } }), {});
+      });
+
+      useEffect(() => {
+        localStorage.setItem('_STOCK_positions', JSON.stringify(positions));
+      }, [positions]);
+    
+      const handleDrag = (id, { x, y }) => {
+        setPositions({ ...positions, [id]: { x, y } });
+      };
+
+
 // // // // // // // // // // // TEST
 // // // // // // // // // // // TEST
 // // // // // // // // // // // TEST    vvvvvvvvvv
@@ -155,12 +197,41 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
     //     selectedQuote(stock)
     // }
 
-    const [defaultPosition, setDefaultPosition] = useState ({x:0, y:0})
+    // const [defaultPosition, setDefaultPosition] = useState ({x:0, y:0})
 
-    const onStopHandler = (e, data) => {
-        setDefaultPosition({defaultPosition: {x:data.x, y:data.y}})
-        console.log(defaultPosition)
-    }
+    // const onStopHandler = (e, data) => {
+    //     setDefaultPosition({defaultPosition: {x:data.x, y:data.y}})
+    //     console.log(defaultPosition)
+    // }
+
+    //test vvvvv
+
+    // const [sizes, setSizes] = useState(() => {
+    //     const savedSizes = localStorage.getItem('quote-sizes');
+    //     if (savedSizes) {
+    //       return JSON.parse(savedSizes);
+    //     }
+    
+    //     return yourStocks.reduce((acc, { id }) => ({ ...acc, [id]: { width: 0, height: 0 } }), {});
+    //   });
+
+    //   useEffect(() => {
+    //     localStorage.setItem('quote-sizes', JSON.stringify(sizes));
+    //   }, [sizes]);
+
+
+    //   const handleResize = (id, ref) => {
+    //     setSizes({ ...sizes, [id]: { width: ref.offsetWidth, height: ref.offsetHeight } });
+    //   };
+
+    //       const ref = useRef(null);
+    // useEffect(() => {
+    //   onResize(ref.current);
+    // }, []);
+
+    
+
+      //test ^^^^^
 
 
     return (
@@ -171,8 +242,15 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                  <Draggable 
                  handle=".handle"
                  key={stock.id}
-                 defaultPosition={defaultPosition}
-                 onStop={onStopHandler}
+                 position={positions[stock.id]}
+                 onDrag={(e, {x,y}) => handleDrag(stock.id, {x,y})}
+
+                //  size={sizes[stock.id]}
+                //  onResize={(e, direction, ref, delta) => handleResize(stock.id, ref.style)}
+
+                //  position={positions[stock.id]}
+                //  defaultPosition={defaultPosition}
+                //  onStop={onStopHandler}
                 //                  defaultPosition={
                 //     positions ===null ?
                 //     {x:0, y:0}
@@ -183,6 +261,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                 // onStop={handleStop}
             > 
                     <div 
+
                     >
                         <StatsRow
                         symbol={stock.symbol}
@@ -190,6 +269,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                         volume={stock[0].volume}
                         price={stock[0].price}
                         change={stock[0].change}
+                        changePercent={stock[0].changePercent}
                         iexClose={stock[0].iexClose}
                         latestPrice={stock[0].latestPrice}
                         companyName={stock[0].companyName}
@@ -197,9 +277,10 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                             forceUpdate={forceUpdate}
                             yourStocks={yourStocks}
                             removeSymbol={removeSymbol}
+                            stock={stock.id}
                         
                     />
-                    <div className='' selectnums={stock.id} onClick={removeSymbol}>x</div>
+                    {/* <div className='' selectnums={stock.id} onClick={removeSymbol}>x</div> */}
                     
                     {/* {"close " + stock[0].iexClose} */}
                     </div>

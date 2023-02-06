@@ -65,29 +65,33 @@ export function DataFetch () {
 
     //fetch single stock's information
     useEffect(() => {
-        const fetchStock = async () => {
-            const response = await fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)
-            const json = await response.json()
+        if (symbolName) {
+            const fetchStock = async () => {
 
-            if (response.ok) {
-                setStock(json)
+                const response = await fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)
+                const json = await response.json()
+
+                if (response.ok) {
+                    setStock(json)
+                }
             }
+            fetchStock()
         }
-        fetchStock()
     }, [symbolName])
 
     const stockPreview = stock && stock.map((stock, indexDescription) => {
-        return (
+        return symbolName ? (
             <div key={indexDescription} className=
                 {stock.change > 0 ? "absolute bg-green-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300 left-[50%] -translate-x-1/2" : "absolute bg-red-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300 left-[50%] -translate-x-1/2"}
             >
+                    
                 <div>Ticker: <span className="font-bold">{stock.symbol}</span></div>
                 <div>Open: {stock.open}</div>
                 <div>Close: {stock.close}</div>
                 <div>Change: {stock.change}</div>
 
             </div>
-        )
+        ): null
     })
 
 
@@ -117,12 +121,17 @@ export function DataFetch () {
             <div className="relative m-auto">
                 {/* <button onClick={clickHandler}>penios</button> */}
                 <div className="p-4">
-                    Select Symbol:
+                    {/* Select Symbol: */}
                     {/* Click from dropdownlist --> setsSymbol */}
                     <select
+                        placeholder="hello"
+                        value={symbolName}
                         onChange={selectHandler}
-                        className="bg-slate-300 border-black border-2"
-                    >{stockList}</select>
+                        className="bg-black border-black border-2 shadow-lg mb-10"
+                    >
+                        <option value="hello">Select ticker</option>
+                        {stockList}
+                        </select>
                     <div>
                         <button
                             onClick={clickHandler}

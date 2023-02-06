@@ -4,6 +4,20 @@
 
 
 
+/*
+select::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+
+select::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+ /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+*/
+
 .ratingAnimationYellow {
     animation: 1.5s 0s 1 fadeFromYellow;
 }
