@@ -267,7 +267,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                         symbol={stock.symbol}
                         open={stock[0].iexOpen}
                         volume={stock[0].volume}
-                        price={stock[0].price}
+                        // price={stock[0].price}
                         change={stock[0].change}
                         changePercent={stock[0].changePercent}
                         iexClose={stock[0].iexClose}
@@ -291,10 +291,10 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
 
 
 {/* add Symbol BUTTON */}
-<div onClick={addSymbol} className='absolute top-10 right-[60%] -translate-x-1/2 text-blue-600 hover:cursor-pointer hover:text-yellow-200  '>
+<div onClick={addSymbol} className={symbolName ? 'absolute top-20 ml-[160px] -translate-x-1/2 text-blue-600 hover:cursor-pointer hover:text-yellow-200' : "hidden"}>
     {/* <button onClick={symbolHandler} className='bg-green-400 p-4 rounded-md border-2 border-black mt-2 mb-10 ml-4'>set to GME</button> */}
     {/* <button onClick={addSymbol} className='bg-slate-400 p-4 rounded-md border-2 border-black mt-2 mb-10 ml-4'> */}
-    <svg xmlns="http://www.w3.org/2000/svg" width="80" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 16">
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
 </svg>
@@ -302,7 +302,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
     {/* </button> */}
 </div>
 
-<div onClick={update1} className='absolute left-0 top-0 bg-yellow-400 p-4 m-4 hover:bg-green-300'>Refresh</div>
+<div onClick={update1} className='absolute top-28 select-none right-4 bg-slate-400 p-4 hover:cursor-pointer hover:bg-slate-300'>Refresh</div>
 
         </>
     )

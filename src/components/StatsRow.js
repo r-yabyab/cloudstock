@@ -14,7 +14,7 @@ function StatsRow (props) {
             >
                     <div 
                     // style={{ width: sizes[stock].width, height: sizes[stock].height }}
-                        className={props.change > 0 ? "relative bg-green-400 m-auto flex [&>div]:border-x-[1px] [&>div]:text-center [&>div]:border-gray-700" : "bg-red-400 m-auto flex [&>div]:border-x-[1px] [&>div]:text-center [&>div]:border-gray-700"} draggable="false">
+                        className={props.change > 0 ? "relative bg-green-400 m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700" : "bg-red-400 m-auto flex [&>div]:border-x-[1px] [&>div]:text-center [&>div]:border-gray-700"} draggable="false">
                         <div className="bg-zinc-700  text-white p-4 min-w-[120px]">
                             <div className="font-semibold absolute text-2xl tracking-wider top-[50%] -translate-y-1/2 left-[40px]">{props.symbol}</div>
                             {/* <div className="max-w-[120px]">{props.companyName}</div> */}

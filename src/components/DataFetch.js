@@ -82,13 +82,13 @@ export function DataFetch () {
     const stockPreview = stock && stock.map((stock, indexDescription) => {
         return symbolName ? (
             <div key={indexDescription} className=
-                {stock.change > 0 ? "absolute bg-green-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300 left-[50%] -translate-x-1/2" : "absolute bg-red-400 w-[300px] m-auto flex [&>div]:border-x-2 [&>div]:text-center [&>div]:border-slate-300 left-[50%] -translate-x-1/2"}
+                {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2" : "absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
             >
                     
-                <div>Ticker: <span className="font-bold">{stock.symbol}</span></div>
-                <div>Open: {stock.open}</div>
-                <div>Close: {stock.close}</div>
-                <div>Change: {stock.change}</div>
+                <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">{stock.symbol}</span></div>
+                <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.latestPrice).toFixed(2)}</div>
+                <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.open}</div>
+                <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.change}</div>
 
             </div>
         ): null
@@ -115,10 +115,11 @@ export function DataFetch () {
   const selectHandler = (e) => {
     setSymbolName(e.target.value)
   }
+  
 
     return (
         <>
-            <div className="relative m-auto">
+            <div className="relative mt-40 -mb-40 text-center">
                 {/* <button onClick={clickHandler}>penios</button> */}
                 <div className="p-4">
                     {/* Select Symbol: */}
@@ -132,10 +133,13 @@ export function DataFetch () {
                         <option value="hello">Select ticker</option>
                         {stockList}
                         </select>
+                        
                     <div>
-                        <button
+{/* Updates Quotes */}
+                        {/* <button
                             onClick={clickHandler}
-                            className="border-2 border-black bg-green-400 hover:cursor-pointer hover:bg-green-100">Update Quotes</button>
+                            className="border-2 border-black bg-green-400 hover:cursor-pointer hover:bg-green-100">Update Quotes
+                            </button> */}
 
                         {/* <button onClick={clickHandler2} className="border-2 border-black bg-blue-400">Set to AMZN
                         </button> */}
