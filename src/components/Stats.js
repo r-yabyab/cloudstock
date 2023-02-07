@@ -50,7 +50,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         // }
 
         const addSymbol = () => {
-            if (symbolName !== '') {
+            if (symbolName !== '' && yourStocks.length < 5) {
                 const alreadyAdded = yourStocks.some(stock => stock.stock === symbolName)
         
                 if (!alreadyAdded) {
@@ -63,6 +63,9 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                 } else {
                     alert(`${symbolName} is already on your list.`)
                 }
+            } else {
+                alert("Max 5 stocks allowed Free User")
+                setSymbolName('')
             }
         }
 

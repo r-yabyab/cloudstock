@@ -5,7 +5,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import Stats from "./Stats";
 // import { Client } from "iexjs"
 
-export function DataFetch () {
+function DataFetch () {
   
     // const [dbStock, setDbStock] = useState(null)
     const [symbolList, setSymbolList] = useState(null)
@@ -79,9 +79,13 @@ export function DataFetch () {
         }
     }, [symbolName])
 
+    const clearSymbol = () => {
+        setSymbolName('')
+    }
+
     const stockPreview = stock && stock.map((stock, indexDescription) => {
         return symbolName ? (
-            <div key={indexDescription} className=
+            <div onClick={clearSymbol} key={indexDescription} className=
                 {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2" : "absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
             >
                     
@@ -176,3 +180,5 @@ export function DataFetch () {
         </>
     )
 }
+
+export default React.memo(DataFetch)
