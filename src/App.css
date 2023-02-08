@@ -19,7 +19,7 @@ select::-webkit-scrollbar-thumb {
 */
 
 .ratingAnimationYellow {
-    animation: 1.5s 0s 1 fadeFromYellow;
+    animation: 0.5s 0s 1 fadeFromYellow;
 }
 
 .ratingAnimationWhite {

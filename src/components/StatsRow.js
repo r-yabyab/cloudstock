@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import Draggable from 'react-draggable'
+import React from "react";
+// import Draggable from 'react-draggable'
 
 function StatsRow (props) {
     const { stock, removeSymbol } = props;
@@ -20,7 +20,7 @@ function StatsRow (props) {
                             {/* <div className="max-w-[120px]">{props.companyName}</div> */}
                         </div>
                         <div className="bg-zinc-700 ratingAnimationYellow w-[100px] p-4">${parseFloat(props.latestPrice).toFixed(2)}</div>
-                        <div>{"O " + props.open}</div>
+                        <div>{"C " + parseFloat(props.change).toFixed(2)}</div>
                         <div>{"C %" + 
                         parseFloat(props.changePercent * 100).toFixed(2)
                         // props.changePercent

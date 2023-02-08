@@ -19,6 +19,9 @@ function About () {
                 <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div>
             
+                <div className="italic text-xl pt-10 font-bold"> Changelog: </div>
+
+
             </div>
         </>
     )

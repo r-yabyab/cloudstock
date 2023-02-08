@@ -17,10 +17,11 @@ DataFetch.js used to select and update symbols on the list
 
 
 Todo:
-- make header and title hideable
+DONE- make header and title hideable
 - make symbol select hideable
 - option to sign up for more frequent API calls
-    - anonymous users (IP based) max 10 stocks
+    DONE- anonymous users (IP based) max 10 stocks'
+- service workers
 
 
 REFS:

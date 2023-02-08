@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import StatsRow from './StatsRow'
 import Draggable from 'react-draggable'
@@ -6,11 +6,6 @@ import Draggable from 'react-draggable'
 
 // import Draggable from 'react-draggable'
 
-
-// ex url 'https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e'
-
-const BASE_URL='https://ryabyab.iex.cloud/v1/data/core/quote/'
-const TOKEN='?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e'
 
 function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
 
@@ -22,32 +17,6 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         // {id: 3,  stock: 'PCG'}
     ])
 
-        // {id: 0,  symbol: 'AAPL'},
-        // {id: 1,  symbol: 'AMZN'},
-        // {id: 2,  symbol: 'PCG'}
-
-        // "AAPL", 
-        // "MSFT", 
-        // "TSLA", 
-        // "PCG", 
-        // "AMZN"
-
-        // const addSymbol = () => {
-        //     // if (symbolName = String) {
-        //         if (symbolName !== '') {
-        //         let maxId = yourStocks.length > 0 ? Math.max(...yourStocks.map(item => item.id)) : -1;
- 
-
-        // // Made by me, not chatGPT
-        //     let newEntry = {id: maxId + 1, stock: symbolName}
-        //     setYourStocks([...yourStocks, newEntry])
-        //     // setYourStocks([...yourStocks, symbolName])
-        //     setSymbolName('')
-        // // } else {
-        // //     console.log('please input symbol')
-        // // }
-        //     }
-        // }
 
         const addSymbol = () => {
             if (symbolName !== '' && yourStocks.length < 5) {
@@ -83,42 +52,90 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         //     console.log(symbolName)
         // }
 
-    const getStockData = (stock) => {
-        return axios
-            .get(`${BASE_URL}${stock.stock}${TOKEN}`)
-            .catch((error) => {
-                console.error("Error", error.message)
+
+        useEffect(() => {
+            axios.get('http://localhost:3001/api/news', {
+              params: {
+                yourStocks
+              }
             })
-    }
+              .then(response => {
+                setStockData(response.data);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          }, [yourStocks]);
 
-    useEffect(() => {
-        let tempStockData = []
-        // const stockList = ["AAPL", "MSFT", "TSLA", "PCG", "AMZN"];
-        // const stockList = (yourStocks.symbol)
-        const stockList = yourStocks
+
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT               vvvvvvvvvvvvvvvv
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+    //     // // // // // // WORKS ON CLIENT 
 
 
-        let promises = [];
-        stockList.map((stock) => (
-            promises.push(
-                getStockData(stock)
-                    .then((res) => {
-                        tempStockData.push({
-                            symbol: stock.stock,
-                            id: stock.id,
-                            // symbol: stock,
-                            ...res.data
-                        })
-                    })
-            )
-        ))
+    // const getStockData = (stock) => {
+    //     return axios
+    //         .get(`${BASE_URL}${stock.stock}${TOKEN}`)
+    //         .catch((error) => {
+    //             console.error("Error", error.message)
+    //         })
+    // }
 
-        Promise.all(promises).then(() => {
-            setStockData(tempStockData)
-            console.log(tempStockData)
-        })
+    // useEffect(() => {
+    //     let tempStockData = []
+    //     // const stockList = ["AAPL", "MSFT", "TSLA", "PCG", "AMZN"];
+    //     // const stockList = (yourStocks.symbol)
+    //     const stockList = yourStocks
 
-    }, [yourStocks, reducerValue])
+
+    //     let promises = [];
+    //     stockList.map((stock) => (
+    //         promises.push(
+    //             getStockData(stock)
+    //                 .then((res) => {
+    //                     tempStockData.push({
+    //                         symbol: stock.stock,
+    //                         id: stock.id,
+    //                         // symbol: stock,
+    //                         ...res.data
+    //                     })
+    //                 })
+    //         )
+    //     ))
+
+    //     Promise.all(promises).then(() => {
+    //         setStockData(tempStockData)
+    //         console.log(tempStockData)
+    //     })
+
+    // }, [yourStocks, reducerValue])
+
+    //     // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT     ^^^^^^^^
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+        // // // // // // WORKS ON CLIENT 
+
+
 
 
     const update1 = () => {
@@ -247,6 +264,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                  key={stock.id}
                  position={positions[stock.id]}
                  onDrag={(e, {x,y}) => handleDrag(stock.id, {x,y})}
+                 
 
                 //  size={sizes[stock.id]}
                 //  onResize={(e, direction, ref, delta) => handleResize(stock.id, ref.style)}

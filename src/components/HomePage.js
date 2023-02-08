@@ -12,12 +12,12 @@ function HomePage ({hide}) {
             <div className={hide ? "hidden" : null}>
 
                 <div className="[&>div]:text-xl text-center">
-                    <div>Stock Shapes</div>
-                    <p className="italic">Resize your stocks!</p>
+                    {/* <div>Stock Shapes</div> */}
+                    {/* <p className="italic">Resize your stocks!</p> */}
                 </div>
             </div>
 
-            <div className={hide ? "absolute top-0 select-none text-white flex" : "absolute top-6 select-none text-white flex space-x-6"}>
+            <div className={hide ? "absolute top-0 select-none text-white flex" : "absolute top-10 select-none text-white flex space-x-6"}>
                 <div className={hide ? "hidden" : null}>Market <span className="text-green-400">OPEN</span></div>
                 {/* <div>{format(Date.now(), 'k:mm:ss:S')}</div> */}
                 {/* <div>{clock}</div> */}

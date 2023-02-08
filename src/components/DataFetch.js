@@ -86,13 +86,14 @@ function DataFetch () {
     const stockPreview = stock && stock.map((stock, indexDescription) => {
         return symbolName ? (
             <div onClick={clearSymbol} key={indexDescription} className=
-                {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2" : "absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
+                {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block" : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
             >
                     
                 <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">{stock.symbol}</span></div>
                 <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.latestPrice).toFixed(2)}</div>
                 <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.open}</div>
                 <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.change}</div>
+                <p className="absolute hover:cursor-pointer -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p>
 
             </div>
         ): null

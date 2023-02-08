@@ -738,3 +738,49 @@ export default StatsRow;
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
+
+
+
+/Stats.js
+    old comments near the top
+
+    
+        // {id: 0,  symbol: 'AAPL'},
+        // {id: 1,  symbol: 'AMZN'},
+        // {id: 2,  symbol: 'PCG'}
+
+        // "AAPL", 
+        // "MSFT", 
+        // "TSLA", 
+        // "PCG", 
+        // "AMZN"
+
+        // const addSymbol = () => {
+        //     // if (symbolName = String) {
+        //         if (symbolName !== '') {
+        //         let maxId = yourStocks.length > 0 ? Math.max(...yourStocks.map(item => item.id)) : -1;
+ 
+
+        // // Made by me, not chatGPT
+        //     let newEntry = {id: maxId + 1, stock: symbolName}
+        //     setYourStocks([...yourStocks, newEntry])
+        //     // setYourStocks([...yourStocks, symbolName])
+        //     setSymbolName('')
+        // // } else {
+        // //     console.log('please input symbol')
+        // // }
+        //     }
+        // }
+
+
+
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
