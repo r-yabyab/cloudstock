@@ -101,6 +101,30 @@ https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/ng?token=sk_4b6ebe9d84b44f
 needs paid subscription to work
 https://ryabyab.iex.cloud/v1/ref-data/futures/symbols/nq?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
 
+HTTP REQUEST
+GET
+
+/data/CORE/FUTURES_PRICES?last=1
+
+Works, but not updated since 2022
+https://ryabyab.iex.cloud/v1//data/CORE/futures_prices/nq/?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+
+works, idk what it does
+https://ryabyab.iex.cloud/v1/metadata/time-series/*/AAPL?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e
+
+/data-points/
+
+
+https://iexcloud.io/docs/api/#data-points
+    - for making batch requests
+    EXAMPLE
+    /stock/aapl/batch?types=quote,news,chart&range=1m&last=10
+    /stock/market/batch?symbols=aapl,fb,tsla&types=quote,news,chart&range=1m&last=5
+
+
+ES21U:F/chart?range=1m
+Path Parameters
 
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
