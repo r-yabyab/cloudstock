@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import StatsRow from './StatsRow'
 import Draggable from 'react-draggable'
+import useWebSocket from 'react-use-websocket'
 
 
 // import Draggable from 'react-draggable'
@@ -54,6 +55,17 @@ function Stats ({symbolName, setSymbolName,
         //     console.log(symbolName)
         // }
 
+        // // SSE Streaming DOESNT WORK
+
+          // const [quotes, setQuotes] = useState([]);
+      
+          // useEffect(() => {
+          //     fetch('http://localhost:3001/api/stockquotes')
+          //         .then(res => res.json())
+          //         .then(data => setQuotes(data))
+          //         .catch(err => console.error(err));
+          // }, []);
+
 // Fetches on initial load and changing yourStocks.
 // Only auto fetches every x seconds when markets are OPEN
         useEffect(() => {
@@ -76,11 +88,11 @@ function Stats ({symbolName, setSymbolName,
           if (open) {
           const intervalId = setInterval(() => {
             fetchData();
-          }, 10000);
+          }, 5000);
         
           setTimeout(() => {
             clearInterval(intervalId);
-          }, 5 * 60 * 1000);
+          }, 600000);
           // 600000 == 10 minutes
         
           return () => {
@@ -332,6 +344,14 @@ function Stats ({symbolName, setSymbolName,
                 ))}
 </div>
 
+
+{/* DOESNT WORK <div>penis
+            {quotes.map((quote, index) => (
+                <div key={index}>
+                    Symbol: {quote.symbol} Price: {quote.price}
+                </div>
+            ))}
+        </div> */}
 
 {/* add Symbol BUTTON */}
 <div onClick={addSymbol} className={symbolName ? 'absolute top-20 ml-[160px] -translate-x-1/2 text-blue-600 hover:cursor-pointer hover:text-yellow-200' : "hidden"}>
