@@ -52,20 +52,40 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         //     console.log(symbolName)
         // }
 
-
+// On initial load, anticipates timeout
         useEffect(() => {
-            axios.get('http://localhost:3001/api/news', {
-              params: {
-                yourStocks
-              }
-            })
-              .then(response => {
-                setStockData(response.data);
-              })
-              .catch(error => {
-                console.error(error);
+          const fetchData = async () => {
+            try {
+              const response = await axios.get('http://localhost:3001/api/news', {
+                params: {
+                  yourStocks
+                }
               });
-          }, [yourStocks]);
+              setStockData(response.data);
+              console.log('fetched from server');
+            } catch (error) {
+              console.error(error);
+            }
+          };
+        
+          fetchData();
+        
+          const intervalId = setInterval(() => {
+            fetchData();
+          }, 10000);
+        
+          setTimeout(() => {
+            clearInterval(intervalId);
+          }, 5 * 60 * 1000);
+        
+          return () => {
+            clearInterval(intervalId);
+          };
+        }, [yourStocks]);
+
+
+  // Refreshes whenever user adds, ignores timeout
+
 
 
         // // // // // // WORKS ON CLIENT 

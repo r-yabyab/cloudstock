@@ -56,6 +56,29 @@ function DataFetch () {
         fetchSymbolList()
     }, [])
 
+// // Returns empty response, doesn't work
+    // const [SSE, setSSE] = useState ('')
+
+    // const config = {
+    //     headers: {
+    //         Accept: 'text/event-stream'
+    //     }
+    // };
+
+    // // SSE streaming
+    // useEffect(() => {
+    //     const fetchSSE = async () => {
+    //         const response = await fetch('https://cloud-sse.iexapis.com/stable/stocksUSNoUTP1Second?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e&symbols=aapl', config)
+    //         const json = await response.json()
+            
+    //         if (response.ok) {
+    //             setSSE(json)
+    //         }
+    //     }
+    //     fetchSSE()
+    //     console.log(SSE)
+    // }, [])
+
     //maps symbols to Select Option
     const stockList = symbolList && symbolList.map((stock, indexStock) => {
         return (
@@ -178,6 +201,7 @@ function DataFetch () {
 {/* <StockApp /> */}
 
 {/* <DraggableComp /> */}
+{/* <div className="absolute left-0 bg-blue-400 text-2xl">penis{SSE}</div> */}
         </>
     )
 }
