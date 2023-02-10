@@ -7,7 +7,9 @@ import Draggable from 'react-draggable'
 // import Draggable from 'react-draggable'
 
 
-function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
+function Stats ({symbolName, setSymbolName,
+  //  reducerValue, forceUpdate, 
+   open}) {
 
     const [stockData, setStockData] = useState([])
     // const [symbolName, setSymbolName] = useState('')
@@ -52,7 +54,8 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         //     console.log(symbolName)
         // }
 
-// On initial load, anticipates timeout
+// Fetches on initial load and changing yourStocks.
+// Only auto fetches every x seconds when markets are OPEN
         useEffect(() => {
           const fetchData = async () => {
             try {
@@ -70,6 +73,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
         
           fetchData();
         
+          if (open) {
           const intervalId = setInterval(() => {
             fetchData();
           }, 10000);
@@ -77,14 +81,12 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
           setTimeout(() => {
             clearInterval(intervalId);
           }, 5 * 60 * 1000);
+          // 600000 == 10 minutes
         
           return () => {
             clearInterval(intervalId);
-          };
+          };}
         }, [yourStocks]);
-
-
-  // Refreshes whenever user adds, ignores timeout
 
 
 
@@ -158,9 +160,9 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
 
 
 
-    const update1 = () => {
-        forceUpdate()
-    }
+    // const update1 = () => {
+    //     forceUpdate()
+    // }
 
     // get localStorage
     useEffect(() => {
@@ -307,15 +309,15 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
                         <StatsRow
                         symbol={stock.symbol}
                         open={stock[0].iexOpen}
-                        volume={stock[0].volume}
+                        // volume={stock[0].volume}
                         // price={stock[0].price}
                         change={stock[0].change}
                         changePercent={stock[0].changePercent}
-                        iexClose={stock[0].iexClose}
+                        // iexClose={stock[0].iexClose}
                         latestPrice={stock[0].latestPrice}
-                        companyName={stock[0].companyName}
-                            reducerValue={reducerValue} 
-                            forceUpdate={forceUpdate}
+                        // companyName={stock[0].companyName}
+                            // reducerValue={reducerValue} 
+                            // forceUpdate={forceUpdate}
                             yourStocks={yourStocks}
                             removeSymbol={removeSymbol}
                             stock={stock.id}
@@ -343,7 +345,7 @@ function Stats ({symbolName, setSymbolName, reducerValue, forceUpdate}) {
     {/* </button> */}
 </div>
 
-<div onClick={update1} className='absolute top-28 select-none right-4 bg-slate-400 p-4 hover:cursor-pointer hover:bg-slate-300'>Refresh</div>
+{/* <div onClick={update1} className='absolute top-28 select-none right-4 bg-slate-400 p-4 hover:cursor-pointer hover:bg-slate-300'>Refresh</div> */}
 
         </>
     )

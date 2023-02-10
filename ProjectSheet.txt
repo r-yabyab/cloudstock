@@ -17,13 +17,22 @@ DataFetch.js used to select and update symbols on the list
 
 
 Todo:
-DONE- make header and title hideable
+- make header and title hideable - DONE
 - make symbol select hideable
 - option to sign up for more frequent API calls
-    DONE- anonymous users (IP based) max 10 stocks'
+    - anonymous users (IP based) max 10 stocks' - DONE
 - service workers
+/
+- make initial state before doing actions
+    --> sets localstorage yourStocks to initial 3 stocks
 
 
 REFS:
 https://www.quantower.com/media/1487/symbols-selection.gif
 google images search: futures dom gif
+
+
+Bug fixes:
+- 02/09/23 21:34
+    - sometimes the entire webpage would freeze
+    - solved by making the ticker dropdown not selectable

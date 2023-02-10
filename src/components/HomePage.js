@@ -4,8 +4,25 @@ import { format } from "date-fns"
 
 function HomePage ({hide}) {
 
+    const [open, setOpen] = useState(false)
 
 
+    useEffect (() => {
+        // var date1 = Date.now(Date.UTC);
+        // var date2 = Date.now()
+        // console.log("UTC", date1)
+        // console.log("your location:", date2)
+        const date = new Date();
+    const hours = date.getUTCHours()
+    const minutes = date.getUTCMinutes()
+    console.log(hours, minutes);
+    
+    if (hours >= 13 && hours <= 20) {
+        setOpen(true)
+    }
+    console.log(open)
+    
+    },[])
 
     return (
         <>
@@ -18,12 +35,14 @@ function HomePage ({hide}) {
             </div>
 
             <div className={hide ? "absolute top-0 select-none text-white flex" : "absolute top-10 select-none text-white flex space-x-6"}>
-                <div className={hide ? "hidden" : null}>Market <span className="text-green-400">OPEN</span></div>
+                <div className={hide ? "hidden" : null}>Markets <span className={open ? "text-green-400" : "text-red-400" }>{open? "OPEN":"CLOSED"}</span></div>
+                <div className={hide ? "hidden" : open ? "hidden" : "absolute top-4 -left-[23px]"}>Futures <span className={open ? "text-red-400" : "text-green-400" }>{open? "CLOSED":"OPEN"}</span></div>
                 {/* <div>{format(Date.now(), 'k:mm:ss:S')}</div> */}
                 {/* <div>{clock}</div> */}
                 <div><TopTimer /></div>
+                {/* <div><UniversalTime /></div> */}
             </div>
-            <DataFetch />
+            <DataFetch open={open} />
         </>
     )
 }
@@ -42,5 +61,33 @@ function TopTimer () {
         <>{format(Date.now(), 'k:mm:ss')}</>
     )
 }
+
+// function UniversalTime () {
+
+//     const [open, setOpen] = useState(false)
+
+
+// useEffect (() => {
+//     // var date1 = Date.now(Date.UTC);
+//     // var date2 = Date.now()
+//     // console.log("UTC", date1)
+//     // console.log("your location:", date2)
+//     const date = new Date();
+// const hours = date.getUTCHours()
+// const minutes = date.getUTCMinutes()
+// console.log(hours, minutes);
+
+// if (hours >= 13 && hours <= 20) {
+//     setOpen(true)
+// }
+// console.log(open)
+
+// },[])
+
+// return(
+//     <><div className="bg-blue-400 absolute left-0 top-10">{open? "OPEN":"CLOSED"}</div></>
+// )
+
+// }
 
 export default HomePage;

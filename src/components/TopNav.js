@@ -10,7 +10,8 @@ function TopNav () {
                 <Link to='/about' className="hover:bg-blue-300"><div>About</div></Link>
                 <div>Sign up</div>
                 <div className="absolute top-1 left-2 text-2xl tracking-tighter font-semibold italic">
-                    STOCK SHAPES
+                    {/* STOCK SHAPES */}
+                    STOCKTANGLE
                 </div>
             </div>
         </>

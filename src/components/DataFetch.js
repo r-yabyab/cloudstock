@@ -5,7 +5,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import Stats from "./Stats";
 // import { Client } from "iexjs"
 
-function DataFetch () {
+function DataFetch ({open}) {
   
     // const [dbStock, setDbStock] = useState(null)
     const [symbolList, setSymbolList] = useState(null)
@@ -124,13 +124,13 @@ function DataFetch () {
 
 
 
-  const clickHandler = () => {
-    forceUpdate()
-    // if (reducerValue== 10) {
-    //     forceUpdate(reducerValue=-10)
-    // }
-    console.log(reducerValue)
-  }
+//   const clickHandler = () => {
+//     forceUpdate()
+//     // if (reducerValue== 10) {
+//     //     forceUpdate(reducerValue=-10)
+//     // }
+//     console.log(reducerValue)
+//   }
 
 //   const clickHandler2 = () => {
 //     setSymbolName('AMZN')
@@ -147,7 +147,7 @@ function DataFetch () {
 
     return (
         <>
-            <div className="relative mt-40 -mb-40 text-center">
+            <div draggable="false" className="relative select-none mt-40 -mb-40 text-center">
                 {/* <button onClick={clickHandler}>penios</button> */}
                 <div className="p-4">
                     {/* Select Symbol: */}
@@ -196,7 +196,7 @@ function DataFetch () {
 
 
 
-<Stats symbolName={symbolName} setSymbolName={setSymbolName} reducerValue={reducerValue} forceUpdate={forceUpdate} />
+<Stats open={open} symbolName={symbolName} setSymbolName={setSymbolName} reducerValue={reducerValue} forceUpdate={forceUpdate} />
 
 {/* <StockApp /> */}
 

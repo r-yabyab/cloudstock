@@ -4,6 +4,9 @@ Names
     stockpop
     equity sky
     stock storm
+    StockTangles
+    Stock Tangles
+    Stock
 
 ChatGPT Names
     stock-flex $10
@@ -15,6 +18,9 @@ ChatGPT Names
 Libraries
 - 1/31/23 23:43
     npm install react-draggable
+- 2/9/23 
+    npm install redux react-redux
+    - still need to implement
 
 
 sandbox ////////////////////
