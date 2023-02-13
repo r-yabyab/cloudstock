@@ -11,6 +11,7 @@ function RefPage () {
             <ul>Todo</ul>
             <li>Make pop up</li>
             <li>Make resizeable</li>
+            <li>SSE streaming</li>
         </div>
 
         <div>
