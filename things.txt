@@ -132,6 +132,40 @@ https://iexcloud.io/docs/api/#data-points
 ES21U:F/chart?range=1m
 Path Parameters
 
+
+
+GET
+
+/data/CORE/FUTURE_PRICES?last=1
+"cfiCode": "FCECSX",
+    "close": 77.04,
+    "contractName": "E-mini Crude Oil (QMF4)",
+    "contractSize": 500,
+    "currency": "USD",
+    "exchange": "NYM",
+    "exchangeName": "NEW YORK MERCANTILE EXCHANGE",
+    "expirationDate": "2023-12-19",
+    "figi": "BBG00J6HDFD2",
+    "futureId": "QM24F:F",
+    "high": 77.1,
+    "lastTradeDate": "2023-02-13",
+    "lastTradeTime": "14:06:39",
+    "lastUpdated": "2023-02-13",
+    "low": 76.675,
+    "open": 76.675,
+    "openInterest": 8,
+    "region": "US",
+    "settlementPrice": 77.05,
+    "symbol": "QM",
+    "volume": 3,
+    "id": "FUTURE_PRICES",
+    "key": "QM",
+    "subkey": "QM24F:F",
+    "date": 1676246400000,
+    "updated": 1676382799000
+  },
+
+
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
