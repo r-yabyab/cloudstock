@@ -15,6 +15,38 @@ function DataFetch ({open}) {
     const [reducerValue, forceUpdate] = useReducer(x => x+1, 0)
 
 
+
+    const [quotes, setQuotes] = useState([]);
+    const [hasError, setHasError] = useState(false);
+
+    useEffect(() => {
+      const source = new EventSource('http://localhost:3001/stream');
+  
+      source.addEventListener('message', event => {
+        if (event.data) {
+        const quote = JSON.parse(event.data)[0];
+        setQuotes(quotes => [...quotes, quote]);
+        }
+      });
+  
+      source.addEventListener('open', event => {
+        console.log('Connection to server opened.');
+      });
+  
+      source.addEventListener('error', event => {
+        console.error('Error connecting to server.');
+        setHasError(true);
+
+
+      });
+
+      return () => {
+        source.close();
+      };
+    }, [hasError]);
+
+
+
     // const [list, setList] = useState([
     //     {id: 0,  symbol: 'AAPL'},
     //     {id: 1,  symbol: 'AMZN'},
@@ -194,7 +226,16 @@ function DataFetch ({open}) {
     <button onClick={addTask} className="bg-blue-200 rounded-lg p-2 m-2">Add Symbol</button>
 </div> */}
 
-
+<div>penis
+<ul>
+        {hasError ? null: quotes.map((quote, index1) => (
+          <li key={index1}>
+            <span>{quote.symbol}</span>
+            <span>{quote.lastSalePrice}</span>
+          </li>
+        ))}
+      </ul>
+</div>
 
 <Stats open={open} symbolName={symbolName} setSymbolName={setSymbolName} reducerValue={reducerValue} forceUpdate={forceUpdate} />
 
