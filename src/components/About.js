@@ -6,7 +6,7 @@ function About () {
             <div className="text-center pt-10 max-w-[600px] m-auto">
                 <div className="italic text-xl font-bold">
                     {/* About Stock Shapes  */}
-                    About StockTangle
+                    About Stock Shapes
                 </div>
 
                 {/* <div>Looking for a hassle-free way to view real-time stock quotes? Our website offers a clean and easy-to-use interface where you can access quotes without signing up. With the ability to resize and reposition quotes on the page, you'll have a personalized experience. And if you need more frequent updates, simply sign up for a free account. Get straight to the information you need, no fuss, no distraction. Try it now.</div> */}
@@ -21,17 +21,24 @@ function About () {
                     {/* <div>Inspired by the live DOM from tradovate. I loved seeing the numbers go bananas during open session</div> */}
                 </div>
                 <div className="italic text-xl pt-10 font-bold"> Features </div>
-                <div>Free-tier: Quotes update every 1 second. Max 5 quotes on screen.</div>
-                <div>Access to: Stocks, futures, cryptocurrencies</div>
+                <div>Free-tier: Real time quotes, you get the latest updates. Max 5 quotes on screen.</div>
+                <div>Globex hours: 1 update every 5 seconds.</div>
+                <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div>
+                {/* <div>Access to: Stocks, futures, cryptocurrencies</div> */}
 
                 <div className="italic text-xl pt-10 font-bold"> Frequently Asked Questions: </div>
                 <div>Q: Why are latest prices different from other platforms?</div>
                 <div>A: Prices are based on the latest sale price of the day including after-market, not before market close.</div>
+                <br></br>
+                <div>Q: Why are the price changes/open different than in x platforms?</div>
+                <div>A: Price open is based on premarket price, not market open.</div>
+                
                 {/* <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div> */}
 
 
                 <div className="italic text-xl pt-10 font-bold"> Changelog: </div>
+                <div>Launch day _______</div>
 
 
             </div>

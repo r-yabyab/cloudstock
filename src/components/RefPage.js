@@ -10,8 +10,8 @@ function RefPage () {
 <div className="ml-8 mt-4 mb-4">
             <ul>Todo</ul>
             <li>Make pop up</li>
-            <li>Make resizeable</li>
-            <li>SSE streaming</li>
+            <li>Make resizeable - DONE</li>
+            <li>SSE streaming - DONE 02/17/23 14:11</li>
         </div>
 
         <div>

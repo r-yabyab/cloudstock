@@ -11,7 +11,7 @@ function TopNav () {
                 <div>Sign up</div>
                 <div className="absolute top-1 left-2 text-2xl tracking-tighter font-semibold italic">
                     {/* STOCK SHAPES */}
-                    STOCKTANGLE
+                    STOCK SHAPES
                 </div>
             </div>
         </>

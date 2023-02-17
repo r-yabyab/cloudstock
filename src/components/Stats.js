@@ -81,7 +81,7 @@ function Stats ({symbolName, setSymbolName,
           if (open) {
           const intervalId = setInterval(() => {
             fetchData();
-          }, 5000);
+          }, 10000);
         
           setTimeout(() => {
             clearInterval(intervalId);
@@ -307,10 +307,15 @@ useEffect(() => {
                         latestPrice={stock[0].latestPrice}
                         change={stock[0].change}
                         changePercent={stock[0].changePercent}
-                        // from SSE Stream
+                        iexOpen={stock[0].iexOpen}
+                        open={stock[0].open}
+                        // from SSE Stream, for TOPS
                         lastSalePrice={stock.lastSalePrice}
                         lastSaleSize={stock.lastSaleSize}
-                        // open={stock[0].iexOpen}
+                        // from SSE Stream, for LAST
+                        price={stock.price}
+                        size={stock.size}
+                        time={stock.time}
                         // volume={stock[0].volume}
                         // price={stock[0].price}
                         // iexClose={stock[0].iexClose}
@@ -331,24 +336,20 @@ useEffect(() => {
                 ))}
 </div>
 
-<div className='absolute right-0 bg-blue-100 bg-opacity-20 m-auto select-none'>SSE Streaming History
+{/* <div className='absolute right-0 bg-blue-100 bg-opacity-20 m-auto select-none'>SSE Streaming History
 <ul>
-        {/* {hasError ? null: quotes.map((quote, index1) => ( */}
         {quotes.map((quote, index1) => (
     <div key={index1}>
     <div>
             <span>{quote.symbol}</span>
-            <span>{` $${quote.lastSalePrice} `}</span>
-            <span>{`[${quote.lastSaleSize}]`}</span>
+            <span>{` $${quote.price} `}</span>
+            <span>{`[${quote.size}]`}</span>
           </div>
-          {/* <StatsRow
-          lastSalePrice={quote.lastSalePrice}
-          lastSaleSize={quote.lastSaleSize}
-          /> */}
+
        </div>
         ))}
       </ul>
-</div>
+</div> */}
 
 {/* DOESNT WORK <div>penis
             {quotes.map((quote, index) => (

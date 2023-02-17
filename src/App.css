@@ -18,12 +18,47 @@ select::-webkit-scrollbar-thumb {
 }
 */
 
+
+.price-up {
+    animation: price-fade-up 0.2s 0s 1 ;
+  }
+  
+  .price-down {
+    animation: price-fade-down 0.2s 0s 1 ;
+  }
+  
+  @keyframes price-fade-up {
+  /* 0% { background-color: lightgreen; */
+    0% { background-color: yellow;
+
+  }
+100% { background-color: none; }
+}
+
+  
+  @keyframes price-fade-down {
+    /* 0% { background-color: lightcoral; */
+        0% { background-color: yellow;
+
+    }
+  100% { background-color: none; }
+  }
+  
+  @keyframes price-fade-yellow {
+    0% { background-color: yellow;
+  
+    }
+  100% { background-color: none; }
+  }
+
+
+
 .ratingAnimationYellow {
     animation: 0.5s 0s 1 fadeFromYellow;
 }
 
 .ratingAnimationWhite {
-    animation: 1.5s 0s 1 fadeFromWhite;
+    animation: 0.5s 0s 1 fadeFromWhite;
 }
 
 .ratingAnimationToBlack {
