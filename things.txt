@@ -21,6 +21,10 @@ Libraries
 - 2/9/23 
     npm install redux react-redux
     - still need to implement
+- 2/16/23 22:51
+    npm install uuid --save
+    - combined REST and SSE, need to get unique keys by applying this to the combined data array
+        - not needed, the error was for another map, not the combined
 
 
 sandbox ////////////////////
@@ -511,7 +515,7 @@ export default StockApp;
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
 +++++++++++++++++++++++++++
 
 /////  WORKS 
@@ -848,3 +852,170 @@ export default StatsRow;
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
 +++++++++++++++++++++++++++
+
+
+    /Stat.js NOT WORKING AT ALL, but keep in here
+    - from some youtube tutorial, doesn't work at all
+
+
+
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST    vvvvvvvvvv
+
+    // const [positions, setPositions] = useState({})
+    // const [hasLoaded, setHasLoaded] = useState(false)
+
+    // const handleStop = (e, data) => {
+    //     console.log('works')
+    //     console.log(positions)
+    //     const dummyPositions = {...positions}
+    //     const stockId=e.target.id
+    //     dummyPositions[stockId] = {}
+    //     dummyPositions[stockId]["x"] = data.x
+    //     dummyPositions[stockId]["y"] = data.y
+    //     setPositions(dummyPositions)
+    // }
+
+    // useEffect(() => {
+    //     const existingDivPositions = window.localStorage.getItem('positions_div')
+    //     setPositions(JSON.parse(existingDivPositions))
+    //     setHasLoaded(true)
+    // }, [])
+
+    // useEffect(() => {
+    //     window.localStorage.setItem('positions_div', JSON.stringify(positions))
+    // }, [positions])
+
+
+
+
+// // // // // // // // // // // TEST  ^^^^^
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST
+// // // // // // // // // // // TEST
+
+ 
+    // const [selectedQuote, setSelectedQuote] = useState(null)
+
+    // const handleSelect = (stock) => {
+    //     selectedQuote(stock)
+    // }
+
+    // const [defaultPosition, setDefaultPosition] = useState ({x:0, y:0})
+
+    // const onStopHandler = (e, data) => {
+    //     setDefaultPosition({defaultPosition: {x:data.x, y:data.y}})
+    //     console.log(defaultPosition)
+    // }
+
+    //test vvvvv
+
+    // const [sizes, setSizes] = useState(() => {
+    //     const savedSizes = localStorage.getItem('quote-sizes');
+    //     if (savedSizes) {
+    //       return JSON.parse(savedSizes);
+    //     }
+    
+    //     return yourStocks.reduce((acc, { id }) => ({ ...acc, [id]: { width: 0, height: 0 } }), {});
+    //   });
+
+    //   useEffect(() => {
+    //     localStorage.setItem('quote-sizes', JSON.stringify(sizes));
+    //   }, [sizes]);
+
+
+    //   const handleResize = (id, ref) => {
+    //     setSizes({ ...sizes, [id]: { width: ref.offsetWidth, height: ref.offsetHeight } });
+    //   };
+
+    //       const ref = useRef(null);
+    // useEffect(() => {
+    //   onResize(ref.current);
+    // }, []);
+
+    
+
+      //test ^^^^^
+      
+
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
+
+    /Stat.js
+    - WORKS for just returning the REST endpoint data, changed before attempting to add SSE
+
+<div className=''>
+                {stockData.map((stock) => (
+                 <Draggable 
+                 handle=".handle"
+                 key={stock.id}
+                 position={positions[stock.id]}
+                 onDrag={(e, {x,y}) => handleDrag(stock.id, {x,y})}
+                
+            > 
+                    <div 
+
+                    >
+                        <StatsRow
+                        symbol={stock.symbol}
+                        latestPrice={stock[0].latestPrice}
+                        change={stock[0].change}
+                        changePercent={stock[0].changePercent}
+                        // open={stock[0].iexOpen}
+                        // volume={stock[0].volume}
+                        // price={stock[0].price}
+                        // iexClose={stock[0].iexClose}
+                        // companyName={stock[0].companyName}
+                            // reducerValue={reducerValue} 
+                            // forceUpdate={forceUpdate}
+                            yourStocks={yourStocks}
+                            removeSymbol={removeSymbol}
+                            stock={stock.id}
+                        
+                    />
+                    {/* <div className='' selectnums={stock.id} onClick={removeSymbol}>x</div> */}
+                    
+                    {/* {"close " + stock[0].iexClose} */}
+                    </div>
+</Draggable>
+
+                ))}
+</div>
+
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++   
++++++++++++++++++++++++++++               +++++++++++++++++++++++++++  

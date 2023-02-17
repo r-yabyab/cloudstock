@@ -23,6 +23,10 @@ function About () {
                 <div className="italic text-xl pt-10 font-bold"> Features </div>
                 <div>Free-tier: Quotes update every 1 second. Max 5 quotes on screen.</div>
                 <div>Access to: Stocks, futures, cryptocurrencies</div>
+
+                <div className="italic text-xl pt-10 font-bold"> Frequently Asked Questions: </div>
+                <div>Q: Why are latest prices different from other platforms?</div>
+                <div>A: Prices are based on the latest sale price of the day including after-market, not before market close.</div>
                 {/* <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div> */}
 
