@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import { format } from "date-fns"
 // import Draggable from 'react-draggable'
 
@@ -53,6 +53,18 @@ function StatsRow (props) {
         
     // }, [props.price])
 
+    const [height, setHeight] = useState(0);
+    const [width, setWidth] = useState(0)
+    const [mouse, setMouse] = useState(false)
+    const elementRef = useRef(0);
+
+    useEffect(() => {
+
+      setWidth(elementRef.current.clientWidth)
+      setHeight(elementRef.current.clientHeight)
+      console.log(height)
+      
+     },[mouse])
     
     
     return (
@@ -62,22 +74,26 @@ function StatsRow (props) {
                 [&>div]:resize [&>div]:overflow-hidden [&>div]:absolute
             [&>div]:shadow-xl [&>div]:m-4 [&>div]:min-w-[180px] [&>div]:min-h-[30px] [&>div]:h-[80px] [&>div]:w-[300px]
             "
+
+
             >
                 <div
+                            onMouseUp={(e) => setMouse(!mouse)}
+            ref={elementRef}
                     // style={{ width: sizes[stock].width, height: sizes[stock].height }}
                     className={props.change > 0 ? "relative bg-green-400 m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700"
                      : 
                         "bg-red-400 m-auto flex [&>div]:border-x-[1px] [&>div]:border-r-0 [&>div]:text-center [&>div]:border-gray-700"} draggable="false">
-                    <div className="bg-zinc-700 relative text-white min-w-[120px]">
+                    <div className={`bg-zinc-700 relative text-white min-w-[120px]`}>
                         <div className="absolute left-1 top-0">
                             {openMarket ? Math.floor(counter / 100) : null}
                         </div>
-                        <div className="font-semibold  text-2xl tracking-wider absolute top-[50%] -translate-y-1/2 right-[50%] translate-x-1/2">
+                        <div className="font-semibold resize1 text-2xl tracking-wider absolute top-[50%] -translate-y-1/2 right-[50%] translate-x-1/2">
                             {props.symbol}
                         </div>
                         {/* <div className="max-w-[120px]">{props.companyName}</div> */}
                     </div>
-                    <div id={`price-${props.symbol}`} className="relative bg-zinc-700 price min-w-[70px]  w-[100px] p-4 h-[300px]:bg-blue-400">
+                    <div id={`price-${props.symbol}`} className={`  ${width > 500 && height > 170 ? "w-full text-[200px] price bg-zinc-700 relative overflow-hidden" : "relative bg-zinc-700 price min-w-[70px]  w-[100px] p-4"} `}>
                         <div className="absolute top-[50%] -translate-y-1/2 right-[50%] translate-x-1/2">
                             {/* ${parseFloat(props.latestPrice).toFixed(2)}
                     <br></br> */}
@@ -92,19 +108,21 @@ function StatsRow (props) {
                         {/* {Math.floor(counter/100)} */}
                     </div>
 
-                    <div className="flex-col  relative w-full min-w-[60px] 
-                    ">
-                    <div className="absolute text-black top-[46%] -translate-y-1/2 right-[50%] translate-x-1/2 overflow-hidden">
-                        __________________</div>
+                    <div className={`${width > 500 && height > 170 ? "hidden" : "flex-col  relative w-full min-w-[60px]"} `}>
+                        <div className="absolute text-black top-[46%] -translate-y-1/2 right-[50%] translate-x-1/2 overflow-hidden">
+                            __________________</div>
                         <div className="">
                             {/* <div>{parseFloat(props.change).toFixed(2)}</div> */}
                             <div className="absolute top-[30%] -translate-y-1/4 right-[50%] translate-x-1/2">
-                            <div className="">{openMarket ? parseFloat(props.price - props.previousClose).toFixed(2) : props.change}</div>
+                                <div className="">{openMarket ? parseFloat(props.price - props.previousClose).toFixed(2) : props.change}</div>
                             </div>
                             {/* <div>{parseFloat(props.price - props.open).toFixed(2)}</div> */}
                             {/* <div>open{props.open} + price{props.price}</div> */}
                             <div className={props.change > 0 ? "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-full bg-green-400" : "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-full bg-red-400"}>%{openMarket ? parseFloat(((props.price - props.previousClose) / props.previousClose) * 100).toFixed(2) : parseFloat(props.changePercent * 100).toFixed(2)}</div>
 
+                            <div>
+                                width{width} height{height}
+                            </div>
                         </div>
                     </div>
 

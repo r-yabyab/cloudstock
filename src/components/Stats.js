@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import StatsRow from './StatsRow'
 import Draggable from 'react-draggable'
@@ -291,22 +291,38 @@ useEffect(() => {
       };
 
 
+      //heights
+      // const [height, setHeight] = useState(0);
+      // const [width, setWidth] = useState(0)
+      // const [mouse, setMouse] = useState(false)
+      // const elementRef = useRef(0);
+
+      // useEffect(() => {
+
+      //   setWidth(elementRef.current.clientWidth)
+      //   setHeight(elementRef.current.clientHeight)
+      //   console.log(height)
+        
+      //  },[mouse])
+
 
 
     return (
         <>
 
-<div className=''>
+<div className=''
+>
                 {combinedData.map((stock) => (
                  <Draggable 
                  handle=".handle"
                  key={stock.id}
                  position={positions[stock.id]}
                  onDrag={(e, {x,y}) => handleDrag(stock.id, {x,y})}
-                
+
             > 
                     <div 
-
+                //  ref={elementRef}
+                //  onMouseUp={(e) => setMouse(!mouse)}
                     >
                         <StatsRow
                         //from REST API
@@ -337,6 +353,11 @@ useEffect(() => {
                             removeSymbol={removeSymbol}
                             stock={stock.id}
                             openMarket={openMarket}
+                            
+                            // width={width}
+                            // height={height}
+                            // mouse={mouse}
+                            // setMouse={setMouse}
                         
                     />
                     {/* <div className='' selectnums={stock.id} onClick={removeSymbol}>x</div> */}

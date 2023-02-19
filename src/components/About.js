@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect, useRef} from "react";
 import demogif from '../photos/demogif.gif'
 
 function About () {
+
+    const [height, setHeight] = useState(0);
+    const [width, setWidth] = useState(0)
+    const elementRef = useRef(0);
+    const [mouse, setMouse] = useState(false)
+  
+    useEffect(() => {
+
+        setWidth(elementRef.current.clientWidth)
+        setHeight(elementRef.current.clientHeight)
+        console.log(height)
+        
+       },[mouse])
+  
+
     return (
         <>
             <div className="text-center pt-10 max-w-[600px] m-auto">
@@ -41,7 +56,18 @@ function About () {
 
                 <div className="italic text-xl pt-10 font-bold"> Changelog: </div>
                 <div>Launch day _______</div>
+{/* 
+<div className="absolute top-20 bg-blue-400 w-10 h-10 overflow-hidden resize">
+    penis
+    </div> */}
 
+    <div
+    className={`absolute top-20 bg-blue-400 w-10 h-10 resize overflow-hidden ${height > 100 ? "text-black" : "text-red-400"}`}
+    ref={elementRef}
+    onMouseUp={(e) => setMouse(!mouse)}
+    >
+      Width: {width} Height: {height}
+    </div>
 
             </div>
         </>

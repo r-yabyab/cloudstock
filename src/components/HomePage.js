@@ -43,6 +43,7 @@ function HomePage ({hide}) {
                 {/* <div><UniversalTime /></div> */}
             </div>
             <DataFetch openMarket={openMarket} />
+            
         </>
     )
 }
