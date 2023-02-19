@@ -11,7 +11,7 @@ import Draggable from 'react-draggable'
 
 function Stats ({symbolName, setSymbolName,
   //  reducerValue, forceUpdate, 
-   open}) {
+   openMarket}) {
 
     const [stockData, setStockData] = useState([])
     // const [symbolName, setSymbolName] = useState('')
@@ -78,10 +78,10 @@ function Stats ({symbolName, setSymbolName,
         
           fetchData();
         
-          if (open) {
+          if (openMarket) {
           const intervalId = setInterval(() => {
             fetchData();
-          }, 10000);
+          }, 30000);
         
           setTimeout(() => {
             clearInterval(intervalId);
@@ -91,7 +91,7 @@ function Stats ({symbolName, setSymbolName,
           return () => {
             clearInterval(intervalId);
           };}
-        }, [yourStocks, open]);
+        }, [yourStocks, openMarket]);
 
 
 // SSE STREAMING
@@ -102,60 +102,67 @@ const [connectedSSE, setConnectedSSE] = useState('')
         // this string is how NodeJS can process the SSE stream URL
         // console.log(symbolsSSE) output --> pcg,ndaq,spy,tsla,gme
 
-useEffect(() => {
-  //replaces yourStocks with a string for NodeJS to accept as params (qs: _____)
-  const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
-  const symbolsURL = symbols.replace(/['"]+/g,'').replace(/\[/g, '').replace(/\]/g, "")
-  console.log('symbols:'+symbols)
-  const source = new EventSource(`http://localhost:3001/stream?symbols=${symbolsURL}`);
+  useEffect(() => {
+    //replaces yourStocks with a string for NodeJS to accept as params (qs: _____)
+    if (openMarket) {
+    const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
+    const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
+    console.log('symbols:' + symbols)
+    const source = new EventSource(`http://localhost:3001/stream?symbols=${symbolsURL}`);
 
 
+    
+      source.addEventListener('message', event => {
+        if (event.data) {
+          const quote = JSON.parse(event.data)[0];
+          if (quote) {
+            // displays current and previous quotes
+            setQuotes(quotes => {
+              const updatedQuotes = [...quotes];
+              const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
+              if (index > -1) {
+                updatedQuotes[index] = quote;
+              } else {
+                updatedQuotes.push(quote);
+              }
+              return updatedQuotes;
+            });
+            // // // // When delete, it returns all the quotes again except deleted, previous ones stay on the screen
+            // setQuotes(quotes => {
+            //   const filteredQuotes = quotes.filter(q => yourStocks.some(stock => stock.stock === q.symbol));
+            //   return [...filteredQuotes, quote];
+            // });
 
-  source.addEventListener('message', event => {
-    if (event.data) {
-    const quote = JSON.parse(event.data)[0];
-    if (quote) {
-        // displays current and previous quotes
-        setQuotes(quotes => {
-          const updatedQuotes = [...quotes];
-          const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
-          if (index > -1) {
-            updatedQuotes[index] = quote;
-          } else {
-            updatedQuotes.push(quote);
           }
-          return updatedQuotes;
-        });
-        // // // // When delete, it returns all the quotes again except deleted, previous ones stay on the screen
-        // setQuotes(quotes => {
-        //   const filteredQuotes = quotes.filter(q => yourStocks.some(stock => stock.stock === q.symbol));
-        //   return [...filteredQuotes, quote];
-        // });
+        }
+      });
 
+      source.addEventListener('open', event => {
+        console.log('Connection to server opened.');
+        setConnectedSSE('Connected: SSE Stream opened')
+        setHasError(false)
+        console.log(hasError)
+      });
+
+      source.addEventListener('error', event => {
+        console.error('Error connecting to server.');
+        setHasError(true);
+        setConnectedSSE('Awaiting input...')
+        console.log(hasError)
+
+
+      });
+
+      return () => {
+        source.close();
+      };
     }
-}
-  });
 
-  source.addEventListener('open', event => {
-    console.log('Connection to server opened.');
-    setConnectedSSE('Connected: SSE Stream opened')
-    setHasError(false)
-    console.log(hasError)
-  });
-
-  source.addEventListener('error', event => {
-    console.error('Error connecting to server.');
-    setHasError(true);
-    setConnectedSSE('Awaiting input...')
-    console.log(hasError)
-
-
-  });
-
-  return () => {
-    source.close();
-  };
-}, [hasError, yourStocks]);
+    else {
+      setHasError(true)
+      setConnectedSSE('Awaiting market open for live updates')
+    }
+  }, [hasError, yourStocks]);
 
 
 ////////////////////////////////////////
@@ -309,9 +316,13 @@ useEffect(() => {
                         changePercent={stock[0].changePercent}
                         iexOpen={stock[0].iexOpen}
                         open={stock[0].open}
-                        // from SSE Stream, for TOPS
-                        lastSalePrice={stock.lastSalePrice}
-                        lastSaleSize={stock.lastSaleSize}
+                          // use this to get the typical market open percentage,
+                          // ex] if NDAQ opens @ 3%, the session's percentage will continue the 3% instead of
+                          // resetting to 0
+                        previousClose={stock[0].previousClose}
+                        // // from SSE Stream, for TOPS
+                        // lastSalePrice={stock.lastSalePrice}
+                        // lastSaleSize={stock.lastSaleSize}
                         // from SSE Stream, for LAST
                         price={stock.price}
                         size={stock.size}
@@ -325,6 +336,7 @@ useEffect(() => {
                             yourStocks={yourStocks}
                             removeSymbol={removeSymbol}
                             stock={stock.id}
+                            openMarket={openMarket}
                         
                     />
                     {/* <div className='' selectnums={stock.id} onClick={removeSymbol}>x</div> */}

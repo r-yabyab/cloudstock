@@ -1,4 +1,5 @@
 import React from "react";
+import demogif from '../photos/demogif.gif'
 
 function About () {
     return (
@@ -32,6 +33,7 @@ function About () {
                 <br></br>
                 <div>Q: Why are the price changes/open different than in x platforms?</div>
                 <div>A: Price open is based on premarket price, not market open.</div>
+                <img src={demogif} alt="gif" />
                 
                 {/* <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div> */}

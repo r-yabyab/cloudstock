@@ -5,7 +5,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import Stats from "./Stats";
 // import { Client } from "iexjs"
 
-function DataFetch ({open}) {
+function DataFetch ({openMarket}) {
   
     // const [dbStock, setDbStock] = useState(null)
     const [symbolList, setSymbolList] = useState(null)
@@ -201,7 +201,7 @@ function DataFetch ({open}) {
 
 
 
-<Stats open={open} symbolName={symbolName} setSymbolName={setSymbolName} reducerValue={reducerValue} forceUpdate={forceUpdate} />
+<Stats openMarket={openMarket} symbolName={symbolName} setSymbolName={setSymbolName} reducerValue={reducerValue} forceUpdate={forceUpdate} />
 
 {/* <StockApp /> */}
 

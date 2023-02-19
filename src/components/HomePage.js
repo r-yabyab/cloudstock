@@ -4,7 +4,7 @@ import { format } from "date-fns"
 
 function HomePage ({hide}) {
 
-    const [open, setOpen] = useState(false)
+    const [openMarket, setOpenMarket] = useState(false)
 
 
     useEffect (() => {
@@ -18,9 +18,9 @@ function HomePage ({hide}) {
     console.log(hours, minutes);
     
     if (hours >= 13 && hours <= 20) {
-        setOpen(true)
+        setOpenMarket(true)
     }
-    console.log(open)
+    console.log(openMarket)
     
     },[])
 
@@ -35,14 +35,14 @@ function HomePage ({hide}) {
             </div>
 
             <div className={hide ? "absolute top-0 select-none text-white flex" : "absolute top-10 select-none text-white flex space-x-6"}>
-                <div className={hide ? "hidden" : null}>Markets <span className={open ? "text-green-400" : "text-red-400" }>{open? "OPEN":"CLOSED"}</span></div>
-                <div className={hide ? "hidden" : open ? "hidden" : "absolute top-4 -left-[23px]"}>Futures <span className={open ? "text-red-400" : "text-green-400" }>{open? "CLOSED":"OPEN"}</span></div>
+                <div className={hide ? "hidden" : null}>Markets <span className={openMarket ? "text-green-400" : "text-red-400" }>{openMarket? "OPEN":"CLOSED"}</span></div>
+                <div className={hide ? "hidden" : openMarket ? "hidden" : "absolute top-4 -left-[23px]"}>Futures <span className={openMarket ? "text-red-400" : "text-green-400" }>{openMarket ? "CLOSED":"OPEN"}</span></div>
                 {/* <div>{format(Date.now(), 'k:mm:ss:S')}</div> */}
                 {/* <div>{clock}</div> */}
                 <div><TopTimer /></div>
                 {/* <div><UniversalTime /></div> */}
             </div>
-            <DataFetch open={open} />
+            <DataFetch openMarket={openMarket} />
         </>
     )
 }
