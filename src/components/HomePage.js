@@ -6,6 +6,9 @@ function HomePage ({hide}) {
 
     const [openMarket, setOpenMarket] = useState(false)
 
+    useEffect (() => {
+        document.title = 'Stock Shapes';
+      }, [])
 
     useEffect (() => {
         // var date1 = Date.now(Date.UTC);

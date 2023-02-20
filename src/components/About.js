@@ -3,7 +3,9 @@ import demogif from '../photos/demogif.gif'
 
 function About () {
 
-  
+    useEffect (() => {
+        document.title = 'Info';
+      }, [])
 
     return (
         <>
@@ -36,7 +38,7 @@ function About () {
                 <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div>
                 
                     <div className="pt-64 text-neutral-600">Changelog:</div>
-                    <div className="text-neutral-600">02/19/23 - deployed to vercel</div>
+                    <div className="text-neutral-600">02/19/23 23:53 - deployed client and server to vercel</div>
                 
                 </div>
                 {/* <div>Access to: Stocks, futures, cryptocurrencies</div> */}
