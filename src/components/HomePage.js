@@ -36,7 +36,7 @@ function HomePage ({hide}) {
 
             <div className={hide ? "absolute top-0 select-none text-white flex" : "absolute top-10 select-none text-white flex space-x-6"}>
                 <div className={hide ? "hidden" : null}>Markets <span className={openMarket ? "text-green-400" : "text-red-400" }>{openMarket? "OPEN":"CLOSED"}</span></div>
-                <div className={hide ? "hidden" : openMarket ? "hidden" : "absolute top-4 -left-[23px]"}>Futures <span className={openMarket ? "text-red-400" : "text-green-400" }>{openMarket ? "CLOSED":"OPEN"}</span></div>
+                {/* <div className={hide ? "hidden" : openMarket ? "hidden" : "absolute top-4 -left-[23px]"}>Futures <span className={openMarket ? "text-red-400" : "text-green-400" }>{openMarket ? "CLOSED":"OPEN"}</span></div> */}
                 {/* <div>{format(Date.now(), 'k:mm:ss:S')}</div> */}
                 {/* <div>{clock}</div> */}
                 <div><TopTimer /></div>

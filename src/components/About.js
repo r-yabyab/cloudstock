@@ -1,20 +1,8 @@
-import React, { useState, useEffect, useRef} from "react";
+import React from "react";
 import demogif from '../photos/demogif.gif'
 
 function About () {
 
-    const [height, setHeight] = useState(0);
-    const [width, setWidth] = useState(0)
-    const elementRef = useRef(0);
-    const [mouse, setMouse] = useState(false)
-  
-    useEffect(() => {
-
-        setWidth(elementRef.current.clientWidth)
-        setHeight(elementRef.current.clientHeight)
-        console.log(height)
-        
-       },[mouse])
   
 
     return (
@@ -36,38 +24,42 @@ function About () {
                     <div>Due to IEX cloud API costing money, free users have been limited to 5 stocks with a timeout after 30 minutes. Paid users <span className="text-green-400">$4.99 a month</span> have access to 20 symbols, no timeouts, and more frequent stock updates.</div>
                     {/* <div>Inspired by the live DOM from tradovate. I loved seeing the numbers go bananas during open session</div> */}
                 </div>
-                <div className="italic text-xl pt-10 font-bold"> Features </div>
-                <div>Free-tier: Real time quotes, you get the latest updates. Max 5 quotes on screen.</div>
-                <div>Globex hours: 1 update every 5 seconds.</div>
-                <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div>
+                <div className="text-left max-w-[520px] select-none  m-auto absolute right-[50%] translate-x-1/2 justify-center">
+                {/* <div className="italic text-xl pt-10 font-bold"> Features </div> */}
+                <div><u>Free-tier</u>: Real time stock quotes. Max 5 quotes on screen.</div>
+                <div className="indent-4">- Price, latest trade size, change, percent change, time before last trade</div>
+                <div className="indent-4">- On market close: Access to previous session's quotes</div>
+                <div><u>Paid-tier</u>: In progress</div>
+
+                <div>Globex/crypto data: In progress.</div>
+                {/* <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div> */}
+                <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div>
+                
+                    <div className="pt-64 text-neutral-600">Changelog:</div>
+                    <div className="text-neutral-600">02/19/23 - deployed to vercel</div>
+                
+                </div>
                 {/* <div>Access to: Stocks, futures, cryptocurrencies</div> */}
 
-                <div className="italic text-xl pt-10 font-bold"> Frequently Asked Questions: </div>
+                {/* <div className="italic text-xl pt-10 font-bold"> Frequently Asked Questions: </div>
                 <div>Q: Why are latest prices different from other platforms?</div>
                 <div>A: Prices are based on the latest sale price of the day including after-market, not before market close.</div>
                 <br></br>
                 <div>Q: Why are the price changes/open different than in x platforms?</div>
-                <div>A: Price open is based on premarket price, not market open.</div>
-                <img src={demogif} alt="gif" />
+                <div>A: Price open is based on premarket price, not market open.</div> */}
+                <img draggable={false} className="pt-[224px] absolute right-[50%] translate-x-1/2 select-none" src={demogif} alt="gif" />
                 
                 {/* <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div> */}
+            <div className="absolute bottom-0 right-[50%] translate-x-1/2 select-none tracking-tighter text-white">© 2023 All Rights Reserved.</div>
 
 
-                <div className="italic text-xl pt-10 font-bold"> Changelog: </div>
-                <div>Launch day _______</div>
 {/* 
 <div className="absolute top-20 bg-blue-400 w-10 h-10 overflow-hidden resize">
     penis
     </div> */}
 
-    <div
-    className={`absolute top-20 bg-blue-400 w-10 h-10 resize overflow-hidden ${height > 100 ? "text-black" : "text-red-400"}`}
-    ref={elementRef}
-    onMouseUp={(e) => setMouse(!mouse)}
-    >
-      Width: {width} Height: {height}
-    </div>
+
 
             </div>
         </>

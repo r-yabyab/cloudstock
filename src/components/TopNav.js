@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 function TopNav () {
     return (
         <>
-            <div className="relative pt-2 pb-2 bg-black border-y-[1px] border-slate-600 flex justify-evenly pl-4 pr-4 text-neutral-300">
-                <Link to='/' className="hover:bg-blue-300"><div>Home</div></Link>
-                <Link to='/refpage' className="hover:bg-blue-300"><div>Ref Pics</div></Link>
-                <Link to='/about' className="hover:bg-blue-300"><div>About</div></Link>
-                <div>Sign up</div>
+            {/* <div className="relative pt-2 pb-2 bg-black border-y-[1px] border-slate-600 flex justify-evenly pl-4 pr-4 text-neutral-300"> */}
+            <div className="relative pt-2 pb-2 bg-black border-y-[1px] border-slate-600 flex justify-between pl-4 pr-4 text-neutral-300">
+                <Link to='/about' className="hover:text-white"><div className="absolute right-4 ">Info</div></Link>
+                {/* <Link to='/refpage' className="hover:bg-blue-300"><div>Ref Pics</div></Link> */}
+                <Link to='/' className="hover:text-white"><div className="mr-[80px] pr-0 pl-0">Home</div></Link>
+                {/* <div>Sign up</div> */}
                 <div className="absolute top-1 left-2 text-2xl tracking-tighter font-semibold italic">
                     {/* STOCK SHAPES */}
-                    STOCK SHAPES
+                    <Link to='/' className="hover:text-white">STOCK SHAPES</Link>
+                    
                 </div>
             </div>
         </>

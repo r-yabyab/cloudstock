@@ -11,7 +11,7 @@ import Draggable from 'react-draggable'
 
 function Stats ({symbolName, setSymbolName,
   //  reducerValue, forceUpdate, 
-   openMarket}) {
+   openMarket, clearSymbol}) {
 
     const [stockData, setStockData] = useState([])
     // const [symbolName, setSymbolName] = useState('')
@@ -393,16 +393,20 @@ useEffect(() => {
         </div> */}
 
 {/* add Symbol BUTTON */}
-<div onClick={addSymbol} className={symbolName ? 'absolute top-20 ml-[160px] -translate-x-1/2 text-blue-600 hover:cursor-pointer hover:text-yellow-200' : "hidden"}>
+<p onClick={clearSymbol} className={symbolName ? 'absolute -mt-12 pr-[119px] pl-[119px] left-[50%] -translate-x-1/2 text-red-600 hover:text-white hover:bg-red-600 hover:cursor-pointer hover:font-bold' : "hidden"}>Remove</p>
+
+<div onClick={addSymbol} className={symbolName ? 'absolute -mt-6 pr-[134px] pl-[134px] left-[50%] -translate-x-1/2 text-green-600 hover:bg-green-600 hover:cursor-pointer hover:text-white hover:font-bold' : "hidden"}>
     {/* <button onClick={symbolHandler} className='bg-green-400 p-4 rounded-md border-2 border-black mt-2 mb-10 ml-4'>set to GME</button> */}
     {/* <button onClick={addSymbol} className='bg-slate-400 p-4 rounded-md border-2 border-black mt-2 mb-10 ml-4'> */}
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 16">
+    Add
+    {/* <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 16">
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg>
-
+</svg> */}
+<p className='absolute pb-[56px] w-[300px] left-[50%] -translate-x-1/2 hover:bg-yellow-300 hover:bg-opacity-0'></p>
     {/* </button> */}
 </div>
+
 
 <div draggable='false' className={hasError ? 'absolute select-none bottom-0 text-gray-400 animate-pulse' : 'absolute select-none bottom-0 text-green-400 animate-pulse'}>{connectedSSE}</div>
 

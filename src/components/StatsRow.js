@@ -108,9 +108,9 @@ function StatsRow (props) {
                         {/* {Math.floor(counter/100)} */}
                     </div>
 
-                    <div className={`${width > 500 && height > 170 ? "hidden" : "flex-col  relative w-full min-w-[60px]"} `}>
-                        <div className="absolute text-black top-[46%] -translate-y-1/2 right-[50%] translate-x-1/2 overflow-hidden">
-                            __________________</div>
+                    <div className={`${width > 500 && height > 170 ? "hidden" : "flex-col  relative w-[98%] min-w-[60px]"} `}>
+                        {/* <div className="absolute text-black top-[46%] -translate-y-1/2 right-[50%] translate-x-1/2 overflow-hidden">
+                            __________________</div> */}
                         <div className="">
                             {/* <div>{parseFloat(props.change).toFixed(2)}</div> */}
                             <div className="absolute top-[30%] -translate-y-1/4 right-[50%] translate-x-1/2">
@@ -118,11 +118,13 @@ function StatsRow (props) {
                             </div>
                             {/* <div>{parseFloat(props.price - props.open).toFixed(2)}</div> */}
                             {/* <div>open{props.open} + price{props.price}</div> */}
-                            <div className={props.change > 0 ? "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-full bg-green-400" : "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-full bg-red-400"}>%{openMarket ? parseFloat(((props.price - props.previousClose) / props.previousClose) * 100).toFixed(2) : parseFloat(props.changePercent * 100).toFixed(2)}</div>
+                            <div className={props.change > 0 ? "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-green-400" : "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-red-400"}>%{openMarket ? parseFloat(((props.price - props.previousClose) / props.previousClose) * 100).toFixed(2) : parseFloat(props.changePercent * 100).toFixed(2)}</div>
 
-                            <div>
+{/* WIDTH AND HEIGHT DEBUGGING */}
+{/* WIDTH AND HEIGHT DEBUGGING */}
+                            {/* <div>
                                 width{width} height{height}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 

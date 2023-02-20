@@ -121,7 +121,7 @@ function DataFetch ({openMarket}) {
                 <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.latestPrice).toFixed(2)}</div>
                 <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.open}</div>
                 <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.change}</div>
-                <p className="absolute hover:cursor-pointer -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p>
+                <p className="absolute hover:cursor-pointer bg-blue-200 -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p>
 
             </div>
         ): null
@@ -165,10 +165,10 @@ function DataFetch ({openMarket}) {
                     >
                         <option value="hello">Select ticker</option>
                         {stockList}
-                        </select>
-                        
+                    </select>
+
                     <div>
-{/* Updates Quotes */}
+                        {/* Updates Quotes */}
                         {/* <button
                             onClick={clickHandler}
                             className="border-2 border-black bg-green-400 hover:cursor-pointer hover:bg-green-100">Update Quotes
@@ -201,7 +201,7 @@ function DataFetch ({openMarket}) {
 
 
 
-<Stats openMarket={openMarket} symbolName={symbolName} setSymbolName={setSymbolName} reducerValue={reducerValue} forceUpdate={forceUpdate} />
+<Stats clearSymbol={clearSymbol} openMarket={openMarket} symbolName={symbolName} setSymbolName={setSymbolName} reducerValue={reducerValue} forceUpdate={forceUpdate} />
 
 {/* <StockApp /> */}
 
