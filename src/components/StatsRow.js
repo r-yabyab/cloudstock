@@ -62,7 +62,7 @@ function StatsRow (props) {
 
       setWidth(elementRef.current.clientWidth)
       setHeight(elementRef.current.clientHeight)
-      console.log(height)
+    //   console.log(height)
       
      },[mouse])
     
