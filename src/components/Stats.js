@@ -70,7 +70,7 @@ function Stats ({symbolName, setSymbolName,
                 }
               });
               setStockData(response.data);
-              console.log('fetched from server');
+              // console.log('fetched from server');
             } catch (error) {
               console.error(error);
             }

@@ -3,6 +3,7 @@ import React, { useEffect, useReducer, useState } from "react";
 // import StockQuotes from "./chatGPT";
 // import { DraggableComp } from "./DraggableComp";
 import Stats from "./Stats";
+import axios from 'axios'
 // import { Client } from "iexjs"
 
 function DataFetch ({openMarket}) {
@@ -49,9 +50,9 @@ function DataFetch ({openMarket}) {
     // fetch all stock symbols a to z
     useEffect(() => {
         const fetchSymbolList = async () => {
-            // const response = await fetch('https://ryabyab.iex.cloud/v1/data/core/quote/sbux?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e')
+            // const response = await fetch('https://ryabyab.iex.cloud/v1/data/core/quote/sbux?token=...')
             // const response = await fetch('https://ryabyab.iex.cloud/v1/data/ref-data/iex/symbols')
-            const response = await fetch('https://ryabyab.iex.cloud/v1/ref-data/iex/symbols?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e')
+            const response = await fetch('http://localhost:3001/api/tickers')
             const json = await response.json()
 
             if (response.ok) {
@@ -73,7 +74,7 @@ function DataFetch ({openMarket}) {
     // // SSE streaming
     // useEffect(() => {
     //     const fetchSSE = async () => {
-    //         const response = await fetch('https://cloud-sse.iexapis.com/stable/stocksUSNoUTP1Second?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e&symbols=aapl', config)
+    //         const response = await fetch('https://cloud-sse.iexapis.com/stable/stocksUSNoUTP1Second?token=...&symbols=aapl', config)
     //         const json = await response.json()
             
     //         if (response.ok) {
@@ -94,18 +95,43 @@ function DataFetch ({openMarket}) {
     //fetch single stock's information
     useEffect(() => {
         if (symbolName) {
-            const fetchStock = async () => {
-
-                const response = await fetch(`https://ryabyab.iex.cloud/v1/data/core/quote/${symbolName}?token=sk_4b6ebe9d84b44fe48cbf602d2c70884e`)
-                const json = await response.json()
-
-                if (response.ok) {
-                    setStock(json)
+          const fetchStock = async () => {
+            try {
+              const response = await axios.get('http://localhost:3001/api/tickerquote', {
+                params: {
+                  symbolName
                 }
+              });
+              setStock(response.data);
+            //   console.log('fetched symbol quote');
+            //   console.log(stock)
+            } catch (error) {
+              console.error(error);
             }
-            fetchStock()
+          };
+          fetchStock();
         }
-    }, [symbolName])
+      }, [symbolName]);
+
+    //
+    // const response = await axios.get(`http://localhost:3001/api/tickerquote/${symbolName}`);
+
+
+    // const fetchData = async () => {
+    //     try {
+    //       const response = await axios.get('http://localhost:3001/api/news', {
+    //         params: {
+    //           yourStocks
+    //         }
+    //       });
+    //       setStockData(response.data);
+    //       console.log('fetched from server');
+    //     } catch (error) {
+    //       console.error(error);
+    //     }
+    //   };
+    //
+
 
     const clearSymbol = () => {
         setSymbolName('')

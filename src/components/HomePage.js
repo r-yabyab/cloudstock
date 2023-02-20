@@ -15,12 +15,12 @@ function HomePage ({hide}) {
         const date = new Date();
     const hours = date.getUTCHours()
     const minutes = date.getUTCMinutes()
-    console.log(hours, minutes);
+    console.log(`UTC ${hours}:${minutes}`);
     
     if (hours >= 13 && hours <= 20) {
         setOpenMarket(true)
     }
-    console.log(openMarket)
+    console.log(`Market: ${openMarket ? "open" : "closed"}`)
     
     },[])
 

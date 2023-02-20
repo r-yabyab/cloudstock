@@ -19,7 +19,7 @@
 .env.production.local
 .env
 
-things.txt
+depricated.txt
 
 npm-debug.log*
 yarn-debug.log*
