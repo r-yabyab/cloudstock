@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { HashRouter } from 'react-router-dom'
+import { inject } from '@vercel/analytics'
 // import './serviceWorker'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+inject()
 root.render(
   <>
   {/* <React.StrictMode> */}
