@@ -97,7 +97,7 @@ function StatsRow (props) {
                         <div className="absolute top-[50%] -translate-y-1/2 right-[50%] translate-x-1/2">
                             {/* ${parseFloat(props.latestPrice).toFixed(2)}
                     <br></br> */}
-                            ${openMarket ? props.price.toFixed(2) : props.latestPrice}
+                            ${openMarket ? parseFloat(props.price).toFixed(2) : props.latestPrice}
                             <div className="absolute  right-[50%] translate-x-1/2">{openMarket ? <><br></br>{props.size}</> : null}</div>
                         </div>
                         {/* {`${displaySize}`}
