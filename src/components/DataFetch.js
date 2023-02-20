@@ -52,7 +52,8 @@ function DataFetch ({openMarket}) {
         const fetchSymbolList = async () => {
             // const response = await fetch('https://ryabyab.iex.cloud/v1/data/core/quote/sbux?token=...')
             // const response = await fetch('https://ryabyab.iex.cloud/v1/data/ref-data/iex/symbols')
-            const response = await fetch('http://localhost:3001/api/tickers')
+            // const response = await fetch('http://localhost:3001/api/tickers')
+            const response = await fetch('https://stockshapes-server.vercel.app/api/tickers')
             const json = await response.json()
 
             if (response.ok) {
@@ -97,7 +98,7 @@ function DataFetch ({openMarket}) {
         if (symbolName) {
           const fetchStock = async () => {
             try {
-              const response = await axios.get('http://localhost:3001/api/tickerquote', {
+              const response = await axios.get('https://stockshapes-server.vercel.app/api/tickerquote', {
                 params: {
                   symbolName
                 }
