@@ -107,9 +107,9 @@ const [connectedSSE, setConnectedSSE] = useState('')
     if (openMarket) {
     const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
     const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
-    console.log('symbols:' + symbols)
-    // const source = new EventSource(`http://localhost:3001/stream?symbols=${symbolsURL}`);
-    const source = new EventSource(`https://stockshapes-server.vercel.app/stream?symbols=${symbolsURL}`);
+    console.log('symbolsURL:' + symbolsURL)
+    const source = new EventSource(`http://localhost:3001/stream?symbols=${symbolsURL}`);
+    // const source = new EventSource(`https://stockshapes-server.vercel.app/stream?symbols=${symbolsURL}`);
 
 
     
@@ -121,6 +121,7 @@ const [connectedSSE, setConnectedSSE] = useState('')
             setQuotes(quotes => {
               const updatedQuotes = [...quotes];
               const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
+              // console.log(`SSE data${updatedQuotes}`)
               if (index > -1) {
                 updatedQuotes[index] = quote;
               } else {

@@ -20,7 +20,9 @@ function HomePage ({hide}) {
     const minutes = date.getUTCMinutes()
     console.log(`UTC ${hours}:${minutes}`);
     
-    if (hours >= 13 && hours <= 20) {
+    // if (hours >= 13 && hours <= 20) {
+        // DEBUGGING
+        if (hours <= 24) {
         setOpenMarket(true)
     }
     console.log(`Market: ${openMarket ? "open" : "closed"}`)
