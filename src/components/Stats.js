@@ -108,8 +108,8 @@ const [connectedSSE, setConnectedSSE] = useState('')
     const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
     const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
     console.log('symbolsURL:' + symbolsURL)
-    // const source = new EventSource(`http://localhost:3001/stream?symbols=${symbolsURL}`);
-    const source = new EventSource(`https://stockshapes-server.vercel.app/stream?symbols=${symbolsURL}`);
+    const source = new EventSource(`http://localhost:3001/stream?symbols=${symbolsURL}`);
+    // const source = new EventSource(`https://stockshapes-server.vercel.app/stream?symbols=${symbolsURL}`);
 
 
     
