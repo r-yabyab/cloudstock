@@ -121,7 +121,7 @@ const [connectedSSE, setConnectedSSE] = useState('')
             setQuotes(quotes => {
               const updatedQuotes = [...quotes];
               const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
-              // console.log(`SSE data${updatedQuotes}`)
+              console.log(`SSE data${updatedQuotes}`)
               if (index > -1) {
                 updatedQuotes[index] = quote;
               } else {
