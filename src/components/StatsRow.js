@@ -28,22 +28,23 @@ function StatsRow (props) {
     }
     },[props.price])
     
-    const [sizeCount, setSizeCount] = useState(1);
-    const [previousSize, setPreviousSize] = useState(props.size);
-    const [displaySize, setDisplaySize] = useState(props.size);
+    // // // // Doesn't really work, implement later
+    // const [sizeCount, setSizeCount] = useState(1);
+    // const [previousSize, setPreviousSize] = useState(props.size);
+    // const [displaySize, setDisplaySize] = useState(props.size);
     
-    useEffect(() => {
-        if (props.size === previousSize) {
-            setSizeCount(count => count + 1);
-            if (props.size === previousSize) {
-                setDisplaySize(`${props.size}(${sizeCount +1})`);
-            }
-        } else {
-            setSizeCount(0);
-            setDisplaySize(props.size);
-        }
-        setPreviousSize(props.size);
-    }, [props.size]);
+    // useEffect(() => {
+    //     if (props.size === previousSize) {
+    //         setSizeCount(count => count + 1);
+    //         if (props.size === previousSize) {
+    //             setDisplaySize(`${props.size}(${sizeCount +1})`);
+    //         }
+    //     } else {
+    //         setSizeCount(0);
+    //         setDisplaySize(props.size);
+    //     }
+    //     setPreviousSize(props.size);
+    // }, [props.size]);
     
     // const [percentage, setPercentage] = useState(0)
     // useEffect(() => {
@@ -85,9 +86,9 @@ function StatsRow (props) {
                      : 
                         "bg-red-400 m-auto flex [&>div]:border-x-[1px] [&>div]:border-r-0 [&>div]:text-center [&>div]:border-gray-700"} draggable="false">
                     <div className={`bg-zinc-700 relative text-white min-w-[120px]`}>
-                        <div className="absolute left-1 top-0">
+                        {/* <div className="absolute left-1 top-0">
                             {openMarket ? Math.floor(counter / 100) : null}
-                        </div>
+                        </div> */}
                         <div className="font-semibold resize1 text-2xl tracking-wider absolute top-[50%] -translate-y-1/2 right-[50%] translate-x-1/2">
                             {props.symbol}
                         </div>
@@ -98,8 +99,10 @@ function StatsRow (props) {
                             {/* ${parseFloat(props.latestPrice).toFixed(2)}
                     <br></br> */}
                             {/* ${openMarket ? parseFloat(props.price).toFixed(2) : props.latestPrice} */}
-                            ${parseFloat(props.price).toFixed(2)}
-                            <div className="absolute  right-[50%] translate-x-1/2">{openMarket ? <><br></br>{props.size}</> : null}</div>
+                            {openMarket ? `$${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)}`}
+                            <div className="absolute right-[50%] translate-x-1/2">{openMarket && !(width > 500 && height > 170) ? <>{props.size}</> : null}</div>
+                            <div className="absolute text-gray-500 -mt-[50px] right-[50%] translate-x-1/2">{openMarket && !(width > 500 && height > 170) ? Math.floor(counter / 100) : null}</div>
+                            
                         </div>
                         {/* {`${displaySize}`}
                         <br></br> */}
