@@ -36,7 +36,7 @@ function About () {
                 <div>Globex/crypto data: In progress</div>
                 {/* <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div> */}
                 {/* <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div> */}
-                <div>Please be mindful of API costs! This is how many calls I last made for running 5 tickers from open to close: <span className=" animate-pulse">1,417,772</span></div>
+                <div className=" ">Please be mindful of API costs! This is how many calls I last made for running 5 tickers from open to close: <span className=" italic text-pink-200">1,417,772</span></div>
                 
                     <div className="pt-64 text-neutral-600">Changelog:</div>
                     <div className="text-neutral-600">02/20/23 - SSE kept running locally due to Vercel not supporting websockets, will implement</div>
