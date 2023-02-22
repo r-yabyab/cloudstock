@@ -36,9 +36,10 @@ function About () {
                 <div>Globex/crypto data: In progress</div>
                 {/* <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div> */}
                 {/* <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div> */}
-                <div className=" ">Please be mindful of API costs! <br></br># of calls from last session: <span className=" italic text-pink-200">1,417,772</span></div>
+                <div className=" ">Please be mindful of API costs! <br></br># of calls from last session: <span className=" italic text-pink-200">1,738,719 - 1,417,772</span></div>
                 
                     <div className="pt-64 text-neutral-600">Changelog:</div>
+                    <div className="text-neutral-600">02/21/23 - moved server to AWS EC2 because vercel doesn't support websockets/SSE, live updates via SSE available to public now (client stays on vercel)</div>
                     <div className="text-neutral-600">02/20/23 - SSE kept running locally due to Vercel not supporting websockets, will implement</div>
                     <div className="text-neutral-600">02/19/23 23:53 - deployed client and server to vercel</div>
                 
