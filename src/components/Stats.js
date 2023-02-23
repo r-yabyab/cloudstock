@@ -64,7 +64,8 @@ function Stats ({symbolName, setSymbolName,
         useEffect(() => {
           const fetchData = async () => {
             try {
-              const response = await axios.get('https://stockshapes-server.vercel.app/api/news', {
+              // const response = await axios.get('https://stockshapes-server.vercel.app/api/news', {
+                const response = await axios.get('https://stockshapes.net/api/news', {
                 params: {
                   yourStocks
                 }
@@ -109,7 +110,8 @@ const [connectedSSE, setConnectedSSE] = useState('')
     const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
     console.log('symbolsURL:' + symbolsURL)
     // const source = new EventSource(`http://localhost:3001/stream?symbols=${symbolsURL}`);
-    const source = new EventSource(`http://34.218.179.6:3001/stream?symbols=${symbolsURL}`);
+    // const source = new EventSource(`http://34.218.179.6:3001/stream?symbols=${symbolsURL}`);
+    const source = new EventSource(`https://stockshapes.net/stream?symbols=${symbolsURL}`);
     // const source = new EventSource(`https://stockshapes-server.vercel.app/stream?symbols=${symbolsURL}`);
 
 
