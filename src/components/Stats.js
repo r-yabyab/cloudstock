@@ -105,7 +105,7 @@ const [connectedSSE, setConnectedSSE] = useState('')
 
   useEffect(() => {
     //replaces yourStocks with a string for NodeJS to accept as params (qs: _____)
-    if (!openMarket) {
+    if (openMarket) {
     const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
     const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
     console.log('symbolsURL:' + symbolsURL)

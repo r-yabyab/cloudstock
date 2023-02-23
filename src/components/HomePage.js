@@ -49,7 +49,8 @@ function HomePage ({hide}) {
             </div>
             <DataFetch openMarket={openMarket} />
             
-            <div className="text-[200px] m-auto absolute top-0 pointer-events-none">fixing <span className="text-orange-200">HTTP</span> CONNECTION TO HTTPS</div>
+            {/* <div className="text-[200px] m-auto absolute top-0 pointer-events-none">fixing <span className="text-orange-200">HTTP</span> CONNECTION TO HTTPS</div> */}
+            <div className="text-[80px] m-auto absolute top-0 pointer-events-none w-[800px]">Fixing SSE reverse proxy, quotes still work for afterhours</div>
         </>
     )
 }

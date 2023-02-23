@@ -39,6 +39,7 @@ function About () {
                 <div className=" ">Please be mindful of API costs! <br></br># of calls from last session: <span className=" italic text-pink-200">1,738,719 - 1,417,772</span></div>
                 
                     <div className="pt-64 text-neutral-600">Changelog:</div>
+                    <div className="text-neutral-600">02/22/23 - data now fetches via secure HTTPS connection through nginx that points to the nodejs script via localhost. Only REST endpoints work, SSE times out randomly, sometimes connects. Currently fixing SSE reverse proxy </div>
                     <div className="text-neutral-600">02/21/23 - moved server to AWS EC2 because vercel doesn't support websockets/SSE, live updates via SSE available to public now (client stays on vercel)</div>
                     <div className="text-neutral-600">02/20/23 - SSE kept running locally due to Vercel not supporting websockets, will implement</div>
                     <div className="text-neutral-600">02/19/23 23:53 - deployed client and server to vercel</div>

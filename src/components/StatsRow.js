@@ -99,7 +99,10 @@ function StatsRow (props) {
                             {/* ${parseFloat(props.latestPrice).toFixed(2)}
                     <br></br> */}
                             {/* ${openMarket ? parseFloat(props.price).toFixed(2) : props.latestPrice} */}
+                            {/* vvv WORKS */}
                             {openMarket ? `$${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)}`}
+                             {/* FOR DEBUGGING EC2 INSTANCE vvvv */}
+                             {/* $${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)} */}
                             <div className="absolute right-[50%] translate-x-1/2">{openMarket && !(width > 500 && height > 170) ? <>{props.size}</> : null}</div>
                             <div className="absolute text-gray-500 -mt-[50px] right-[50%] translate-x-1/2">{openMarket && !(width > 500 && height > 170) ? Math.floor(counter / 100) : null}</div>
                             
