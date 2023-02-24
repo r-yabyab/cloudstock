@@ -265,10 +265,23 @@ useEffect(() => {
     // }
 
     // get localStorage
-    useEffect(() => {
-        const data = window.localStorage.getItem('_STOCK_list')
-        if (data !== null) setYourStocks(JSON.parse(data))
-    },[])
+  useEffect(() => {
+    const data = window.localStorage.getItem('_STOCK_list')
+    if (data !== null) {
+      setYourStocks(JSON.parse(data))
+    } else {
+      setYourStocks([
+        { id: 0, stock: 'NDAQ' },
+        { id: 1, stock: 'TSLA' },
+        { id: 2, stock: 'AAPL' }
+      ])
+      setPositions({
+        0: { x: 0, y: 130 },
+        1: { x: 0, y: 219 },
+        2: { x: 0, y: 308 }
+      })
+    }
+  }, [])
 
 
     // stores user's stock list
@@ -284,7 +297,7 @@ useEffect(() => {
           return JSON.parse(savedPositions);
         }
     
-        return yourStocks.reduce((acc, { id }) => ({ ...acc, [id]: { x: 0, y: 0 } }), {});
+        return yourStocks.reduce((acc, { id }) => ({ ...acc, [id]: { x: 0, y:0 } }), {});
       });
 
       useEffect(() => {

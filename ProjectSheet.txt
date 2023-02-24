@@ -26,6 +26,7 @@ Todo:
 - make initial state before doing actions
     --> sets localstorage yourStocks to initial 3 stocks
 - set open logic to include weekends and holidays
+- set aftermarket, premarket
 
 
 REFS:

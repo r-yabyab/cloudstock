@@ -5,6 +5,11 @@ import { format } from "date-fns"
 function HomePage ({hide}) {
 
     const [openMarket, setOpenMarket] = useState(false)
+    //0: closed
+    //1: open
+    //2: premarket
+    //3: after-hours
+    //4: postmarket
 
     useEffect (() => {
         document.title = 'Stock Shapes';
@@ -20,7 +25,7 @@ function HomePage ({hide}) {
     const minutes = date.getUTCMinutes()
     console.log(`UTC ${hours}:${minutes}`);
     
-    if (hours >= 13 && hours <= 20) {
+    if (hours >= 13 && hours <= 21) {
         // DEBUGGING
         // if (hours <= 24) {
         setOpenMarket(true)
