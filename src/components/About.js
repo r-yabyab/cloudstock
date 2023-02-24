@@ -9,7 +9,7 @@ function About () {
 
     return (
         <>
-            <div className="text-center pt-10 max-w-[600px] m-auto">
+            <div className="text-center pt-10 max-w-[800px] m-auto ">
                 <div className="italic text-xl font-bold">
                     {/* About Stock Shapes  */}
                     About Stock Shapes
@@ -26,24 +26,25 @@ function About () {
                     <div>Due to IEX cloud API costing money, free users have been limited to 5 stocks with a timeout after 30 minutes. Paid users <span className="text-green-400">$4.99 a month</span> have access to 20 symbols, no timeouts, and more frequent stock updates.</div>
                     {/* <div>Inspired by the live DOM from tradovate. I loved seeing the numbers go bananas during open session</div> */}
                 </div>
-                <div className="text-left max-w-[520px] select-none  m-auto absolute right-[50%] translate-x-1/2 justify-center">
-                {/* <div className="italic text-xl pt-10 font-bold"> Features </div> */}
-                <div><u>Free-tier</u>: Real time stock quotes. Max 5 quotes on screen.</div>
-                <div className="indent-4">- Price, latest trade size, change, percent change, time before last trade</div>
-                <div className="indent-4">- On market close: Access to previous session's quotes</div>
-                <div><u>Paid-tier</u>: In progress</div>
+                <div className="text-left w-[520px] select-none absolute right-[50%] translate-x-1/2 justify-center">
+                    {/* <div className="italic text-xl pt-10 font-bold"> Features </div> */}
+                    <div><u>Free-tier</u>: Real time stock quotes. Max 5 quotes on screen.</div>
+                    <div className="indent-4">- Price, latest trade size, change, percent change, time before last trade</div>
+                    <div className="indent-4">- On market close: Access to previous session's quotes</div>
+                    <div><u>Paid-tier</u>: In progress</div>
 
-                <div>Globex/crypto data: In progress</div>
-                {/* <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div> */}
-                {/* <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div> */}
-                <div className=" ">Please be mindful of API costs! <br></br># of calls from last session: <span className=" italic text-pink-200">1,738,719 - 1,417,772</span></div>
-                
+                    <div>Globex/crypto data: In progress</div>
+                    {/* <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div> */}
+                    {/* <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div> */}
+                    <div className="">Please be mindful of API costs! <br></br># of calls from last session: <span className=" italic text-pink-200">1,738,719 - 1,417,772</span></div>
+
                     <div className="pt-64 text-neutral-600">Changelog:</div>
+                    <div className="text-neutral-600">02/23/23 17:03 - SSE endpoint (live data) works now, fixed nginx config</div>
                     <div className="text-neutral-600">02/22/23 - data now fetches via secure HTTPS connection through nginx that points to the nodejs script via localhost. Only REST endpoints work, SSE times out randomly, sometimes connects. Currently fixing SSE reverse proxy </div>
                     <div className="text-neutral-600">02/21/23 - moved server to AWS EC2 because vercel doesn't support websockets/SSE, live updates via SSE available to public now (client stays on vercel)</div>
                     <div className="text-neutral-600">02/20/23 - SSE kept running locally due to Vercel not supporting websockets, will implement</div>
                     <div className="text-neutral-600">02/19/23 23:53 - deployed client and server to vercel</div>
-                
+
                 </div>
                 {/* <div>Access to: Stocks, futures, cryptocurrencies</div> */}
 
