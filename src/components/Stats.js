@@ -144,7 +144,7 @@ const [connectedSSE, setConnectedSSE] = useState('')
 
       source.addEventListener('open', event => {
         console.log('Connection to server opened.');
-        setConnectedSSE('Connected: SSE Stream opened')
+        setConnectedSSE('Connected (live updates)')
         setHasError(false)
         console.log(hasError)
       });

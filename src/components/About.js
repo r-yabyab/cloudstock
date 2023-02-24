@@ -36,7 +36,7 @@ function About () {
                     <div>Globex/crypto data: In progress</div>
                     {/* <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div> */}
                     {/* <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div> */}
-                    <div className="">Please be mindful of API costs! <br></br># of calls from last session: <span className=" italic text-pink-200">1,738,719 - 1,417,772</span></div>
+                    <div className="">Please be mindful of API costs! <br></br># of calls from previous sessions: <span className=" italic text-pink-200">1,738,719 - 1,417,772</span></div>
 
                     <div className="pt-64 text-neutral-600">Changelog:</div>
                     <div className="text-neutral-600">02/23/23 17:03 - SSE endpoint (live data) works now, fixed nginx config</div>
