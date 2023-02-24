@@ -29,19 +29,28 @@ select::-webkit-scrollbar-thumb {
   
   @keyframes price-fade-up {
   /* 0% { background-color: lightgreen; */
-    0% { background-color: yellow;
-
+    /* 0% { background-color: yellow; */
+      0% { background-color: lime;
+/* color:lime; */
   }
-100% { background-color: none; }
+100% { background-color: none; 
+  /* color:lime; */
+
+}
 }
 
   
   @keyframes price-fade-down {
     /* 0% { background-color: lightcoral; */
-        0% { background-color: yellow;
+        /* 0% { background-color: yellow; */
+          0% { background-color: red;
+          /* color:red; */
 
     }
-  100% { background-color: none; }
+  100% { background-color: none; 
+    /* color:red; */
+  
+  }
   }
   
   @keyframes price-fade-yellow {
