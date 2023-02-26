@@ -14,6 +14,9 @@ function DataFetch ({openMarket}) {
     const [stock, setStock] = useState(null)
     //force updates Components
     const [reducerValue, forceUpdate] = useReducer(x => x+1, 0)
+    const [filteredData, setFilteredData] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
+    const [searchError, setSearchError] = useState('')
 
 
 
@@ -60,6 +63,7 @@ function DataFetch ({openMarket}) {
             
             if (response.ok) {
                 setSymbolList(json)
+                console.log(symbolList)
             }
         }
         fetchSymbolList()
@@ -180,15 +184,60 @@ function DataFetch ({openMarket}) {
     setSymbolName(e.target.value)
   }
   
+  const handlerFilter = (event) => {
+    const searchWord = event.target.value
+    setSearchTerm(searchWord)
+    const newFilter = symbolList.filter((x) => {
+        return x.symbol.toLowerCase().includes(searchWord.toLowerCase())
+    })
+    if (searchWord === "") {
+    setFilteredData([])
+    } else {
+        setFilteredData(newFilter)
+        setSearchTerm(event.target.value)
+    }
+  }
+
+  const selectSearch = (symbol) => {
+    setSymbolName(symbol)
+    setSearchTerm('')
+    setFilteredData([])
+  }
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && searchTerm.length > 0) {
+        if (filteredData.length > 0) {
+            selectSearch(filteredData[0].symbol)
+            setSearchTerm('')
+            setFilteredData([])
+        } else {
+            if (event.key === 'Enter' && filteredData.length === 0)
+             {
+                setSearchTerm('')
+                setSymbolName('')
+                setSearchError('Inavlid symbol')
+                setTimeout(() => {
+                    setSearchError('')
+                },1000)
+            }
+        }
+        } else if (event.key === 'Backspace'){
+            event.preventDefault();
+            setSearchTerm(searchTerm.slice(0, -1));
+            if (searchTerm.length === 1) {
+                setFilteredData([]);
+        }
+    }
+        };
 
     return (
         <>
-            <div draggable="false" className="relative select-none mt-40 -mb-40 text-center">
+            <div draggable="false" className="relative select-none mt-60 -mb-40 text-center">
                 {/* <button onClick={clickHandler}>penios</button> */}
                 <div className="p-4">
                     {/* Select Symbol: */}
                     {/* Click from dropdownlist --> setsSymbol */}
-                    <select
+                    {/* <select
                         placeholder="hello"
                         value={symbolName}
                         onChange={selectHandler}
@@ -196,7 +245,21 @@ function DataFetch ({openMarket}) {
                     >
                         <option value="hello">Select ticker</option>
                         {stockList}
-                    </select>
+                    </select> */}
+                    <input className="text-black" type="text"
+                        value={searchTerm}
+                        placeholder="Enter stock symbol..." onChange={handlerFilter} onKeyDown={handleKeyDown} />
+                    {filteredData.length !== 0 && (
+                        <div className="text-white max-h-[200px] overflow-hidden absolute  left-[50%] -translate-x-1/2 w-[182px] ">{filteredData && filteredData.slice(0, 5).map((x, index) => {
+                            return (
+                                <div className="hover:bg-yellow-400 hover:text-black hover:font-semibold hover:cursor-pointer" key={index} onClick={() => selectSearch(x.symbol)}>
+                                    {x.symbol}
+                                </div>
+                            )
+                        })}</div>
+                    )}
+
+<span className="text-red-500 absolute flex left-[50%] -translate-x-1/2">{searchError}</span>
 
                     <div>
                         {/* Updates Quotes */}
