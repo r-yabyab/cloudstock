@@ -167,8 +167,7 @@ const [connectedSSE, setConnectedSSE] = useState('')
       setHasError(true)
       setConnectedSSE('Awaiting market open for live updates')
     }
-  // }, [hasError, yourStocks]);
-  }, [yourStocks]);
+  }, [hasError, yourStocks]);
 
 
 ////////////////////////////////////////
