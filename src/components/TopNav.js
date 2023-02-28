@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo512 from '../photos/logo512.png'
 
 function TopNav () {
     return (
@@ -12,7 +13,8 @@ function TopNav () {
                 {/* <div>Sign up</div> */}
                 <div className="absolute top-1 left-2 text-2xl tracking-tighter font-semibold italic">
                     {/* STOCK SHAPES */}
-                    <Link to='/' className="hover:text-white">STOCK SHAPES</Link>
+                    <Link to='/' className="hover:text-white ml-10"><img src={logo512} alt='logo' className="absolute mt-[2px] w-[30px]"/>
+                    STOCK SHAPES</Link>
                     
                 </div>
             </div>
