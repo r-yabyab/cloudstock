@@ -36,6 +36,7 @@ function Stats ({symbolName, setSymbolName,
 
                 } else {
                     alert(`${symbolName} is already on your list.`)
+                    setSymbolName('')
                 }
             } else {
                 alert("Max 5 stocks allowed Free User")
@@ -119,8 +120,9 @@ const [connectedSSE, setConnectedSSE] = useState('')
       source.addEventListener('message', event => {
         if (event.data) {
           const quote = JSON.parse(event.data)[0];
+          // displays current and previous quotes
+          // 'if (quote)' used to mitigate returning NaN & crashing when SSE returns the occasional undefined
           if (quote) {
-            // displays current and previous quotes
             setQuotes(quotes => {
               const updatedQuotes = [...quotes];
               const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
