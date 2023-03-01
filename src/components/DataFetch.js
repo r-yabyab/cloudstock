@@ -180,9 +180,9 @@ function DataFetch ({openMarket}) {
   
 
 
-  const selectHandler = (e) => {
-    setSymbolName(e.target.value)
-  }
+//   const selectHandler = (e) => {
+//     setSymbolName(e.target.value)
+//   }
   
   const handlerFilter = (event) => {
     const searchWord = event.target.value

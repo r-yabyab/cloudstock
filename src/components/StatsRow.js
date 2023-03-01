@@ -17,7 +17,7 @@ function StatsRow (props) {
     }, [props.price, previousPrice, props.symbol]);
     
     useEffect(() => {
-        if (openMarket) {
+        if ([1,2,3].includes(openMarket)) {
         let interval = setInterval(() => {
             setCounter(x => x + 10)
         },100)
@@ -100,11 +100,11 @@ function StatsRow (props) {
                     <br></br> */}
                             {/* ${openMarket ? parseFloat(props.price).toFixed(2) : props.latestPrice} */}
                             {/* vvv WORKS */}
-                            {openMarket ? `$${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)}`}
+                            {[1,2,3].includes(openMarket) ? `$${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)}`}
                              {/* FOR DEBUGGING EC2 INSTANCE vvvv */}
                              {/* $${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)} */}
-                            <div className="absolute right-[50%] translate-x-1/2">{openMarket && !(width > 500 && height > 170) ? <>{props.size}</> : null}</div>
-                            <div className="absolute text-gray-500 -mt-[50px] right-[50%] translate-x-1/2">{openMarket && !(width > 500 && height > 170) ? Math.floor(counter / 100) : null}</div>
+                            <div className="absolute right-[50%] translate-x-1/2">{[1,2,3].includes(openMarket) && !(width > 500 && height > 170) ? <>{props.size}</> : null}</div>
+                            <div className="absolute text-gray-500 -mt-[50px] right-[50%] translate-x-1/2">{[1,2,3].includes(openMarket) && !(width > 500 && height > 170) ? Math.floor(counter / 100) : null}</div>
                             
                         </div>
                         {/* {`${displaySize}`}
@@ -121,11 +121,11 @@ function StatsRow (props) {
                         <div className="">
                             {/* <div>{parseFloat(props.change).toFixed(2)}</div> */}
                             <div className="absolute top-[30%] -translate-y-1/4 right-[50%] translate-x-1/2">
-                                <div className="">{openMarket ? parseFloat(props.price - props.previousClose).toFixed(2) : props.change}</div>
+                                <div className="">{[1,2,3].includes(openMarket) ? parseFloat(props.price - props.previousClose).toFixed(2) : props.change}</div>
                             </div>
                             {/* <div>{parseFloat(props.price - props.open).toFixed(2)}</div> */}
                             {/* <div>open{props.open} + price{props.price}</div> */}
-                            <div className={props.change > 0 ? "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-green-400" : "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-red-400"}>%{openMarket ? parseFloat(((props.price - props.previousClose) / props.previousClose) * 100).toFixed(2) : parseFloat(props.changePercent * 100).toFixed(2)}</div>
+                            <div className={props.change > 0 ? "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-green-400" : "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-red-400"}>%{[1,2,3].includes(openMarket) ? parseFloat(((props.price - props.previousClose) / props.previousClose) * 100).toFixed(2) : parseFloat(props.changePercent * 100).toFixed(2)}</div>
 
 {/* WIDTH AND HEIGHT DEBUGGING */}
 {/* WIDTH AND HEIGHT DEBUGGING */}

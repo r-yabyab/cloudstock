@@ -40,6 +40,12 @@ function About () {
                     <div className="">Please be mindful of API costs! <br></br># of calls from previous sessions: <span className=" italic text-pink-200">8,452,972 - 6,185,228, 1,738,719, 1,417,772</span></div>
 
                     <div className="pt-64 text-neutral-600">Changelog:</div>
+                    <div className="text-neutral-600">03/01/23 - Market status now displays PREMARKET and AFTERHOURS along with OPEN and CLOSED. <br/>Hours are as follows in UTC:
+                    <br/><span className="text-yellow-400">PREMARKET | 14:00 - 14:30</span> <br/>
+                    <span className="text-green-400">OPEN | 14:30 - 21:00</span><br/>
+                    <span className="text-orange-400">AFTERHOURS | 21:00 - 22:00</span><br/>
+                    <span className="text-red-500">CLOSED | 22:00 - 14:00 on Mon - Fri, closed on Sat - Sun</span> 
+                    </div>
                     <div className="text-neutral-600">02/26/23 17:03 - Removed dropdown for text field, fixed dragging latency (less buggy on mobile, but resizing still disabled)</div>
                     <div className="text-neutral-600">02/23/23 17:03 - SSE endpoint (live data) works now, fixed nginx config</div>
                     <div className="text-neutral-600">02/22/23 - data now fetches via secure HTTPS connection through nginx that points to the nodejs script via localhost. Only REST endpoints work, SSE times out randomly, sometimes connects. Currently fixing SSE reverse proxy </div>

@@ -7,7 +7,7 @@ import Draggable from 'react-draggable'
 
 
 // import Draggable from 'react-draggable'
-
+  
 
 function Stats ({symbolName, setSymbolName,
   //  reducerValue, forceUpdate, 
@@ -80,7 +80,7 @@ function Stats ({symbolName, setSymbolName,
         
           fetchData();
         
-          if (openMarket) {
+          if ([1, 2, 3].includes(openMarket)) {
           const intervalId = setInterval(() => {
             fetchData();
           }, 30000);
@@ -106,7 +106,7 @@ const [connectedSSE, setConnectedSSE] = useState('')
 
   useEffect(() => {
     //replaces yourStocks with a string for NodeJS to accept as params (qs: _____)
-    if (openMarket) {
+    if ([1,2,3].includes(openMarket)) {
     const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
     const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
     console.log('symbolsURL:' + symbolsURL)
