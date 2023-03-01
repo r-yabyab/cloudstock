@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import demogif from '../photos/demogif.gif'
+import demogif1 from '../photos/demogif1.gif'
 
 function About () {
 
@@ -36,7 +37,7 @@ function About () {
                     <div>Globex/crypto data: In progress</div>
                     {/* <div>Due to API costs, SSE streams time out after 10 minutes of inactivity on market open</div> */}
                     {/* <div>Please be mindful of API costs, there's a reason why real time updates tend to only exist on trading platforms!</div> */}
-                    <div className="">Please be mindful of API costs! <br></br># of calls from previous sessions: <span className=" italic text-pink-200">6,185,228, 1,738,719, 1,417,772</span></div>
+                    <div className="">Please be mindful of API costs! <br></br># of calls from previous sessions: <span className=" italic text-pink-200">8,452,972 - 6,185,228, 1,738,719, 1,417,772</span></div>
 
                     <div className="pt-64 text-neutral-600">Changelog:</div>
                     <div className="text-neutral-600">02/26/23 17:03 - Removed dropdown for text field, fixed dragging latency (less buggy on mobile, but resizing still disabled)</div>
@@ -55,7 +56,7 @@ function About () {
                 <br></br>
                 <div>Q: Why are the price changes/open different than in x platforms?</div>
                 <div>A: Price open is based on premarket price, not market open.</div> */}
-                <img draggable={false} className="pt-[224px] absolute right-[50%] translate-x-1/2 select-none" src={demogif} alt="gif" />
+                <img draggable={false} className="pt-[224px] max-lg:w-[400px] lg:w-[800px] absolute right-[50%] translate-x-1/2 select-none" src={demogif1} alt="gif" />
                 
                 {/* <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div> */}
