@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import demogif from '../photos/demogif.gif'
+// import demogif from '../photos/demogif.gif'
 import demogif1 from '../photos/demogif1.gif'
 
 function About () {
