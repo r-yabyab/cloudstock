@@ -22,7 +22,7 @@ function HomePage ({hide}) {
         const days = date.getUTCDay()
         console.log(`UTC ${hours}:${minutes}, day:${days}`);
         if (days >= 1 && days <= 5) {
-            if ((hours >= 14 && minutes >=0) && (hours >= 14 && minutes <=30)) {
+            if ((hours >= 14 && minutes >=0) && (hours <= 14 && minutes <=30)) {
                 setOpenMarket(2)
             } else if ((hours >= 14 && minutes >=30) && hours <= 21) {
                 setOpenMarket(1)

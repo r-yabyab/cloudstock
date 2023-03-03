@@ -16,7 +16,8 @@ function App() {
 
   return (
 <>
-<div className='absolute w-full h-full bg-neutral-800 text-white '>
+{/* <div className='absolute w-full h-full bg-neutral-800   text-white '> */}
+<div className='absolute w-full h-full   text-white '>
       <div className={hide ? "hidden" : ""}><TopNav /></div>
 
       <Routes>
@@ -28,6 +29,7 @@ function App() {
 <button onClick={hideHandler} className={hide ?'bg-green-600 w-[70px] select-none p-4 absolute top-[41px] right-4 hover:bg-green-400' :'bg-red-600 p-4 absolute top-[41px]  w-[70px] right-4 hover:bg-red-400'}
 >
   {hide ? "show" : "hide" }</button>
+  <div className='fixed inset-0 bg-neutral-800 z-[-1] pointer-events-none'></div>
       </div>
     </>
   );
