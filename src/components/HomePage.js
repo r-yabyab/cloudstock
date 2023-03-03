@@ -24,7 +24,8 @@ function HomePage ({hide}) {
         if (days >= 1 && days <= 5) {
             if ((hours >= 14 && minutes >=0) && (hours <= 14 && minutes <=30)) {
                 setOpenMarket(2)
-            } else if ((hours >= 14 && minutes >=30) && hours <= 21) {
+            // } else if ((hours >= 14 && minutes >=30) && hours <= 21) {
+            } else if (hours >= 14 && hours <= 21) {
                 setOpenMarket(1)
             } else if (hours >= 21 && hours <= 22) {
                 setOpenMarket(3)
