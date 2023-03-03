@@ -22,10 +22,10 @@ function HomePage ({hide}) {
         const days = date.getUTCDay()
         console.log(`UTC ${hours}:${minutes}, day:${days}`);
         if (days >= 1 && days <= 5) {
-            if ((hours == 14 && minutes >=0) && (hours == 14 && minutes <=30)) {
+            if ((hours === 14 && minutes >=0) && (hours === 14 && minutes <=30)) {
                 setOpenMarket(2)
             // } else if ((hours >= 14 && minutes >=30) && hours <= 21) {
-            } else if (hours >= 14 && hours <= 21) {
+            } else if (hours >= 14 && hours <= 20) {
                 setOpenMarket(1)
             } else if (hours >= 21 && hours <= 22) {
                 setOpenMarket(3)
@@ -51,13 +51,13 @@ function HomePage ({hide}) {
 
             <div className={hide ? "absolute top-0 select-none text-white flex" : "absolute top-10 select-none text-white flex space-x-6"}>
                 <div className={hide ? "hidden" : null}>Markets <span className=
-                {openMarket == 1 
-                ? "text-green-400" : openMarket == 3 
-                ? "text-orange-400" : openMarket == 2 
+                {openMarket === 1 
+                ? "text-green-400" : openMarket === 3 
+                ? "text-orange-400" : openMarket === 2 
                 ? "text-yellow-400" : "text-red-400" }>
-                    {openMarket == 1
-                    ? "OPEN": openMarket == 3 
-                    ? "AFTERHOURS" : openMarket == 2 
+                    {openMarket === 1
+                    ? "OPEN": openMarket === 3 
+                    ? "AFTERHOURS" : openMarket === 2 
                     ? "PREMARKET" : "CLOSED"}
                     </span></div>
                 {/* <div className={hide ? "hidden" : openMarket ? "hidden" : "absolute top-4 -left-[23px]"}>Futures <span className={openMarket ? "text-red-400" : "text-green-400" }>{openMarket ? "CLOSED":"OPEN"}</span></div> */}
