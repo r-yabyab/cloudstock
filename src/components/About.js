@@ -46,7 +46,7 @@ function About () {
                     <div className="relative md:mt-72 max-md:mt-40 select-none">
                         {/* <div className="absolute top-0">Changelog</div> */}
                         <div className=" justify-center text-center text-white">Changelog <span onClick={e => setMiniLog(!miniLog)} className={miniLog ? "hover:text-white hover:cursor-pointer bg-neutral-600" : "hover:text-white hover:cursor-pointer"}>(show minor updates)</span></div>
-                        <div className={miniLog ? "bg-neutral-600" : "hidden"}>03/03/23 - Compared to the live updates (SSE) running locally to my test environment, the live updates from the server being fed to this site sometimes lags a couple seconds behind and often skips price updates especially when there's multiple price changes a second. Working to resolves issue. </div>
+                        <div className={miniLog ? "bg-neutral-600" : "hidden"}>03/03/23 - Compared to the live updates (SSE) running locally to my test environment, the live updates from the server being fed to this site sometimes lags a couple seconds behind and often skips price updates especially when there's multiple price changes a second. Working to resolve issue. </div>
                         <div className={miniLog ? "bg-neutral-600" : "hidden"}>03/02/23 - Background color now stays gray in any window size. OPEN market status now displays correctly (previously showed PREMARKET on both PREMARKET and OPEN)</div>
                         <div className="text-white [&>span]:ml-8">03/01/23 - Market status now displays PREMARKET and AFTERHOURS along with OPEN and CLOSED. 
                         <br />Hours are as follows in UTC:
