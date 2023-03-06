@@ -4,15 +4,25 @@ import TopNav from './components/TopNav';
 import { Route, Routes } from "react-router-dom"
 import HomePage from './components/HomePage';
 import About from './components/About';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   const [hide, setHide] = useState (false)
 
-  const hideHandler = () => {
+  const hideHandler = (e) => {
     setHide(!hide)
   }
+
+        // for hide toggle
+        useEffect(() => {
+          const hideData = localStorage.getItem('_hide_toggle')
+          if (hideData !== null) setHide(JSON.parse(hideData))
+      }, [])
+  
+      useEffect(() => {
+          localStorage.setItem('_hide_toggle', JSON.stringify(hide));
+        }, [hide]);
 
   return (
 <>
