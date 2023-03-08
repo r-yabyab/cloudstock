@@ -20,7 +20,7 @@ function About () {
                         <div className="md:-mb-8 max-md:-mb-5">About</div>
                         <div>Stock Shapes</div>
                     </div>
-                    <div className="mt-2">Stock Shapes is a real time stock tracker for the U.S. equities market via Investors Exchange. We (team of 1 person) are focused on delivering price updates with spatial freedom. Use it to aid your trading sessions by resizing the browser window, or simply follow your stocks' price action on mobile.
+                    <div className="mt-2">Stock Shapes is a real time stock tracker for the U.S. equities market via Investors Exchange. We (team of 1 person) are focused on delivering lightweight and snappy price updates with a simple user interface. Use it to aid your trading sessions by resizing the browser window, or simply follow your stocks' price action on mobile.
                     </div>
                     {/* <div className="mt-6">
                     Stock Shapes is a real-time stock tracker for the U.S. equities market. We offer real-time updates and spatial freedom, making it easy for users to keep track of stock prices and other relevant data. With a focus on simplicity and ease of use, Stock Shapes delivers a user-friendly interface that is responsive across different devices and platforms. Whether you're a seasoned investor or just starting out, Stock Shapes is the perfect tool for staying on top of the latest trends in the U.S. equities market, and making informed investment decisions.
@@ -56,7 +56,7 @@ function About () {
                     <div className="indent-8">Price, latest trade size, change, percent change, time before last trade.</div>
                     <div className="indent-8">On market close: Access to previous session's quotes.</div>
 
-                    <div className="lg:mt-[320px] max-lg:mt-[200px] mb-16">
+                    <div className="lg:mt-[320px] max-md:mt-[180px] max-lg:mt-[300px] mb-16">
                         Data is pulled from IEX Cloud through Investors Exchange which handles around 2.3% of daily shares volume on the U.S. equities market. IEX Cloud was chosen as our API provider because it offers reasonable pricing and a simple onboarding process compared to the other top exchanges.<br/>
                         <br/>Here is a breakdown of exchanges with the most notional trade volume (average daily for March 2023):
                         <div className="indent-8 w-[500px] [&>div]:grid-cols-3 [&>div]:grid">
@@ -140,7 +140,7 @@ function About () {
                 <br></br>
                 <div>Q: Why are the price changes/open different than in x platforms?</div>
                 <div>A: Price open is based on premarket price, not market open.</div> */}
-                <img draggable={false} className="pt-[224px] max-lg:top-[440px] max-md:top-[440px] lg:top-[420px] max-md:w-[400px] md:w-[800px] absolute right-[50%] translate-x-1/2 select-none" src={demogif1} alt="gif" />
+                <img draggable={false} className="pt-[224px] max-lg:top-[440px] max-md:top-[450px] lg:top-[420px] max-md:w-[400px] md:w-[800px] absolute right-[50%] translate-x-1/2 select-none" src={demogif1} alt="gif" />
 
                 {/* <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div> */}
