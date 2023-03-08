@@ -5,10 +5,13 @@ import { Route, Routes } from "react-router-dom"
 import HomePage from './components/HomePage';
 import About from './components/About';
 import { useEffect, useState } from 'react';
+import demogif from './photos/demogif1.gif'
+import logo512 from './photos/logo512.png'
 
 function App() {
 
   const [hide, setHide] = useState (false)
+  const [entered, setEntered] = useState(false) 
 
   const hideHandler = (e) => {
     setHide(!hide)
@@ -24,11 +27,45 @@ function App() {
           localStorage.setItem('_hide_toggle', JSON.stringify(hide));
         }, [hide]);
 
+        // for entered toggle
+        useEffect(() => {
+          const enteredData = localStorage.getItem('_entry')
+          if (enteredData !== null) setEntered(JSON.parse(enteredData))
+      }, [])
+  
+      useEffect(() => {
+          localStorage.setItem('_entry', JSON.stringify(entered));
+        }, [entered]);
+
+        const enteredHandler = (e) => {
+          setEntered(true)
+          console.log(entered)
+        }
+
   return (
 <>
 {/* <div className='absolute w-full h-full bg-neutral-800   text-white '> */}
+
+<div className={entered ? 'hidden' : 'w-full select-none h-full absolute z-10 text-white bg-black'}>
+  
+        <div className='mt-32 flex [&>div]:m-auto  flex-col'>
+          <div className=' text-[36px] gap-4 pb-14 flex justify-center'>
+            <img className='w-[60px]' src={logo512} alt="logo" />
+            <div>Stock Shapes
+            </div>
+          </div>
+          <div className='max-md:w-[400px] max-md:text-center'>Track your stocks in real time during market hours with spatial freedom.</div>
+          <div className='max-md:pt-4'>Max 5 stocks allowed on screen.</div>
+          <img draggable={false} className='m-auto mt-8 mb-10 md:w-[600px]  max-md:w-[400px]' src={demogif} alt='demo gif' />
+          <button onClick={enteredHandler} className='bg-green-700 w-[400px] m-auto hover:bg-green-200 hover:text-black p-4 text-2xl tracking-wide font-semibold'>Continue to site</button>
+        </div>
+
+</div>
+
 <div className='absolute w-full h-full   text-white '>
       <div className={hide ? "hidden" : ""}><TopNav /></div>
+
+
 
       <Routes>
         <Route path='/' element={<HomePage hide={hide} />} />

@@ -109,6 +109,7 @@ function About () {
                         <div className="border-t-2 justify-center text-left pb-4  text-white">
                             <span className="text-[36px]">Changelog</span> <span onClick={e => setMiniLog(!miniLog)} className={miniLog ? "hover:text-white  hover:cursor-pointer bg-neutral-600" : "hover:text-white hover:bg-neutral-600 hover:cursor-pointer"}>(show minor updates)</span></div>
                             <div className="text-white">03/07/23 - SSE stream worked perfectly today after no tweaking, IEX customer support solved issue on their end.</div>
+                            <div>- Added entry page</div>
                             <div>- Updated About page layout and contents</div>
                             <div>- Updated navigation bar</div>
                             <div>- Fixed AFTERHOURS status not showing correctly</div>
