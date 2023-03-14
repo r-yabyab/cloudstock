@@ -1,14 +1,34 @@
 import './App.css';
 // import RefPage from './components/RefPage'
 import TopNav from './components/TopNav';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom"
+import { useAuth0 } from '@auth0/auth0-react';
 import HomePage from './components/HomePage';
 import About from './components/About';
-import { useEffect, useState } from 'react';
 import demogif from './photos/demogif1.gif'
 import logo512 from './photos/logo512.png'
 
+
+
 function App() {
+
+    const { user, isAuthenticated, isLoading } = useAuth0();
+  
+  //   if (isLoading) {
+  //     return <div>Loading...</div>
+  //   }
+
+  //   return (
+  //     isAuthenticated && (
+  //       <div>
+  //         <img src={user.picture} alt={user.name} />
+  //         <h2>{user.name}</h2>
+  //         <p>{user.email}</p>
+  //       </div>
+  //     )
+  //   )
+  // }
 
   const [hide, setHide] = useState (false)
   const [entered, setEntered] = useState(false) 
@@ -63,7 +83,7 @@ function App() {
 </div>
 
 <div className='absolute w-full h-full   text-white '>
-      <div className={hide ? "hidden" : ""}><TopNav /></div>
+      <div className={hide ? "hidden" : ""}><TopNav  user={user} isAuthenticated={isAuthenticated} isLoading={isLoading} /></div>
 
 
 
@@ -84,5 +104,7 @@ ${hide
     </>
   );
 }
+
+
 
 export default App;
