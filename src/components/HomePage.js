@@ -23,13 +23,13 @@ function HomePage ({hide}) {
         const days = date.getUTCDay()
         console.log(`UTC ${hours}:${minutes}, day:${days}`);
         if (days >= 1 && days <= 5) {
-            if ((hours === 14 && minutes >=0) && (hours === 14 && minutes <=30)) {
+            if ((hours === 15 && minutes >=0) && (hours === 15 && minutes <=30)) {
                 setOpenMarket(2)
             // } else if ((hours >= 14 && minutes >=30) && hours <= 21) {
-            } else if (hours >= 14 && hours <= 20) {
+            } else if (hours >= 15 && hours <= 21) {
                 setOpenMarket(1)
             // } else if (hours >= 21 && hours <= 22) {
-            } else if (hours === 21) {
+            } else if (hours === 22) {
                 setOpenMarket(3)
             } else {
                 // fires when markets are closed on weekdays

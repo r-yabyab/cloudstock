@@ -108,16 +108,18 @@ function About () {
                         {/* <div className="absolute top-0">Changelog</div> */}
                         <div className="border-t-2 justify-center text-left pb-4  text-white">
                             <span className="text-[36px]">Changelog</span> <span onClick={e => setMiniLog(!miniLog)} className={miniLog ? "hover:text-white  hover:cursor-pointer bg-neutral-600" : "hover:text-white hover:bg-neutral-600 hover:cursor-pointer"}>(show minor updates)</span></div>
-                            <div className="text-white">03/07/23 - SSE stream worked perfectly today after no tweaking, IEX customer support solved issue on their end.</div>
-                            <div>- Added entry page</div>
-                            <div>- Updated About page layout and contents</div>
-                            <div>- Updated navigation bar</div>
-                            <div>- Fixed AFTERHOURS status not showing correctly</div>
+                        
+                        <div className="text-white">03/13/23 - Updated market hours to reflect daylight savings</div>
+                        <div className="text-white">03/07/23 - SSE stream worked perfectly today after no tweaking, IEX customer support solved issue on their end.</div>
+                        <div>- Added entry page</div>
+                        <div>- Updated About page layout and contents</div>
+                        <div>- Updated navigation bar</div>
+                        <div>- Fixed AFTERHOURS status not showing correctly</div>
                         <div className="text-white">03/06/23 - Problem where live data will mostly show a single update from 2 days ago, actual live data only appears when you refresh the page several times. Same result occurs in local environment and through the server... currently in contact with API provider to find problem.</div>
                         <div className={miniLog ? "bg-neutral-600" : "hidden"}>03/03/23 - Compared to the live updates (SSE) running locally to my test environment, the live updates from the server being fed to this site sometimes lags a couple seconds behind and often skips price updates especially when there's multiple price changes a second. Working to resolve issue. </div>
                         <div className={miniLog ? "bg-neutral-600" : "hidden"}>03/02/23 - Background color now stays gray in any window size. OPEN market status now displays correctly (previously showed PREMARKET on both PREMARKET and OPEN)</div>
-                        <div className="text-white [&>span]:ml-8">03/01/23 - Market status now displays PREMARKET and AFTERHOURS along with OPEN and CLOSED. 
-                        <br />Hours are as follows in UTC:
+                        <div className="text-white [&>span]:ml-8">03/01/23 - Market status now displays PREMARKET and AFTERHOURS along with OPEN and CLOSED.
+                            <br />Hours are as follows in UTC:
                             <br />
                             <span className="text-yellow-400">PREMARKET | 14:00 - 14:30</span> <br />
                             <span className="text-green-400">OPEN | 14:30 - 21:00</span><br />
