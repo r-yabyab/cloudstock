@@ -7,6 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import HomePage from './components/HomePage';
 import About from './components/About';
 import demogif from './photos/demogif1.gif'
+import demogif2 from './photos/ss-fast-gif.gif'
 import logo512 from './photos/logo512.png'
 
 
@@ -66,7 +67,7 @@ function App() {
 <>
 {/* <div className='absolute w-full h-full bg-neutral-800   text-white '> */}
 
-<div className={entered ? 'hidden' : 'w-full select-none h-full absolute z-10 text-white bg-black'}>
+<div className={entered ? 'hidden' : 'w-full select-none min-h-screen pb-28 absolute z-10 text-white bg-black'}>
   
         <div className='mt-32 flex [&>div]:m-auto  flex-col'>
           <div className=' text-[36px] gap-4 pb-14 flex justify-center'>
@@ -77,7 +78,8 @@ function App() {
           <div className='max-md:w-[400px] max-md:text-center'>Track your stocks in real time during market hours with spatial freedom.</div>
           <div className='max-md:pt-4'>Max 5 stocks allowed on screen.</div>
           <img draggable={false} className='m-auto mt-8 mb-10 md:w-[600px]  max-md:w-[400px]' src={demogif} alt='demo gif' />
-          <button onClick={enteredHandler} className='bg-green-700 w-[400px] m-auto hover:bg-green-200 hover:text-black p-4 text-2xl tracking-wide font-semibold'>Continue to site</button>
+          <img draggable={false} className='m-auto -mt-10 mb-10 md:w-[600px]  max-md:w-[400px]' src={demogif2} alt='demo gif' />
+          <button onClick={enteredHandler} className='bg-green-700  w-[400px] m-auto hover:bg-green-200 hover:text-black p-4 text-2xl tracking-wide font-semibold'>Continue to site</button>
         </div>
 
 </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import demogif from '../photos/demogif.gif'
 import demogif1 from '../photos/demogif1.gif'
+import demogif2 from '../photos/ss-fast-gif.gif'
 
 function About () {
 
@@ -56,7 +57,7 @@ function About () {
                     <div className="ml-8">Price, latest trade size, change, percent change, time before last trade.</div>
                     <div className="ml-8">On market close: Access to previous session's quotes.</div>
 
-                    <div className="lg:mt-[320px] max-md:mt-[180px] max-lg:mt-[300px] mb-16">
+                    <div className="md:mt-[550px] max-md:mt-[300px] max-lg:mt-[300px] mb-16">
                         Data is pulled directly from IEX Cloud through Investors Exchange which handles around 2.3% of daily shares volume on the U.S. equities market. IEX Cloud was chosen as our API provider because it offers reasonable pricing with a simple onboarding process compared to the other top exchanges.<br/>
                         <br/>Here is a breakdown of exchanges with the most notional trade volume (average daily for March 2023):
                         <div className="indent-8 w-[500px] [&>div]:grid-cols-3 [&>div]:grid">
@@ -149,8 +150,10 @@ function About () {
                 <br></br>
                 <div>Q: Why are the price changes/open different than in x platforms?</div>
                 <div>A: Price open is based on premarket price, not market open.</div> */}
-                <img draggable={false} className="pt-[224px] max-lg:top-[440px] max-md:top-[450px] lg:top-[420px] max-md:w-[400px] md:w-[800px] absolute right-[50%] translate-x-1/2 select-none" src={demogif1} alt="gif" />
-
+                <div className="pt-[224px] max-lg:top-[440px] max-md:top-[450px] lg:top-[420px] max-md:w-[400px] md:w-[800px] absolute right-[50%] translate-x-1/2 select-none">
+                <img draggable={false}  src={demogif1} alt="gif" />
+                <img className="max-md:w-[400px] m-auto md:w-[600px]" draggable={false}  src={demogif2} alt="gif" />
+                </div>
                 {/* <div>Signup: 2 updates per second. Max 10 quotes on screen. </div>
                 <div>Rollovers are taken care of.</div> */}
                 <div className="mt-40 mb-0 select-none tracking-tighter text-zinc-200">© 2023 All Rights Reserved.</div>
