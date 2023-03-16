@@ -19,7 +19,7 @@ function About () {
                 <div className="max-md:w-[450px] md:w-[600px] m-auto lg:w-[800px] gap-10 pb-32 text-left justify-center border-t-2 ">
                     <div className="text-left max-md:text-[36px] md:text-[50px]">
                         <div className="md:-mb-8 max-md:-mb-5">About</div>
-                        <div>Stock Shapes</div>
+                        <div className="">Stock Shapes</div>
                     </div>
                     <div className="mt-2">Stock Shapes is a real time stock tracker for the U.S. equities market. We (team of 1 person) are focused on delivering lightweight and snappy price updates with a simple user interface. Use it to aid your trading sessions by resizing the browser window, or simply follow your stocks' price action on mobile.
                     </div>
@@ -111,6 +111,7 @@ function About () {
                             <span className="text-[36px]">Changelog</span> <span onClick={e => setMiniLog(!miniLog)} className={miniLog ? "hover:text-zinc-200  hover:cursor-pointer bg-neutral-600" : "hover:text-zinc-200 hover:bg-neutral-600 hover:cursor-pointer"}>(show minor updates)</span>
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
+                            <div className="text-zinc-600">To add: log that shows raw data</div>
                             <div><span>03/13/23 - 03/14/23</span> - Added optional login using auth0. Will implement less data restrictions for registered users.</div>
                             <div>- Auth0 introduced bug where cover page shows up for a split second on refresh, will fix.</div>
                             <div>- Updated market hours to reflect daylight savings</div>
