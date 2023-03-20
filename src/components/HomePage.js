@@ -96,7 +96,7 @@ function HomePage ({hide}) {
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
                 </svg>
-                <div className={alertMessage ? "ml-[40px] w-[300px] text-red-600" : 'hidden'}>API PROVIDER CHANGED DATA PLANS FROM $49 TO $1620 WITHOUT NOTICE. UNTIL I FIND A WORKAROUND / NEW API PROVIDER, STOCK SHAPES WILL NOT WORK <span className="text-red-600"><br/>*Updated 3/20/23 02:32AM</span>
+                <div className={alertMessage ? "ml-[40px] w-[300px] text-red-600" : 'hidden'}>API PROVIDER CHANGED DATA PLANS FROM $49 TO $1620 MONTHLY WITHOUT NOTICE. UNTIL I FIND A WORKAROUND / NEW API PROVIDER, STOCK SHAPES WILL NOT WORK <span className="text-red-600"><br/>*Updated 3/20/23 02:32AM</span>
                 {/* <span onClick={alertHandler} className="hover:text-white hover:cursor-pointer text-red-200">DISMISS</span> */}
                 </div>
             </div>
