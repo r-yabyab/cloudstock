@@ -111,7 +111,12 @@ function About () {
                             <span className="text-[36px]">Changelog</span> <span onClick={e => setMiniLog(!miniLog)} className={miniLog ? "hover:text-zinc-200  hover:cursor-pointer bg-neutral-600" : "hover:text-zinc-200 hover:bg-neutral-600 hover:cursor-pointer"}>(show minor updates)</span>
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
-                            <div className="text-zinc-600">To add: log that shows raw data</div>
+                            <div><span>03/19/23</span> - IEX Cloud increased their monthly subscription fees:
+                                <div>From: $49</div>
+                                <div>To: $100 + $20 monthly to access live data streams + $1,500 monthly to access simple stock quotes.</div>
+                            </div>
+                            <div>Quotes will not work on this website until I find a new API provider/workaround with IEX Cloud support</div>
+                            { }
                             <div><span>03/13/23 - 03/14/23</span> - Added optional login using auth0. Will implement less data restrictions for registered users.</div>
                             <div>- Auth0 introduced bug where cover page shows up for a split second on refresh, will fix.</div>
                             <div>- Updated market hours to reflect daylight savings</div>

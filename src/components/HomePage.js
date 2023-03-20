@@ -5,7 +5,7 @@ import { format } from "date-fns"
 function HomePage ({hide}) {
 
     const [openMarket, setOpenMarket] = useState(0)
-    // const [alertMessage, setAlertMessage] = useState(true)
+    const [alertMessage, setAlertMessage] = useState(true)
     //0: closed
     //1: open
     //2: premarket
@@ -41,20 +41,21 @@ function HomePage ({hide}) {
         console.log(`Market: ${[1,2,3].includes(openMarket) ? "open" : "closed"} ...#${openMarket}`)
     }, [])
 
-    // const alertHandler = (e) => {
-    //     setAlertMessage(!alertMessage)
-    //     console.log(alertMessage)
-    // }
+    //for alerts
+    const alertHandler = (e) => {
+        setAlertMessage(!alertMessage)
+        console.log(alertMessage)
+    }
 
-    // // for alert messages
-    // useEffect(() => {
-    //     const alertData = localStorage.getItem('_alerts')
-    //     if (alertData !== null) setAlertMessage(JSON.parse(alertData))
-    // }, [])
+    // for alert messages
+    useEffect(() => {
+        const alertData = localStorage.getItem('_alerts')
+        if (alertData !== null) setAlertMessage(JSON.parse(alertData))
+    }, [])
 
-    // useEffect(() => {
-    //     localStorage.setItem('_alerts', JSON.stringify(alertMessage));
-    //   }, [alertMessage]);
+    useEffect(() => {
+        localStorage.setItem('_alerts', JSON.stringify(alertMessage));
+      }, [alertMessage]);
 
 
 
@@ -85,14 +86,20 @@ function HomePage ({hide}) {
                 <div><TopTimer /></div>
                 {/* <div><UniversalTime /></div> */}
             </div>
-            {/* <div className="absolute flex gap-2 mt-6">
+            <div className="absolute flex gap-2 mt-6">
 
-                <svg onClick={alertHandler} className="hover:text-white absolute hover:cursor-pointer text-red-600 mt-1 ml-4" xmlns="http://www.w3.org/2000/svg" width="16" fill="currentColor" viewBox="0 0 16 16">
+                <svg 
+                // onClick={alertHandler} 
+                // className="hover:text-white absolute hover:cursor-pointer text-red-600 mt-1 ml-4" 
+                className=" absolute  text-red-600 mt-1 ml-4" 
+                xmlns="http://www.w3.org/2000/svg" width="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
                 </svg>
-                <div className={alertMessage ? "ml-[40px] w-[300px] text-red-600" : 'hidden'}>Problem where live data won't update correctly, currently fixing <span onClick={alertHandler} className="hover:text-white hover:cursor-pointer text-red-200">DISMISS</span></div>
-            </div> */}
+                <div className={alertMessage ? "ml-[40px] w-[300px] text-red-600" : 'hidden'}>API PROVIDER CHANGED DATA PLANS FROM $49 TO $1620 WITHOUT NOTICE. UNTIL I FIND A WORKAROUND / NEW API PROVIDER, STOCK SHAPES WILL NOT WORK <span className="text-red-600"><br/>*Updated 3/20/23 02:32AM</span>
+                {/* <span onClick={alertHandler} className="hover:text-white hover:cursor-pointer text-red-200">DISMISS</span> */}
+                </div>
+            </div>
             <DataFetch openMarket={openMarket} />
             
             {/* <div className="text-[200px] m-auto absolute top-0 pointer-events-none">fixing <span className="text-orange-200">HTTP</span> CONNECTION TO HTTPS</div> */}
