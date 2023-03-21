@@ -66,13 +66,16 @@ function Stats ({symbolName, setSymbolName,
           const fetchData = async () => {
             try {
               // const response = await axios.get('https://stockshapes-server.vercel.app/api/news', {
-                const response = await axios.get('https://stockshapes.net/api/news', {
+                const response = await axios.get('https://stockshapes.net/api/news', 
+                // const response = await axios.get('http://localhost:3001/api/news', 
+              {
                 params: {
                   yourStocks
                 }
               });
               setStockData(response.data);
               // console.log('fetched from server');
+              console.log(response.data)
             } catch (error) {
               console.error(error);
             }
@@ -347,15 +350,23 @@ useEffect(() => {
                         <StatsRow
                         //from REST API
                         symbol={stock.symbol}
-                        latestPrice={stock[0].latestPrice}
-                        change={stock[0].change}
-                        changePercent={stock[0].changePercent}
-                        iexOpen={stock[0].iexOpen}
-                        open={stock[0].open}
-                          // use this to get the typical market open percentage,
-                          // ex] if NDAQ opens @ 3%, the session's percentage will continue the 3% instead of
-                          // resetting to 0
-                        previousClose={stock[0].previousClose}
+                              // FROM IEX CLOUD APPERATE, REQUIRES $1,500 BUNDLE AS OF MID MARCH 2023
+                              // latestPrice={stock[0].latestPrice}
+                              // change={stock[0].change}
+                              // changePercent={stock[0].changePercent}
+                              // iexOpen={stock[0].iexOpen}
+                              // open={stock[0].open}
+                                // from FinnHub
+                              c={stock.c}
+                              change={stock.d}
+                              changePercent={stock.dp}
+                              iexOpen={stock.o}
+                              previousClose={stock.pc}
+                                // use this to get the typical market open percentage,
+                                // ex] if NDAQ opens @ 3%, the session's percentage will continue the 3% instead of
+                                // resetting to 0
+                              // previousClose={stock[0].previousClose}
+                        
                         // // from SSE Stream, for TOPS
                         // lastSalePrice={stock.lastSalePrice}
                         // lastSaleSize={stock.lastSaleSize}

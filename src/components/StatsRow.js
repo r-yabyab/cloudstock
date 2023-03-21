@@ -100,7 +100,7 @@ function StatsRow (props) {
                     <br></br> */}
                             {/* ${openMarket ? parseFloat(props.price).toFixed(2) : props.latestPrice} */}
                             {/* vvv WORKS */}
-                            {[1,2,3].includes(openMarket) ? `$${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)}`}
+                            {[1,2,3].includes(openMarket) ? `$${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.c).toFixed(2)}`}
                              {/* FOR DEBUGGING EC2 INSTANCE vvvv */}
                              {/* $${parseFloat(props.price).toFixed(2)}` : `$${parseFloat(props.latestPrice).toFixed(2)} */}
                             <div className="absolute right-[50%] translate-x-1/2">{[1,2,3].includes(openMarket) && !(width > 500 && height > 170) ? <>{props.size}</> : null}</div>
@@ -125,7 +125,7 @@ function StatsRow (props) {
                             </div>
                             {/* <div>{parseFloat(props.price - props.open).toFixed(2)}</div> */}
                             {/* <div>open{props.open} + price{props.price}</div> */}
-                            <div className={props.change > 0 ? "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-green-400" : "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-red-400"}>%{[1,2,3].includes(openMarket) ? parseFloat(((props.price - props.previousClose) / props.previousClose) * 100).toFixed(2) : parseFloat(props.changePercent * 100).toFixed(2)}</div>
+                            <div className={props.change > 0 ? "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-green-400" : "absolute top-[75%] -translate-y-3/4 right-[50%] translate-x-1/2 w-[98%] bg-red-400"}>%{[1,2,3].includes(openMarket) ? parseFloat(((props.price - props.previousClose) / props.previousClose) * 100).toFixed(2) : parseFloat(props.changePercent).toFixed(2)}</div>
 
 {/* WIDTH AND HEIGHT DEBUGGING */}
 {/* WIDTH AND HEIGHT DEBUGGING */}

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo512 from '../photos/logo512.png'
 import { useAuth0 } from "@auth0/auth0-react";
+import logo512 from '../photos/logo512.png'
 
-function TopNav ({  user, isAuthenticated, isLoading }) {
+function TopNav({ user, isAuthenticated, isLoading }) {
     // vars for useAuth0 
     //const { user, isAuthenticated, isLoading } = useAuth0();
 
@@ -11,29 +11,29 @@ function TopNav ({  user, isAuthenticated, isLoading }) {
 
     const LoginButton = () => {
         const { loginWithRedirect } = useAuth0();
-      
+
         return <button onClick={() => loginWithRedirect()}>Log In</button>;
-      };
+    };
 
-      const LogoutButton = () => {
+    const LogoutButton = () => {
         const { logout } = useAuth0();
-      
-        return (
-          <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-            Log Out
-          </button>
-        );
-      };
 
-      const userDrop = (e) => {
+        return (
+            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                Log Out
+            </button>
+        );
+    };
+
+    const userDrop = (e) => {
         setUserMenu(!userMenu)
         console.log(userMenu)
-      }
+    }
 
 
-    useEffect(() => {
-        console.log(`User: ${user} isAuthenticated: ${isAuthenticated} isLoading: ${isLoading}`)
-    }, [user, isAuthenticated, isLoading])
+    // useEffect(() => {
+    //     console.log(`User: ${user} isAuthenticated: ${isAuthenticated} isLoading: ${isLoading}`)
+    // }, [user, isAuthenticated, isLoading])
 
     return (
         <>

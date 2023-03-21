@@ -93,11 +93,11 @@ function DataFetch ({openMarket}) {
     // }, [])
 
     //maps symbols to Select Option
-    const stockList = symbolList && symbolList.map((stock, indexStock) => {
-        return (
-            <option key={indexStock} value={stock.symbol}>{stock.symbol}</option>
-        )
-    })
+    // const stockList = symbolList && symbolList.map((stock, indexStock) => {
+    //     return (
+    //         <option key={indexStock} value={stock.symbol}>{stock.symbol}</option>
+    //     )
+    // })
 
     //fetch single stock's information
     useEffect(() => {
@@ -107,6 +107,7 @@ function DataFetch ({openMarket}) {
             //   const response = await axios.get('https://stockshapes-server.vercel.app/api/tickerquote', {
                 // const response = await axios.get('http://34.218.179.6:3001/api/tickerquote', {
                     const response = await axios.get('https://stockshapes.net/api/tickerquote', {
+                    // const response = await axios.get('http://localhost:3001/api/tickerquote', {
                 params: {
                   symbolName
                 }
@@ -114,6 +115,7 @@ function DataFetch ({openMarket}) {
               setStock(response.data);
             //   console.log('fetched symbol quote');
             //   console.log(stock)
+              console.log(response.data)
             } catch (error) {
               console.error(error);
             }
@@ -146,22 +148,34 @@ function DataFetch ({openMarket}) {
         setSymbolName('')
     }
 
-    const stockPreview = stock && stock.map((stock, indexDescription) => {
-        return symbolName ? (
-            <div onClick={clearSymbol} key={indexDescription} className=
-                {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block" : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
-            >
-                    
-                <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">{stock.symbol}</span></div>
-                <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.latestPrice).toFixed(2)}</div>
-                <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.open}</div>
-                <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.change}</div>
-                <p className="absolute hover:cursor-pointer bg-blue-200 -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p>
+    // const stockPreview = () => {
+    //     stock && stock.map((stock, indexDescription) => {
+    //         return symbolName ? (
+    //             <div onClick={clearSymbol} key={indexDescription} className=
+    //                 // {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block" : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
+    //                 {stock.d > 0 ?
+    //                     "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block"
+    //                     : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
+    //             >
 
-            </div>
-        ): null
-    })
+    //                 {/* FROM IEX_CLOUD LEGACY (DEAD) */}
+    //                 {/* <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">{stock.symbol}</span></div>
+    //             <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.latestPrice).toFixed(2)}</div>
+    //             <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.open}</div>
+    //             <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.change}</div>
+    //             <p className="absolute hover:cursor-pointer bg-blue-200 -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p> */}
 
+
+    //                 <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">stock.symbolPENIS</span></div>
+    //                 <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.c).toFixed(2)}</div>
+    //                 <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.o}</div>
+    //                 <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.c}</div>
+    //                 <p className="absolute hover:cursor-pointer bg-blue-200 -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p>
+
+    //             </div>
+    //         ) : null
+    //     })
+    // }
 
 
 //   const clickHandler = () => {
@@ -275,12 +289,29 @@ function DataFetch ({openMarket}) {
             </div>
 
             <div>
-                {stockPreview}
+                {/* {stockPreview} */}
+
+                {stock && symbolName ?
+                    <div onClick={clearSymbol} className=
+                        // {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block" : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
+                        {stock.d > 0 ?
+                            "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block"
+                            : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
+                    >
+                        <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">{symbolName && symbolName}</span></div>
+                        <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.c).toFixed(2)}</div>
+                        <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.o}</div>
+                        <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.d}</div>
+                        <p className="absolute hover:cursor-pointer bg-blue-200 -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p>
+
+                    </div> : null
+                }
+
                 {/* {stock && <button onClick={addSymbol} className="absolute float-right bg-slate-400 hover:bg-green-300">++</button>}
                 {stock && <button onClick={removeSymbol} className="absolute float-right translate-y-6 bg-slate-400 hover:bg-red-300">--</button>} */}
             </div>
 
-{/* <div>
+            {/* <div>
     {list && list.map((x,index) => {
         return(
             <div key={x.id}>
