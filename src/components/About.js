@@ -58,8 +58,18 @@ function About () {
                     <div className="ml-8">On market close: Access to previous session's quotes.</div>
 
                     <div className="md:mt-[550px] max-md:mt-[300px] max-lg:mt-[300px] mb-16">
-                        Data is pulled directly from IEX Cloud through Investors Exchange which handles around 2.3% of daily shares volume on the U.S. equities market. IEX Cloud was chosen as our API provider because it offers reasonable pricing with a simple onboarding process compared to the other top exchanges.<br/>
-                        <br/>Here is a breakdown of exchanges with the most notional trade volume (average daily for March 2023):
+                        {/* Data is pulled directly from <a className="text-cyan-400" href='https://iexcloud.io' target='_blank'>IEX Cloud</a> through Investors Exchange which handles around 2.3% of daily shares volume on the U.S. equities market. IEX Cloud was chosen as our API provider because it offers reasonable pricing with a simple onboarding process compared to the other top exchanges.<br/>
+                        <br/>Here is a breakdown of exchanges with the most notional trade volume (average daily for March 2023): */}
+                        Stock data is sourced from the following API providers:
+                        <div className="[&>div]:ml-8">
+                            <div><a className="text-cyan-400" href='https://iexcloud.io' target='_blank'>IEX Cloud</a> for live data streaming via SSE<br />
+                            </div>
+                            <div><a className="text-cyan-400" href='https://finnhub.io/' target='_blank'>Finnhub</a> for market open prices via REST calls</div>
+                        </div>
+                        <br />
+                        IEX Cloud was chosen as our primary data provider because it offers transparency, reasonable pricing, and a simple onboarding process compared to other API providers.
+                        Here is a breakdown of exchanges with the most notional trade volume (average daily for March 2023):
+
                         <div className="indent-8 w-[500px] [&>div]:grid-cols-3 [&>div]:grid">
                             <div>
                                 <div>NYSE</div>
@@ -87,7 +97,7 @@ function About () {
                                     <div className="-ml-12">2.84%</div>
                                 </div>
                             </div>
-                            <p className="text-neutral-400 text-sm pt-4">*Before you ask: No, Robinhood is not a stock exchange.</p>
+                            {/* <p className="text-neutral-400 text-sm pt-4">*Before you ask: No, Robinhood is not a stock exchange.</p> */}
                     </div>
                         {/* coming at 5th largest, just before Members Exchange (3.2%), CBOE (12.83%), NASDAQ (16.39%), and NYSE (19.50%, #1 largest) pulled from cboe.com. */}
 
@@ -111,12 +121,19 @@ function About () {
                             <span className="text-[36px]">Changelog</span> <span onClick={e => setMiniLog(!miniLog)} className={miniLog ? "hover:text-zinc-200  hover:cursor-pointer bg-neutral-600" : "hover:text-zinc-200 hover:bg-neutral-600 hover:cursor-pointer"}>(show minor updates)</span>
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
-                            <div><span>03/19/23</span> - IEX Cloud increased their monthly subscription fees:
+                         
+                            <div><span>03/21/23</span> - Stock Shapes now uses Finnhub along with IEX Cloud. 
+                            <br/>On March 19, 2023, I was forced to move from IEX Cloud's Legacy platform to their Apperate platform with zero prior notice, increasing monthly costs from $49 to $100 + $20 SSE bundle as well as breaking my previous API endpoints. During the transition, their Stock_Quote endpoint that contained opening and closing prices became locked behind a $1,500 monthly bundle-- Finnhub's free tier is used solely to work around this.
+                            <br/>Overall, after scrambling to find another API provider, I found IEX Cloud to hold as best option in terms of pricing and transparency. Commercial-use is drastically cheaper compared to alternatives like Polygon, and their sourcing is simply from Investors Exchange rather than abstracted data providers. Despite IEX Cloud's inconsistent documentation and the occasional broken SSE endpoint, it gets the job done (usually).
+                            </div>
+
+
+                            <div className="[&>div]:ml-8"><span>03/19/23</span> - IEX Cloud increased their monthly subscription fees:
                                 <div>From: $49</div>
                                 <div>To: $100 + $20 monthly to access live data streams + $1,500 monthly to access simple stock quotes.</div>
                             </div>
                             <div>Quotes will not work on this website until I find a new API provider/workaround with IEX Cloud support</div>
-                            { }
+
                             <div><span>03/13/23 - 03/14/23</span> - Added optional login using auth0. Will implement less data restrictions for registered users.</div>
                             <div>- Auth0 introduced bug where cover page shows up for a split second on refresh, will fix.</div>
                             <div>- Updated market hours to reflect daylight savings</div>
