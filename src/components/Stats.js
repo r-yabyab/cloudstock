@@ -86,11 +86,11 @@ function Stats ({symbolName, setSymbolName,
           if ([1, 2, 3].includes(openMarket)) {
           const intervalId = setInterval(() => {
             fetchData();
-          }, 30000);
+          }, 3000000);
         
           setTimeout(() => {
             clearInterval(intervalId);
-          }, 600000);
+          }, 10000000);
           // 600000 == 10 minutes
         
           return () => {
