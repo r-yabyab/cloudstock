@@ -115,6 +115,21 @@ function StatsRow (props) {
                         {/* {Math.floor(counter/100)} */}
                     </div>
 
+                    <div className="flex text-sm justify-center bg-black flex-col">
+                        <div className="text-red-500">
+                            <div className="-mb-2">BID</div>
+                            <div>{props.bidSize}</div>
+                            <div className="-mt-2">{props.bidPrice}</div>
+                        </div>
+                        
+                        <div className="text-green-400">
+                            <div className="-mb-2">ASK</div>
+                            <div>{props.askSize}</div>
+                            <div className="-mt-2 ">{props.askPrice}</div>
+                        </div>
+                    </div>
+
+
                     <div className={`${width > 500 && height > 170 ? "hidden" : "flex-col  relative w-[98%] min-w-[60px]"} `}>
                         {/* <div className="absolute text-black top-[46%] -translate-y-1/2 right-[50%] translate-x-1/2 overflow-hidden">
                             __________________</div> */}
@@ -134,6 +149,9 @@ function StatsRow (props) {
                             </div> */}
                         </div>
                     </div>
+
+ 
+
 
                     <div selectnums={stock} onClick={removeSymbol} className=" border-none text-slate-500 hover:text-white hover:cursor-pointer absolute right-0 top-0 -mt-3 text-2xl"> x </div>
                     {/* <div className="border-none hover:cursor-pointer absolute right-0 bottom-0 text-2xl bg-green-200">/</div> */}

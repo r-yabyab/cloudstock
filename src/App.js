@@ -76,7 +76,7 @@ function App() {
             </div>
           </div>
           <div className='max-md:w-[400px] max-md:text-center'>Track your stocks in real time during market hours with spatial freedom.</div>
-          <div className='max-md:pt-4'>Max 5 stocks allowed on screen.</div>
+          <div className='max-md:pt-4'>Max 3 stocks allowed on screen.</div>
           <img draggable={false} className='m-auto mt-8 mb-10 md:w-[600px]  max-md:w-[400px]' src={demogif} alt='demo gif' />
           <img draggable={false} className='m-auto -mt-10 mb-10 md:w-[600px]  max-md:w-[400px]' src={demogif2} alt='demo gif' />
           <button onClick={enteredHandler} className='bg-green-700  w-[400px] m-auto hover:bg-green-200 hover:text-black p-4 text-2xl tracking-wide font-semibold'>Continue to site</button>

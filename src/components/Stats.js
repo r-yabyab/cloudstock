@@ -23,7 +23,7 @@ function Stats ({symbolName, setSymbolName,
 
 
         const addSymbol = () => {
-            if (symbolName !== '' && yourStocks.length < 5) {
+            if (symbolName !== '' && yourStocks.length < 3) {
                 const alreadyAdded = yourStocks.some(stock => stock.stock === symbolName)
         
                 if (!alreadyAdded) {
@@ -39,7 +39,7 @@ function Stats ({symbolName, setSymbolName,
                     setSymbolName('')
                 }
             } else {
-                alert("Max 5 stocks allowed Free User")
+                alert("Max 3 stocks allowed Free User")
                 setSymbolName('')
             }
         }
@@ -367,13 +367,22 @@ useEffect(() => {
                                 // resetting to 0
                               // previousClose={stock[0].previousClose}
                         
-                        // // from SSE Stream, for TOPS
+                        // // for LAST SSE Stream
                         // lastSalePrice={stock.lastSalePrice}
                         // lastSaleSize={stock.lastSaleSize}
                         // from SSE Stream, for LAST
-                        price={stock.price}
-                        size={stock.size}
-                        time={stock.time}
+                        // price={stock.price}
+                        // size={stock.size}
+                        // time={stock.time}
+                        // // for TOPS SSE Stream
+                        price={stock.lastSalePrice}
+                        size={stock.lastSaleSize}
+                        time={stock.lastSaleTime}
+
+                        bidSize={stock.bidSize}
+                        bidPrice={stock.bidPrice}
+                        askSize={stock.askSize}
+                        askPrice={stock.askPrice}
                         // volume={stock[0].volume}
                         // price={stock[0].price}
                         // iexClose={stock[0].iexClose}
