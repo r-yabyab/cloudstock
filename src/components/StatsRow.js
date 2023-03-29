@@ -115,7 +115,7 @@ function StatsRow (props) {
                         {/* {Math.floor(counter/100)} */}
                     </div>
 
-                    <div className="flex text-sm justify-center bg-black flex-col">
+                    <div className={`${[1,2,3].includes(openMarket) ? 'flex text-sm justify-center bg-black flex-col' : 'hidden'}`}>
                         <div className="text-red-500">
                             <div className="-mb-2">ASK</div>
                             <div>{props.askSize}</div>

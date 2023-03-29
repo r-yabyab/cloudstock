@@ -122,11 +122,13 @@ function About () {
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
                          
+                        <div><span>03/29/23</span> - Moved from /last to /tops SSE. Included is bidSize, bidPrice, askSize, and askPrice. Still trying to fix issues where adding / deleting stocks a couple times will trigger my API key's fetch limit, this only popped up after the transition from Legacy to the new Apperate platform on IEXCloud.</div>
+
+
                             <div><span>03/21/23</span> - Stock Shapes now uses Finnhub along with IEX Cloud. 
                             <br/>On March 19, 2023, I was forced to move from IEX Cloud's Legacy platform to their Apperate platform with zero prior notice, increasing monthly costs from $49 to $100 + $20 SSE bundle as well as breaking my previous API endpoints. During the transition, their Stock_Quote endpoint that contained opening and closing prices became locked behind a $1,500 monthly bundle-- Finnhub's free tier is used solely to work around this.
                             <br/>Overall, after scrambling to find another API provider, I found IEX Cloud to hold as best option in terms of pricing and transparency. Commercial-use is drastically cheaper compared to alternatives like Polygon, and their sourcing is simply from Investors Exchange rather than abstracted data providers. Despite IEX Cloud's inconsistent documentation and the occasional broken SSE endpoint, it gets the job done (usually).
                             </div>
-
 
                             <div className="[&>div]:ml-8"><span>03/19/23</span> - IEX Cloud increased their monthly subscription fees:
                                 <div>From: $49</div>
