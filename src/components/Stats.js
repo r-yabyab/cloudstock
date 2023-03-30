@@ -292,10 +292,10 @@ useEffect(() => {
       setYourStocks([
         { id: 0, stock: 'NDAQ' },
         { id: 1, stock: 'TSLA' },
-        { id: 2, stock: 'AAPL' }
+        // { id: 2, stock: 'AAPL' }
       ])
       setPositions({
-        0: { x: 0, y: 130 },
+        0: { x: 20, y: 130 },
         1: { x: 0, y: 219 },
         2: { x: 0, y: 308 }
       })
