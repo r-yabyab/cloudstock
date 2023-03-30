@@ -115,16 +115,16 @@ function StatsRow (props) {
                         {/* {Math.floor(counter/100)} */}
                     </div>
 
-                    <div className={`${[1,2,3].includes(openMarket) ? 'flex text-sm justify-center bg-black flex-col' : 'hidden'}`}>
+                    <div className={`${[1,2,3].includes(openMarket) ? 'flex text-sm justify-center bg-black flex-col' : 'hidden'} `}>
                         <div className="text-red-500">
-                            <div className="-mb-2">ASK</div>
-                            <div className="">{props.askSize}</div>
+                            <div className={height > 50  ? "-mb-2" : 'hidden'}>ASK</div>
+                            <div className={height > 50  ? "" : 'hidden'}>{props.askSize}</div>
                             <div className="-mt-2">{ parseFloat(props.askPrice).toFixed(2)}</div>
                         </div>
                        
                         <div className="text-green-400">
-                            <div className="-mb-2">BID</div>
-                            <div>{props.bidSize}</div>
+                            <div className={height > 50  ? "-mb-2" : 'hidden'}>BID</div>
+                            <div className={height > 50  ? "" : 'hidden'}>{props.bidSize}</div>
                             <div className="-mt-2">{ parseFloat(props.bidPrice).toFixed(2)}</div>
                         </div>
                         

@@ -122,6 +122,9 @@ function About () {
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
                          
+                        <div><span>03/30/23</span> - Added history log.
+                        <br/> Bid and Ask's appearance changes when quote height is less than 50 pixels.
+                        </div>
                         <div><span>03/29/23</span> - Moved from /last to /tops SSE. Included is bidSize, bidPrice, askSize, and askPrice. Still trying to fix issues where adding / deleting stocks a couple times will trigger my API key's fetch limit, this only popped up after the transition from Legacy to the new Apperate platform on IEXCloud.</div>
 
 
