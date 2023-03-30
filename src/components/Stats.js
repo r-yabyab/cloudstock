@@ -104,9 +104,14 @@ const [quotes, setQuotes] = useState([]);
 const [hasError, setHasError] = useState(false);
 const [connectedSSE, setConnectedSSE] = useState('')
 const [rawQuotes, setRawQuotes] = useState([])
+const [showRawQuotes, setShowRawQuotes] = useState(false)
 // const [symbolsSSE, setSymbolsSSE] = useState('pcg,ndaq,spy,tsla,gme')
         // this string is how NodeJS can process the SSE stream URL
         // console.log(symbolsSSE) output --> pcg,ndaq,spy,tsla,gme
+
+  const rawHandler = () => {
+    setShowRawQuotes(!showRawQuotes)
+  }
 
   useEffect(() => {
     //replaces yourStocks with a string for NodeJS to accept as params (qs: _____)
@@ -418,8 +423,8 @@ useEffect(() => {
                 ))}
 </div>
 
-<div className='absolute right-0 bg-blue-100 bg-opacity-20 m-auto select-none'>SSE Streaming History
-<ul className=' flex flex-col-reverse'>test
+<div onClick={rawHandler} className={[1,2,3].includes(openMarket) ? 'absolute hover:cursor-pointer hover:bg-zinc-400 right-0 bg-blue-100 bg-opacity-20 m-auto select-none' : 'hidden'}>SSE Streaming History
+<ul className={showRawQuotes ? 'flex flex-col-reverse' : 'hidden'}>
         {rawQuotes && rawQuotes.map((x, index1) => (
     <div className='' key={index1}>
     <div>
@@ -427,7 +432,7 @@ useEffect(() => {
             <span>{` $${x.lastSalePrice} `}</span>
             <div className='text-red-400'>{`Ask ${x.askSize} ${x.askPrice}`}</div>
             <div className='text-green-400'>{`Bid ${x.bidSize} ${x.bidPrice}`}</div>
-            <div className='text-zinc-200'>{x.lastUpdated}</div>
+            <div className='text-zinc-200'>Time {x.lastUpdated}</div>
           </div>
 
        </div>

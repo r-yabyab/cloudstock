@@ -118,8 +118,8 @@ function StatsRow (props) {
                     <div className={`${[1,2,3].includes(openMarket) ? 'flex text-sm justify-center bg-black flex-col' : 'hidden'}`}>
                         <div className="text-red-500">
                             <div className="-mb-2">ASK</div>
-                            <div className="text-left">{props.askSize}</div>
-                            <div className="-mt-2 text-left">{ parseFloat(props.askPrice).toFixed(2)}</div>
+                            <div className="">{props.askSize}</div>
+                            <div className="-mt-2">{ parseFloat(props.askPrice).toFixed(2)}</div>
                         </div>
                        
                         <div className="text-green-400">
