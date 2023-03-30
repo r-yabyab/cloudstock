@@ -53,7 +53,7 @@ function About () {
                 <div className=" text-center max-md:w-[450px] md:w-[600px] lg:w-[800px] [&>div]:text-left m-auto justify-center">
                     {/* <div className="italic text-xl pt-10 font-bold"> Features </div> */}
                     <div className="text-[36px] pb-4 border-t-2">Features</div>
-                    <div>Real time stock prices. Max 5 quotes on screen.</div>
+                    <div>Real time stock prices. Max 3 quotes on screen.</div>
                     <div className="ml-8">Price, latest trade size, change, percent change, time before last trade.</div>
                     <div className="ml-8">On market close: Access to previous session's quotes.</div>
 

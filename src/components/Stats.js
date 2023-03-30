@@ -103,6 +103,7 @@ function Stats ({symbolName, setSymbolName,
 const [quotes, setQuotes] = useState([]);
 const [hasError, setHasError] = useState(false);
 const [connectedSSE, setConnectedSSE] = useState('')
+const [rawQuotes, setRawQuotes] = useState([])
 // const [symbolsSSE, setSymbolsSSE] = useState('pcg,ndaq,spy,tsla,gme')
         // this string is how NodeJS can process the SSE stream URL
         // console.log(symbolsSSE) output --> pcg,ndaq,spy,tsla,gme
@@ -125,16 +126,21 @@ const [connectedSSE, setConnectedSSE] = useState('')
           const quote = JSON.parse(event.data)[0];
           // displays current and previous quotes
           // 'if (quote)' used to mitigate returning NaN & crashing when SSE returns the occasional undefined
+          
+          // This one works but I think it doesn't close connection
+          // ..> it hits the 429 on several page refreshes
           if (quote) {
+            setRawQuotes(quotes => [...quotes, quote]);
             setQuotes(quotes => {
               const updatedQuotes = [...quotes];
               const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
-              console.log(`SSE data${updatedQuotes}`)
+              // console.log(`SSE data${updatedQuotes}`)
               if (index > -1) {
                 updatedQuotes[index] = quote;
               } else {
                 updatedQuotes.push(quote);
               }
+              console.log(updatedQuotes)
               return updatedQuotes;
             });
             // // // // When delete, it returns all the quotes again except deleted, previous ones stay on the screen
@@ -144,8 +150,11 @@ const [connectedSSE, setConnectedSSE] = useState('')
             // });
 
           }
+        } else {
+          return null
         }
-      });
+      }
+      );
 
       source.addEventListener('open', event => {
         console.log('Connection to server opened.');
@@ -409,20 +418,22 @@ useEffect(() => {
                 ))}
 </div>
 
-{/* <div className='absolute right-0 bg-blue-100 bg-opacity-20 m-auto select-none'>SSE Streaming History
-<ul>
-        {quotes.map((quote, index1) => (
-    <div key={index1}>
+<div className='absolute right-0 bg-blue-100 bg-opacity-20 m-auto select-none'>SSE Streaming History
+<ul className=' flex flex-col-reverse'>test
+        {rawQuotes && rawQuotes.map((x, index1) => (
+    <div className='' key={index1}>
     <div>
-            <span>{quote.symbol}</span>
-            <span>{` $${quote.price} `}</span>
-            <span>{`[${quote.size}]`}</span>
+            <span>{x.symbol}</span>
+            <span>{` $${x.lastSalePrice} `}</span>
+            <div className='text-red-400'>{`Ask ${x.askSize} ${x.askPrice}`}</div>
+            <div className='text-green-400'>{`Bid ${x.bidSize} ${x.bidPrice}`}</div>
+            <div className='text-zinc-200'>{x.lastUpdated}</div>
           </div>
 
        </div>
         ))}
       </ul>
-</div> */}
+</div>
 
 {/* DOESNT WORK <div>penis
             {quotes.map((quote, index) => (
