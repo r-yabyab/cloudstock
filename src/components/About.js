@@ -137,7 +137,7 @@ function About () {
                             <br/>Overall, after scrambling to find another API provider, I found IEX Cloud to hold as best option in terms of pricing and transparency. Commercial-use is drastically cheaper compared to alternatives like Polygon, and their sourcing is simply from Investors Exchange rather than abstracted data providers. Despite IEX Cloud's inconsistent documentation and the occasional broken SSE endpoint, it gets the job done (usually).
                             </div>
 
-                            <div className="[&>div]:ml-8"><span>03/19/23</span> - IEX Cloud increased their monthly subscription fees:
+                            <div className="[&>div]:ml-8"><span>03/19/23</span> - <em className=" text-red-500 not-italic">IEX Cloud increased their monthly subscription fees:</em>
                                 <div>From: $49</div>
                                 <div>To: $100 + $20 monthly to access live data streams + $1,500 monthly to access simple stock quotes.</div>
                             </div>
