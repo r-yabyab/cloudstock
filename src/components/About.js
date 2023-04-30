@@ -122,7 +122,7 @@ function About () {
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
                          
-                        <div><span>04/30/23</span> - For serverside on EC2 instance - Updated pm2 from 5.2.2 to 5.3.0 (0 vulnerabilities), updated npm from 8.19.3 to 9.6.5 (0 vulnerabilities), sudo apt update'd, monitoring for any bugs.
+                        <div><span>04/30/23</span> - For serverside on EC2 instance - Updated pm2 from 5.2.2 to 5.3.0 (0 vulnerabilities), updated npm from 8.19.3 to 9.6.5 (0 vulnerabilities), sudo apt update'd, monitoring for any bugs. Also in the process of squeezing in an unrelated nodejs app to this EC2 instance (it was also having trouble with vercel hosting).
                         </div>
 
 
