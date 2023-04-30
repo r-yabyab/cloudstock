@@ -5,8 +5,8 @@ import Draggable from 'react-draggable'
 
 // import Draggable from 'react-draggable'
   
-// const STOCK_SHAPES = 'https://stockshapes.net'
-const STOCK_SHAPES = 'http://localhost:3001'
+const STOCK_SHAPES = 'https://stockshapes.net'
+// const STOCK_SHAPES = 'http://localhost:3001'
 
 function Stats ({symbolName, setSymbolName,
   //  reducerValue, forceUpdate, 
