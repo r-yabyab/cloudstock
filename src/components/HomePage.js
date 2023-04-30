@@ -33,10 +33,13 @@ function HomePage ({hide}) {
                 setOpenMarket(3)
             } else {
                 // fires when markets are closed on weekdays
-                setOpenMarket(0)
+                // for deployment
+                // setOpenMarket(0)
+                // for testing
+                setOpenMarket(1)
             }
         } else {
-            setOpenMarket(0)
+            setOpenMarket(1)
         }
         console.log(`Market: ${[1,2,3].includes(openMarket) ? "open" : "closed"} ...#${openMarket}`)
     }, [])

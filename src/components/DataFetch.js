@@ -6,6 +6,9 @@ import Stats from "./Stats";
 import axios from 'axios'
 // import { Client } from "iexjs"
 
+const STOCK_SHAPES = 'https://stockshapes.net'
+// const STOCK_SHAPES = 'http://localhost:3001'
+
 function DataFetch ({openMarket}) {
   
     // const [dbStock, setDbStock] = useState(null)
@@ -18,38 +21,6 @@ function DataFetch ({openMarket}) {
     const [searchTerm, setSearchTerm] = useState('')
     const [searchError, setSearchError] = useState('')
 
-
-
-  
-
-
-
-    // const [list, setList] = useState([
-    //     {id: 0,  symbol: 'AAPL'},
-    //     {id: 1,  symbol: 'AMZN'},
-    //     {id: 2,  symbol: 'PCG'}
-    // ])
-    // const [newTask, setNewTask] = useState('')
-
-    // const addTask = () => {
-    //     if (newTask) {
-    //         let num = list.length + 1
-    //         let newEntry = {id: num, symbol: newTask}
-    //         setList([...list, newEntry])
-    //         setNewTask('')
-    //     }
-    // }
-
-    // const addSymbol = () => {
-    //     let num = list.length + 1
-    //     let newEntry = {id: num, symbol: symbolName}
-    //     setList([...list, newEntry])
-    // }
-
-    // const removeSymbol = (id) => {
-    //     console.log("to do")
-    // }
-
     // fetch all stock symbols a to z
     useEffect(() => {
         const fetchSymbolList = async () => {
@@ -58,7 +29,8 @@ function DataFetch ({openMarket}) {
             // const response = await fetch('http://localhost:3001/api/tickers')
             // const response = await fetch('https://stockshapes-server.vercel.app/api/tickers')
             // const response = await fetch('http://34.218.179.6:3001/api/tickers')
-            const response = await fetch('https://stockshapes.net/api/tickers')
+            // const response = await fetch('https://stockshapes.net/api/tickers')
+            const response = await fetch(`${STOCK_SHAPES}/api/tickers`)
             const json = await response.json()
             
             if (response.ok) {
@@ -106,7 +78,8 @@ function DataFetch ({openMarket}) {
             try {
             //   const response = await axios.get('https://stockshapes-server.vercel.app/api/tickerquote', {
                 // const response = await axios.get('http://34.218.179.6:3001/api/tickerquote', {
-                    const response = await axios.get('https://stockshapes.net/api/tickerquote', {
+                    // const response = await axios.get('https://stockshapes.net/api/tickerquote', {
+                        const response = await axios.get(`${STOCK_SHAPES}/api/tickerquote`, {
                     // const response = await axios.get('http://localhost:3001/api/tickerquote', {
                 params: {
                   symbolName
@@ -147,50 +120,6 @@ function DataFetch ({openMarket}) {
     const clearSymbol = () => {
         setSymbolName('')
     }
-
-    // const stockPreview = () => {
-    //     stock && stock.map((stock, indexDescription) => {
-    //         return symbolName ? (
-    //             <div onClick={clearSymbol} key={indexDescription} className=
-    //                 // {stock.change > 0 ? "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block" : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
-    //                 {stock.d > 0 ?
-    //                     "absolute ratingAnimationWhite bg-green-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2 [&>p]:hidden [&>p]:hover:inline-block"
-    //                     : "[&>p]:hidden [&>p]:hover:inline-block absolute ratingAnimationWhite bg-red-400 w-[300px] m-auto flex [&>div]:text-center [&>div]:border-x-[1px] [&>div]:border-gray-700 left-[50%] -translate-x-1/2"}
-    //             >
-
-    //                 {/* FROM IEX_CLOUD LEGACY (DEAD) */}
-    //                 {/* <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">{stock.symbol}</span></div>
-    //             <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.latestPrice).toFixed(2)}</div>
-    //             <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.open}</div>
-    //             <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.change}</div>
-    //             <p className="absolute hover:cursor-pointer bg-blue-200 -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p> */}
-
-
-    //                 <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Ticker: <span className="font-bold">stock.symbolPENIS</span></div>
-    //                 <div className="bg-zinc-700 w-[90px] h-[56px] p-[1px]">Price: {parseFloat(stock.c).toFixed(2)}</div>
-    //                 <div className="w-[90px] h-[56px] p-[1px]">Open: {stock.o}</div>
-    //                 <div className="w-[90px] h-[56px] p-[1px]">Change: {stock.c}</div>
-    //                 <p className="absolute hover:cursor-pointer bg-blue-200 -mt-[6px] top-0 text-black font-bold right-0 text-2xl">X</p>
-
-    //             </div>
-    //         ) : null
-    //     })
-    // }
-
-
-//   const clickHandler = () => {
-//     forceUpdate()
-//     // if (reducerValue== 10) {
-//     //     forceUpdate(reducerValue=-10)
-//     // }
-//     console.log(reducerValue)
-//   }
-
-//   const clickHandler2 = () => {
-//     setSymbolName('AMZN')
-//     forceUpdate()
-//     console.log(`symbolName state: ${symbolName}`)
-//   }
   
 
 
