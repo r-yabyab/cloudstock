@@ -110,135 +110,141 @@ const [showRawQuotes, setShowRawQuotes] = useState(false)
 
   // vv OLD CONNECTION
   // vv OLD CONNECTION
-  // useEffect(() => {
-  //   //replaces yourStocks with a string for NodeJS to accept as params (qs: _____)
-  //   if ([1,2,3].includes(openMarket)) {
-  //   const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
-  //   const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
-  //   console.log('symbolsURL:' + symbolsURL)
-  //   const source = new EventSource(`${STOCK_SHAPES}/stream?symbols=${symbolsURL}`);
-
-  //     source.addEventListener('message', event => {
-  //       if (event.data) {
-  //         const quote = JSON.parse(event.data)[0];
-  //         // displays current and previous quotes
-  //         // 'if (quote)' used to mitigate returning NaN & crashing when SSE returns the occasional undefined
-
-  //         // This one works but I think it doesn't close connection
-  //         // ..> it hits the 429 on several page refreshes
-  //         if (quote) {
-  //           setRawQuotes(quotes => [...quotes, quote]);
-  //           setQuotes(quotes => {
-  //             const updatedQuotes = [...quotes];
-  //             const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
-  //             // console.log(`SSE data${updatedQuotes}`)
-  //             if (index > -1) {
-  //               updatedQuotes[index] = quote;
-  //             } else {
-  //               updatedQuotes.push(quote);
-  //             }
-  //             console.log(updatedQuotes)
-  //             return updatedQuotes;
-  //           });
-  //           // // // // When delete, it returns all the quotes again except deleted, previous ones stay on the screen
-  //           // setQuotes(quotes => {
-  //           //   const filteredQuotes = quotes.filter(q => yourStocks.some(stock => stock.stock === q.symbol));
-  //           //   return [...filteredQuotes, quote];
-  //           // });
-
-  //         }
-  //       } 
-  //       // else {
-  //       //   return null
-  //       // }
-  //     }
-  //     );
-
-  //     source.addEventListener('open', event => {
-  //       console.log('Connection to server opened.');
-  //       setConnectedSSE('Connected (live updates)')
-  //       setHasError(false)
-  //       console.log(hasError)
-  //     });
-
-  //     source.addEventListener('error', event => {
-  //       console.error('Error connecting to server.');
-  //       setHasError(true);
-  //       setConnectedSSE('Awaiting input...')
-  //       console.log(hasError)
-
-
-  //     });
-
-  //     return () => {
-  //       source.close();
-  //     };
-  //   }
-
-  //   else {
-  //     setHasError(true)
-  //     setConnectedSSE('Awaiting market open for live updates')
-  //   }
-  // }, [yourStocks]);
-
-  // // ^^^^^^^ OLD CONNECTION
-  // // ^^^^^^^ OLD CONNECTION
-
-  // new connection
   useEffect(() => {
-    let source = null;
-  
-    const connectToServer = () => {
-      const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
-      const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
-      console.log('symbolsURL:' + symbolsURL)
-      source = new EventSource(`${STOCK_SHAPES}/api/stream?symbols=${symbolsURL}`);
-  
+    //replaces yourStocks with a string for NodeJS to accept as params (qs: _____)
+    if ([1,2,3].includes(openMarket)) {
+    const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
+    const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
+    console.log('symbolsURL:' + symbolsURL)
+    const source = new EventSource(`${STOCK_SHAPES}/stream?symbols=${symbolsURL}`);
+
       source.addEventListener('message', event => {
         if (event.data) {
           const quote = JSON.parse(event.data)[0];
-  
+          // displays current and previous quotes
+          // 'if (quote)' used to mitigate returning NaN & crashing when SSE returns the occasional undefined
+
+          // This one works but I think it doesn't close connection
+          // ..> it hits the 429 on several page refreshes
           if (quote) {
-            // setRawQuotes(quotes => [...quotes, quote]);
+            setRawQuotes(quotes => [...quotes, quote]);
             setQuotes(quotes => {
               const updatedQuotes = [...quotes];
               const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
-  
+              // console.log(`SSE data${updatedQuotes}`)
               if (index > -1) {
                 updatedQuotes[index] = quote;
               } else {
                 updatedQuotes.push(quote);
               }
-              // console.log(updatedQuotes)
+              console.log(updatedQuotes)
               return updatedQuotes;
             });
+            // // // // When delete, it returns all the quotes again except deleted, previous ones stay on the screen
+            // setQuotes(quotes => {
+            //   const filteredQuotes = quotes.filter(q => yourStocks.some(stock => stock.stock === q.symbol));
+            //   return [...filteredQuotes, quote];
+            // });
+
           }
-        }
-      });
-  
+        } 
+        // else {
+        //   return null
+        // }
+      }
+      );
+
       source.addEventListener('open', event => {
         console.log('Connection to server opened.');
         setConnectedSSE('Connected (live updates)')
         setHasError(false)
         console.log(hasError)
       });
-  
+
       source.addEventListener('error', event => {
         console.error('Error connecting to server.');
         setHasError(true);
         setConnectedSSE('Awaiting input...')
         console.log(hasError)
+
+
       });
-    };
-  
-    connectToServer();
-  
-    return () => {
-      if (source) {
+
+      return () => {
         source.close();
-      }
-    };
+      };
+    }
+
+    else {
+      setHasError(true)
+      setConnectedSSE('Awaiting market open for live updates')
+    }
   }, [yourStocks]);
+
+  // // ^^^^^^^ OLD CONNECTION
+  // // ^^^^^^^ OLD CONNECTION
+
+  // new connection  vvvvvvvvvvvvvvvvvv
+  // new connection  vvvvvvvvvvvvvvvvvv
+  // new connection  vvvvvvvvvvvvvvvvvv
+  // useEffect(() => {
+  //   let source = null;
+  
+  //   const connectToServer = () => {
+  //     const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
+  //     const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
+  //     console.log('symbolsURL:' + symbolsURL)
+  //     source = new EventSource(`${STOCK_SHAPES}/api/stream?symbols=${symbolsURL}`);
+  
+  //     source.addEventListener('message', event => {
+  //       if (event.data) {
+  //         const quote = JSON.parse(event.data)[0];
+  
+  //         if (quote) {
+  //           // setRawQuotes(quotes => [...quotes, quote]);
+  //           setQuotes(quotes => {
+  //             const updatedQuotes = [...quotes];
+  //             const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
+  
+  //             if (index > -1) {
+  //               updatedQuotes[index] = quote;
+  //             } else {
+  //               updatedQuotes.push(quote);
+  //             }
+  //             // console.log(updatedQuotes)
+  //             return updatedQuotes;
+  //           });
+  //         }
+  //       }
+  //     });
+  
+  //     source.addEventListener('open', event => {
+  //       console.log('Connection to server opened.');
+  //       setConnectedSSE('Connected (live updates)')
+  //       setHasError(false)
+  //       console.log(hasError)
+  //     });
+  
+  //     source.addEventListener('error', event => {
+  //       console.error('Error connecting to server.');
+  //       setHasError(true);
+  //       setConnectedSSE('Awaiting input...')
+  //       console.log(hasError)
+  //     });
+  //   };
+  
+  //   connectToServer();
+  
+  //   return () => {
+  //     if (source) {
+  //       source.close();
+  //     }
+  //   };
+  // }, [yourStocks]);
+  // new connection   ^^^^^^^^^^^^^^^^^^^^^^^
+  // new connection   ^^^^^^^^^^^^^^^^^^^^^^^
+  // new connection   ^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ////////////////////////////////////////
 
