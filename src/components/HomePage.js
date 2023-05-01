@@ -34,9 +34,9 @@ function HomePage ({hide}) {
             } else {
                 // fires when markets are closed on weekdays
                 // for deployment
-                // setOpenMarket(0)
+                setOpenMarket(0)
                 // for testing
-                setOpenMarket(1)
+                // setOpenMarket(1)
             }
         } else {
             setOpenMarket(1)
