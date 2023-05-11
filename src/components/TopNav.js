@@ -6,7 +6,7 @@ import logo512 from '../photos/logo512.png'
 function TopNav({ user, isAuthenticated, isLoading }) {
     // vars for useAuth0 
     //const { user, isAuthenticated, isLoading } = useAuth0();
-    const {logout, loginWithRedirect} = useAuth0
+    const {logout, loginWithRedirect} = useAuth0()
     const [userMenu, setUserMenu] = useState(false)
 
     const LoginButton = () => {
