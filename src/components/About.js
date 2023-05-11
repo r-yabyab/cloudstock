@@ -121,7 +121,10 @@ function About () {
                             <span className="text-[36px]">Changelog</span> <span onClick={e => setMiniLog(!miniLog)} className={miniLog ? "hover:text-zinc-200  hover:cursor-pointer bg-neutral-600" : "hover:text-zinc-200 hover:bg-neutral-600 hover:cursor-pointer"}>(show minor updates)</span>
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
-                         
+
+                        <div><span>05/10/23</span> - Fixed SSE status indicator, fixed auth0 login (Using free tier for Auth0, so I have access to place only one logo)
+                        </div>
+
                         <div><span>04/30/23</span> - For serverside on EC2 instance - Updated pm2 from 5.2.2 to 5.3.0 (0 vulnerabilities), updated npm from 8.19.3 to 9.6.5 (0 vulnerabilities), sudo apt update'd, monitoring for any bugs. Also in the process of squeezing in an unrelated nodejs app to this EC2 instance (it was also having trouble with vercel hosting).
                         </div>
 
