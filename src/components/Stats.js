@@ -103,9 +103,9 @@ const [showRawQuotes, setShowRawQuotes] = useState(false)
         // shows log of quotes, every update shows their own quote
         // overloads after a bit and lags everything even with overflow-hidden
 // const [rawQuotes, setRawQuotes] = useState([])
-  const rawHandler = () => {
-    setShowRawQuotes(!showRawQuotes)
-  }
+  // const rawHandler = () => {
+  //   setShowRawQuotes(!showRawQuotes)
+  // }
 
 
   // vv OLD CONNECTION
