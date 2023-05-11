@@ -122,6 +122,10 @@ function About () {
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
 
+                        <div><span>05/11/23</span>
+                        - Fixed stream endpoint (was changed when I was tweaking NGINX)
+                        </div>
+
                         <div><span>05/10/23</span> - Fixed SSE status indicator, fixed auth0 login (Using free tier for Auth0, so I have access to place only one logo)
                         </div>
 
