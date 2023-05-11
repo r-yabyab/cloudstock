@@ -127,7 +127,7 @@ const [showRawQuotes, setShowRawQuotes] = useState(false)
           // This one works but I think it doesn't close connection
           // ..> it hits the 429 on several page refreshes
           if (quote) {
-            setRawQuotes(quotes => [...quotes, quote]);
+            // setRawQuotes(quotes => [...quotes, quote]);
             setQuotes(quotes => {
               const updatedQuotes = [...quotes];
               const index = updatedQuotes.findIndex(q => q.symbol === quote.symbol);
