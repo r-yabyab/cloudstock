@@ -11,7 +11,7 @@ function TopNav({ user, isAuthenticated, isLoading }) {
 
     const LoginButton = () => {
 
-        return <button onClick={() => loginWithRedirect()}>Log In</button>;
+        return <button onClick={() => loginWithRedirect()}>Login</button>;
     };
 
     const LogoutButton = () => {
@@ -36,7 +36,7 @@ function TopNav({ user, isAuthenticated, isLoading }) {
     return (
         <>
             {/* <div className="relative pt-2 pb-2 bg-black border-y-[1px] border-slate-600 flex justify-evenly pl-4 pr-4 text-neutral-300"> */}
-            <div className="relative pt-4 pb-10 bg-black justify-between pl-4 pr-4 text-zinc-200">
+            <div className="relative pt-4 pb-10 bg-zinc-100 justify-between pl-4 pr-4 text-zinc-900">
                 <div className="flex gap-8 float-right">
                     {/* <div className="font-semibold hover:cursor-pointer hover:bg-yellow-400">{}</div> */}
                     <Link to='/' className="hover:text-neutral-400"><div className="font-semibold">Home</div></Link>

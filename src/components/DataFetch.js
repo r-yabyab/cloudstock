@@ -26,10 +26,15 @@ function DataFetch ({openMarket}) {
         const fetchSymbolList = async () => {
             const response = await fetch(`${STOCK_SHAPES}/api/tickers`)
             const json = await response.json()
-            
+
             if (response.ok) {
                 setSymbolList(json)
-                // console.log(symbolList)
+                console.log(json)
+                // object
+                    // date: "2023-05-12"
+                    // isEnabled: true
+                    // name: "ALCOA CORP"
+                    // symbol: "AA"
             }
         }
         fetchSymbolList()
@@ -113,17 +118,30 @@ function DataFetch ({openMarket}) {
                 {/* <button onClick={clickHandler}>penios</button> */}
                 <div className="p-4">
 
-                    <input className="text-black" type="text"
-                        value={searchTerm}
-                        placeholder="Enter stock symbol..." onChange={handlerFilter} onKeyDown={handleKeyDown} />
+                        <input className="text-black rounded-sm" type="text"
+                            value={searchTerm}
+                            placeholder=" Search stock symbol..." onChange={handlerFilter} onKeyDown={handleKeyDown} />
+                        {/* <div className="bg-white text-black pt-[4px] pl-[4px]"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></div> */}
                     {filteredData.length !== 0 && (
-                        <div className="text-white max-h-[200px] overflow-hidden absolute  left-[50%] -translate-x-1/2 w-[182px] ">{filteredData && filteredData.slice(0, 5).map((x, index) => {
+                        <div className="text-white flex-col gap-2 text-left    absolute  left-[50%] -translate-x-1/2 w-[182px] ">
+                            
+                            <div className="font-bold text-lg mt-4">Symbols</div>
+                            <div className="overflow-y-scroll max-h-[300px]">
+                            {filteredData && filteredData.slice(0, 10).map((x, index) => {
                             return (
-                                <div className="hover:bg-yellow-400 hover:text-black hover:font-semibold hover:cursor-pointer" key={index} onClick={() => selectSearch(x.symbol)}>
-                                    {x.symbol}
+                                <div
+                                    className="hover:bg-zinc-900 border-t-[1px] border-zinc-700  hover:cursor-pointer"
+                                    key={index}
+                                    onClick={() => selectSearch(x.symbol)}
+                                >
+                                    <div className="font-bold">{x.symbol}</div>
+                                    <div className="overflow-hidden text-sm text-zinc-400">{x.name}</div>
                                 </div>
                             )
                         })}</div>
+                        </div>
                     )}
 
                     <span className="text-red-500 absolute flex left-[50%] -translate-x-1/2">{searchError}</span>
