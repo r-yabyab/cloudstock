@@ -3,7 +3,6 @@ import axios from 'axios'
 import StatsRow from './StatsRow'
 import Draggable from 'react-draggable'
 
-// import Draggable from 'react-draggable'
   
 const STOCK_SHAPES = 'https://stockshapes.net'
 // const STOCK_SHAPES = 'http://localhost:3001'
@@ -395,9 +394,7 @@ useEffect(() => {
                             // setMouse={setMouse}
                         
                     />
-                    {/* <div className='' selectnums={stock.id} onClick={removeSymbol}>x</div> */}
-                    
-                    {/* {"close " + stock[0].iexClose} */}
+
                     </div>
 </Draggable>
 
@@ -421,20 +418,20 @@ useEffect(() => {
           </ul>
         </div> */}
 
-{/* add Symbol BUTTON */}
-<p onClick={clearSymbol} className={symbolName ? 'absolute -mt-12 pr-[119px] pl-[119px] left-[50%] -translate-x-1/2 text-red-600 hover:text-white hover:bg-red-600 hover:cursor-pointer hover:font-bold' : "hidden"}>Remove</p>
+        {/* add Symbol BUTTON */}
+        <p onClick={clearSymbol} className={symbolName ? 'absolute -mt-12 pr-[119px] pl-[119px] left-[50%] -translate-x-1/2 text-red-600 hover:text-white hover:bg-red-600 hover:cursor-pointer hover:font-bold' : "hidden"}>Remove</p>
 
-<div onClick={addSymbol} className={symbolName ? 'absolute -mt-6 pr-[134px] pl-[134px] left-[50%] -translate-x-1/2 text-green-600 hover:bg-green-600 hover:cursor-pointer hover:text-white hover:font-bold' : "hidden"}>
-    Add
-<p className='absolute pb-[56px] w-[300px] left-[50%] -translate-x-1/2 hover:bg-yellow-300 hover:bg-opacity-0'></p>
-    {/* </button> */}
-</div>
-
-
-<div draggable='false' className={hasError ? 'absolute select-none bottom-0 text-gray-400 animate-pulse' : 'absolute select-none bottom-0 text-green-400 animate-pulse'}>{connectedSSE}</div>
+        <div onClick={addSymbol} className={symbolName ? 'absolute -mt-6 pr-[134px] pl-[134px] left-[50%] -translate-x-1/2 text-green-600 hover:bg-green-600 hover:cursor-pointer hover:text-white hover:font-bold' : "hidden"}>
+          Add
+          <p className='absolute pb-[56px] w-[300px] left-[50%] -translate-x-1/2 hover:bg-yellow-300 hover:bg-opacity-0'></p>
+          {/* </button> */}
+        </div>
 
 
-{/* <div onClick={update1} className='absolute top-28 select-none right-4 bg-slate-400 p-4 hover:cursor-pointer hover:bg-slate-300'>Refresh</div> */}
+        <div draggable='false' className={hasError ? 'absolute select-none bottom-0 text-gray-400 animate-pulse' : 'absolute select-none bottom-0 text-green-400 animate-pulse'}>{connectedSSE}</div>
+
+
+        {/* <div onClick={update1} className='absolute top-28 select-none right-4 bg-slate-400 p-4 hover:cursor-pointer hover:bg-slate-300'>Refresh</div> */}
 
         </>
     )

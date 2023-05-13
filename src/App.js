@@ -15,21 +15,7 @@ import logo512 from './photos/logo512.png'
 function App() {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
-  
-  //   if (isLoading) {
-  //     return <div>Loading...</div>
-  //   }
 
-  //   return (
-  //     isAuthenticated && (
-  //       <div>
-  //         <img src={user.picture} alt={user.name} />
-  //         <h2>{user.name}</h2>
-  //         <p>{user.email}</p>
-  //       </div>
-  //     )
-  //   )
-  // }
 
   const [hide, setHide] = useState (false)
   const [entered, setEntered] = useState(false) 
@@ -67,8 +53,8 @@ function App() {
 <>
 {/* <div className='absolute w-full h-full bg-neutral-800   text-white '> */}
 
-<div className={entered ? 'hidden' : 'w-full select-none min-h-screen pb-28 absolute z-10 text-white bg-black'}>
-  
+      <div className={entered ? 'hidden' : 'w-full select-none min-h-screen pb-28 absolute z-10 text-white bg-black'}>
+
         <div className='mt-32 flex [&>div]:m-auto  flex-col'>
           <div className=' text-[36px] gap-4 pb-14 flex justify-center'>
             <img className='w-[60px]' src={logo512} alt="logo" />
@@ -82,26 +68,26 @@ function App() {
           <button onClick={enteredHandler} className='bg-green-700  w-[400px] m-auto hover:bg-green-200 hover:text-black p-4 text-2xl tracking-wide font-semibold'>Continue to site</button>
         </div>
 
-</div>
+      </div>
 
-<div className='absolute w-full h-full   text-white '>
-      <div className={hide ? "hidden" : ""}><TopNav  user={user} isAuthenticated={isAuthenticated} isLoading={isLoading} /></div>
+      <div className='absolute w-full h-full   text-white '>
+        <div className={hide ? "hidden" : ""}><TopNav user={user} isAuthenticated={isAuthenticated} isLoading={isLoading} /></div>
 
 
 
-      <Routes>
-        <Route path='/' element={<HomePage hide={hide} />} />
-        {/* <Route path='/refpage' element={<RefPage />} /> */}
-        <Route path='/about' element={<About />} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<HomePage hide={hide} />} />
+          {/* <Route path='/refpage' element={<RefPage />} /> */}
+          <Route path='/about' element={<About />} />
+        </Routes>
 
-<button onClick={hideHandler} className={`absolute font-semibold p-2 w-[70px] right-0 top-[80px] select-none
-${hide 
-?'bg-green-600 hover:bg-green-400' 
-:'bg-red-600  hover:bg-red-400'}`}
->
-  {hide ? 'show' : "hide" }</button>
-  <div className='fixed inset-0 bg-neutral-800 z-[-1] pointer-events-none'></div>
+        <button onClick={hideHandler} className={`absolute font-semibold p-2 w-[70px] right-0 top-[80px] select-none
+            ${hide
+            ? 'bg-green-600 hover:bg-green-400'
+            : 'bg-red-600  hover:bg-red-400'}`}
+        >
+          {hide ? 'show' : "hide"}</button>
+        <div className='fixed inset-0 bg-neutral-800 z-[-1] pointer-events-none'></div>
       </div>
     </>
   );

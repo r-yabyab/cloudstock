@@ -47,24 +47,6 @@ function HomePage ({hide}) {
         console.log(`Market: ${[1,2,3].includes(openMarket) ? "open" : "closed"}`)
     }, [])
 
-    // //for alerts
-    // const alertHandler = (e) => {
-    //     setAlertMessage(!alertMessage)
-    //     console.log(alertMessage)
-    // }
-
-    // // for alert messages
-    // useEffect(() => {
-    //     const alertData = localStorage.getItem('_alerts')
-    //     if (alertData !== null) setAlertMessage(JSON.parse(alertData))
-    // }, [])
-
-    // useEffect(() => {
-    //     localStorage.setItem('_alerts', JSON.stringify(alertMessage));
-    //   }, [alertMessage]);
-
-
-
     return (
         <>
             <div className={hide ? "hidden" : null}>
@@ -129,33 +111,5 @@ function TopTimer () {
         <>{format(Date.now(), 'k:mm:ss')}</>
     )
 }
-
-// function UniversalTime () {
-
-//     const [open, setOpen] = useState(false)
-
-
-// useEffect (() => {
-//     // var date1 = Date.now(Date.UTC);
-//     // var date2 = Date.now()
-//     // console.log("UTC", date1)
-//     // console.log("your location:", date2)
-//     const date = new Date();
-// const hours = date.getUTCHours()
-// const minutes = date.getUTCMinutes()
-// console.log(hours, minutes);
-
-// if (hours >= 13 && hours <= 20) {
-//     setOpen(true)
-// }
-// console.log(open)
-
-// },[])
-
-// return(
-//     <><div className="bg-blue-400 absolute left-0 top-10">{open? "OPEN":"CLOSED"}</div></>
-// )
-
-// }
 
 export default HomePage;

@@ -25,7 +25,7 @@ function TopNav({ user, isAuthenticated, isLoading }) {
 
     const userDrop = (e) => {
         setUserMenu(!userMenu)
-        console.log(userMenu)
+        // console.log(userMenu)
     }
 
 

@@ -24,12 +24,6 @@ function DataFetch ({openMarket}) {
     // fetch all stock symbols a to z
     useEffect(() => {
         const fetchSymbolList = async () => {
-            // const response = await fetch('https://ryabyab.iex.cloud/v1/data/core/quote/sbux?token=...')
-            // const response = await fetch('https://ryabyab.iex.cloud/v1/data/ref-data/iex/symbols')
-            // const response = await fetch('http://localhost:3001/api/tickers')
-            // const response = await fetch('https://stockshapes-server.vercel.app/api/tickers')
-            // const response = await fetch('http://34.218.179.6:3001/api/tickers')
-            // const response = await fetch('https://stockshapes.net/api/tickers')
             const response = await fetch(`${STOCK_SHAPES}/api/tickers`)
             const json = await response.json()
             
@@ -41,46 +35,12 @@ function DataFetch ({openMarket}) {
         fetchSymbolList()
     }, [])
 
-// // Returns empty response, doesn't work
-    // const [SSE, setSSE] = useState ('')
-
-    // const config = {
-    //     headers: {
-    //         Accept: 'text/event-stream'
-    //     }
-    // };
-
-    // // SSE streaming
-    // useEffect(() => {
-    //     const fetchSSE = async () => {
-    //         const response = await fetch('https://cloud-sse.iexapis.com/stable/stocksUSNoUTP1Second?token=...&symbols=aapl', config)
-    //         const json = await response.json()
-            
-    //         if (response.ok) {
-    //             setSSE(json)
-    //         }
-    //     }
-    //     fetchSSE()
-    //     console.log(SSE)
-    // }, [])
-
-    //maps symbols to Select Option
-    // const stockList = symbolList && symbolList.map((stock, indexStock) => {
-    //     return (
-    //         <option key={indexStock} value={stock.symbol}>{stock.symbol}</option>
-    //     )
-    // })
-
     //fetch single stock's information
     useEffect(() => {
         if (symbolName) {
           const fetchStock = async () => {
             try {
-            //   const response = await axios.get('https://stockshapes-server.vercel.app/api/tickerquote', {
-                // const response = await axios.get('http://34.218.179.6:3001/api/tickerquote', {
-                    // const response = await axios.get('https://stockshapes.net/api/tickerquote', {
-                        const response = await axios.get(`${STOCK_SHAPES}/api/tickerquote`, {
-                    // const response = await axios.get('http://localhost:3001/api/tickerquote', {
+                    const response = await axios.get(`${STOCK_SHAPES}/api/tickerquote`, {
                 params: {
                   symbolName
                 }
@@ -97,35 +57,9 @@ function DataFetch ({openMarket}) {
         }
       }, [symbolName]);
 
-    //
-    // const response = await axios.get(`http://localhost:3001/api/tickerquote/${symbolName}`);
-
-
-    // const fetchData = async () => {
-    //     try {
-    //       const response = await axios.get('http://localhost:3001/api/news', {
-    //         params: {
-    //           yourStocks
-    //         }
-    //       });
-    //       setStockData(response.data);
-    //       console.log('fetched from server');
-    //     } catch (error) {
-    //       console.error(error);
-    //     }
-    //   };
-    //
-
-
     const clearSymbol = () => {
         setSymbolName('')
     }
-  
-
-
-//   const selectHandler = (e) => {
-//     setSymbolName(e.target.value)
-//   }
   
   const handlerFilter = (event) => {
     const searchWord = event.target.value
@@ -178,17 +112,7 @@ function DataFetch ({openMarket}) {
             <div draggable="false" className="relative select-none mt-60 -mb-40 text-center">
                 {/* <button onClick={clickHandler}>penios</button> */}
                 <div className="p-4">
-                    {/* Select Symbol: */}
-                    {/* Click from dropdownlist --> setsSymbol */}
-                    {/* <select
-                        placeholder="hello"
-                        value={symbolName}
-                        onChange={selectHandler}
-                        className="bg-black border-black border-2 shadow-lg mb-10"
-                    >
-                        <option value="hello">Select ticker</option>
-                        {stockList}
-                    </select> */}
+
                     <input className="text-black" type="text"
                         value={searchTerm}
                         placeholder="Enter stock symbol..." onChange={handlerFilter} onKeyDown={handleKeyDown} />
@@ -202,23 +126,12 @@ function DataFetch ({openMarket}) {
                         })}</div>
                     )}
 
-<span className="text-red-500 absolute flex left-[50%] -translate-x-1/2">{searchError}</span>
+                    <span className="text-red-500 absolute flex left-[50%] -translate-x-1/2">{searchError}</span>
 
-                    <div>
-                        {/* Updates Quotes */}
-                        {/* <button
-                            onClick={clickHandler}
-                            className="border-2 border-black bg-green-400 hover:cursor-pointer hover:bg-green-100">Update Quotes
-                            </button> */}
-
-                        {/* <button onClick={clickHandler2} className="border-2 border-black bg-blue-400">Set to AMZN
-                        </button> */}
-                    </div>
                 </div>
             </div>
 
             <div>
-                {/* {stockPreview} */}
 
                 {stock && symbolName ?
                     <div onClick={clearSymbol} className=
@@ -260,7 +173,6 @@ function DataFetch ({openMarket}) {
 {/* <StockApp /> */}
 
 {/* <DraggableComp /> */}
-{/* <div className="absolute left-0 bg-blue-400 text-2xl">penis{SSE}</div> */}
         </>
     )
 }
