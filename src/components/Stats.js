@@ -47,7 +47,7 @@ function Stats ({symbolName, setSymbolName,
             let x = e.target.getAttribute("selectnums")
             setYourStocks(yourStocks.filter(items=>items.id!=x))
             setQuotes(quotes => quotes.filter(q => q.symbol !== yourStocks.filter(x=>x.stock)));
-            console.log('removed')
+            // console.log('removed')
         }
 
 
@@ -137,7 +137,7 @@ const [showRawQuotes, setShowRawQuotes] = useState(false)
               } else {
                 updatedQuotes.push(quote);
               }
-              console.log(updatedQuotes)
+              // console.log(updatedQuotes)
               return updatedQuotes;
             });
             // // // // When delete, it returns all the quotes again except deleted, previous ones stay on the screen

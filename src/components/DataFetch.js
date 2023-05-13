@@ -35,7 +35,7 @@ function DataFetch ({openMarket}) {
             
             if (response.ok) {
                 setSymbolList(json)
-                console.log(symbolList)
+                // console.log(symbolList)
             }
         }
         fetchSymbolList()
@@ -88,7 +88,7 @@ function DataFetch ({openMarket}) {
               setStock(response.data);
             //   console.log('fetched symbol quote');
             //   console.log(stock)
-              console.log(response.data)
+            //   console.log(response.data)
             } catch (error) {
               console.error(error);
             }

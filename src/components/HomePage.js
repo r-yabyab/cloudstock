@@ -41,7 +41,7 @@ function HomePage ({hide}) {
         } else {
             setOpenMarket(1)
         }
-        console.log(`Market: ${[1,2,3].includes(openMarket) ? "open" : "closed"} ...#${openMarket}`)
+        // console.log(`Market: ${[1,2,3].includes(openMarket) ? "open" : "closed"} ...#${openMarket}`)
     }, [])
 
     // //for alerts

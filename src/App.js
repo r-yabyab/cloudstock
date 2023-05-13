@@ -60,7 +60,7 @@ function App() {
 
         const enteredHandler = (e) => {
           setEntered(true)
-          console.log(entered)
+          // console.log(entered)
         }
 
   return (
