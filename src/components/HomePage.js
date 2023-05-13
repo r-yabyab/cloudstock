@@ -39,9 +39,12 @@ function HomePage ({hide}) {
                 // setOpenMarket(1)
             }
         } else {
-            setOpenMarket(1)
+            // for deployment
+            setOpenMarket(0)
+            // for testing
+            // setOpenMarket(1)
         }
-        // console.log(`Market: ${[1,2,3].includes(openMarket) ? "open" : "closed"} ...#${openMarket}`)
+        console.log(`Market: ${[1,2,3].includes(openMarket) ? "open" : "closed"} ...#${openMarket}`)
     }, [])
 
     // //for alerts

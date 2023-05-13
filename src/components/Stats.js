@@ -115,7 +115,7 @@ const [showRawQuotes, setShowRawQuotes] = useState(false)
     if ([1,2,3].includes(openMarket)) {
     const symbols = (`${JSON.stringify(yourStocks.map(stock => stock.stock))}`)
     const symbolsURL = symbols.replace(/['"]+/g, '').replace(/\[/g, '').replace(/\]/g, "")
-    console.log('symbolsURL:' + symbolsURL)
+    // console.log('symbolsURL:' + symbolsURL)
     const source = new EventSource(`${STOCK_SHAPES}/api/stream?symbols=${symbolsURL}`);
 
       source.addEventListener('message', event => {
