@@ -21,7 +21,7 @@ function Stats ({symbolName, setSymbolName,
 
 
         const addSymbol = () => {
-            if (symbolName !== '' && yourStocks.length < 11) {
+            if (symbolName !== '' && yourStocks.length < 5) {
                 const alreadyAdded = yourStocks.some(stock => stock.stock === symbolName)
         
                 if (!alreadyAdded) {
