@@ -53,7 +53,7 @@ function App() {
 <>
 {/* <div className='absolute w-full h-full bg-neutral-800   text-white '> */}
 
-      <div className={entered ? 'hidden' : 'w-full select-none min-h-screen pb-28 absolute z-10 text-white bg-black'}>
+      <div className={entered ? 'hidden' : 'hidden w-full select-none min-h-screen pb-28 absolute z-10 text-white bg-black'}>
 
         <div className='mt-32 flex [&>div]:m-auto  flex-col'>
           <div className=' text-[36px] gap-4 pb-14 flex justify-center'>
