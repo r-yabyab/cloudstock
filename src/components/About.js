@@ -122,6 +122,10 @@ function About () {
                         </div>
                         <div className="[&>div>span]:text-sky-300 [&>div]:text-white">
 
+                        <div><span>02/06/24</span>
+                        - Removed SSE during open market hours due to increase in API costs. REST data still works.
+                        </div>
+
                         <div><span>05/11/23</span>
                         - Fixed stream endpoint (was changed when I was tweaking NGINX)
                         </div>
